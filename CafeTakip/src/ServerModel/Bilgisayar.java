@@ -3,10 +3,7 @@ package ServerModel;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * @author yetishbey
- * 
- */
+
 public class Bilgisayar {
     //private Socket client;
     private String masaAdi;

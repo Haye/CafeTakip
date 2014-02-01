@@ -3,10 +3,8 @@ package cafetakip;
 import ServerModel.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author yetishbey
- */
+
+
 public class CafeTakip {
     private ArrayList <Bilgisayar> bilgisayarlar;
     
