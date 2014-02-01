@@ -36,6 +36,7 @@ public class Bilgisayar {
         return true;
     }
     
+    //geçen süresi mikrosaniye cinsinden dönderir (1000 micsn = 1 sn)
     public long gecenSureHesapla(){
         return new Date().getTime() - acilisSaati.getTime();
     }
