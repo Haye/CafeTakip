@@ -13,7 +13,7 @@ public class Bilgisayar {
     private ArrayList <Siparis> siparisler;
  
     
-    /******************************************************************************/
+    /* masaAc overloadları başlangıç */
     
     public boolean masaAc(){
         //try { client.masaAc; return true; } catch { return false; }
@@ -32,6 +32,7 @@ public class Bilgisayar {
         this.musteri = musteri;
         return true;
     }
+    /* masaAc overloadları bitiş */
     
     //geçen süresi mikrosaniye cinsinden dönderir (1000 micsn = 1 sn)
     public long gecenSureHesapla(){
