@@ -1,6 +1,6 @@
 package ServerModel;
 
 
-class Musteri {
+public class Musteri {
     
 }
