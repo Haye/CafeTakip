@@ -9,6 +9,5 @@ public class Musteri extends Kisi{
     private int harcanan;
     private float borc;
     private int indrim;
-    
-    
+ 
 }
