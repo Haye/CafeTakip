@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class AcKapaLog {
     private Log log;
-    private int pcNo;
+    private String masaAdi;
     private Date acilisSaati;
     private Date kapanisSaati;
     private float toplamTutar;
