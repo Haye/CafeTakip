@@ -26,8 +26,8 @@ public class GirisPaneli extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblKullaniciAdi = new javax.swing.JLabel();
+        lblSifre = new javax.swing.JLabel();
         txtKullaniciAdi = new javax.swing.JTextField();
         txtSifre = new javax.swing.JTextField();
         btnGirisYap = new javax.swing.JButton();
@@ -35,9 +35,9 @@ public class GirisPaneli extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Kullanıcı Adı : ");
+        lblKullaniciAdi.setText("Kullanıcı Adı : ");
 
-        jLabel2.setText("Şifre :");
+        lblSifre.setText("Şifre :");
 
         btnGirisYap.setText("Giriş Yap");
 
@@ -52,8 +52,8 @@ public class GirisPaneli extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(lblKullaniciAdi)
+                            .addComponent(lblSifre))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtKullaniciAdi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -69,11 +69,11 @@ public class GirisPaneli extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblKullaniciAdi)
                     .addComponent(txtKullaniciAdi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblSifre)
                     .addComponent(txtSifre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -122,8 +122,8 @@ public class GirisPaneli extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGirisYap;
     private javax.swing.JButton btnVazgec;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblKullaniciAdi;
+    private javax.swing.JLabel lblSifre;
     private javax.swing.JTextField txtKullaniciAdi;
     private javax.swing.JTextField txtSifre;
     // End of variables declaration//GEN-END:variables
