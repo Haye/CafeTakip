@@ -35,15 +35,15 @@ public class MasaKapatPanel extends javax.swing.JFrame {
         lblMusteri = new javax.swing.JLabel();
         lblKullanimTutari = new javax.swing.JLabel();
         lblAdisyonTutari = new javax.swing.JLabel();
-        btnMasaKapat = new javax.swing.JButton();
-        btnAdisyonEkle = new javax.swing.JButton();
-        btnMasaAktar = new javax.swing.JButton();
         lblToplamTutar = new javax.swing.JLabel();
         lblAdisyonDetayiGoruntule = new javax.swing.JLabel();
+        pnlIslemler = new javax.swing.JPanel();
+        btnMasaAktar = new javax.swing.JButton();
+        btnAdisyonEkle = new javax.swing.JButton();
         btnIndırımUygula = new javax.swing.JButton();
+        pnlMasaKapat = new javax.swing.JPanel();
+        btnMasaKapat = new javax.swing.JButton();
         btnKismenOdendi = new javax.swing.JButton();
-        lblMasaKapat = new javax.swing.JLabel();
-        lblIslemler = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,71 +65,100 @@ public class MasaKapatPanel extends javax.swing.JFrame {
         lblAdisyonTutari.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblAdisyonTutari.setText("Adisyon Tutarı :");
 
-        btnMasaKapat.setText("Tamamen Ödendi");
-
-        btnAdisyonEkle.setText("Adisyon Ekle");
-
-        btnMasaAktar.setText("Masa Aktar");
-
         lblToplamTutar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblToplamTutar.setText("Toplam Tutar :");
 
         lblAdisyonDetayiGoruntule.setForeground(new java.awt.Color(0, 51, 255));
         lblAdisyonDetayiGoruntule.setText("Adisyon Detayı Görüntüle");
 
+        pnlIslemler.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "İşlemler", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        btnMasaAktar.setText("Masa Aktar");
+
+        btnAdisyonEkle.setText("Adisyon Ekle");
+
         btnIndırımUygula.setText("İndirim uygula");
+
+        javax.swing.GroupLayout pnlIslemlerLayout = new javax.swing.GroupLayout(pnlIslemler);
+        pnlIslemler.setLayout(pnlIslemlerLayout);
+        pnlIslemlerLayout.setHorizontalGroup(
+            pnlIslemlerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlIslemlerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAdisyonEkle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMasaAktar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnIndırımUygula)
+                .addGap(21, 21, 21))
+        );
+        pnlIslemlerLayout.setVerticalGroup(
+            pnlIslemlerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlIslemlerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlIslemlerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdisyonEkle)
+                    .addComponent(btnMasaAktar)
+                    .addComponent(btnIndırımUygula))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlMasaKapat.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Masa Kapat", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        btnMasaKapat.setText("Tamamen Ödendi");
 
         btnKismenOdendi.setText("Kısmen Ödendi");
 
-        lblMasaKapat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMasaKapat.setText("Masa Kapat");
-
-        lblIslemler.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblIslemler.setText("İşlemler");
+        javax.swing.GroupLayout pnlMasaKapatLayout = new javax.swing.GroupLayout(pnlMasaKapat);
+        pnlMasaKapat.setLayout(pnlMasaKapatLayout);
+        pnlMasaKapatLayout.setHorizontalGroup(
+            pnlMasaKapatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMasaKapatLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnKismenOdendi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMasaKapat)
+                .addContainerGap())
+        );
+        pnlMasaKapatLayout.setVerticalGroup(
+            pnlMasaKapatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMasaKapatLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMasaKapatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMasaKapat)
+                    .addComponent(btnKismenOdendi))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblMasaAdi)
-                .addContainerGap(299, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblGecenSure)
-                    .addComponent(lblAcilisZamani)
-                    .addComponent(lblMusteri)
-                    .addComponent(lblTarife)
-                    .addComponent(lblAdisyonTutari)
-                    .addComponent(lblToplamTutar)
-                    .addComponent(lblKullanimTutari))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblAdisyonDetayiGoruntule)
-                .addGap(19, 19, 19))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnKismenOdendi)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnMasaKapat))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblMasaKapat)
-                                .addGap(91, 91, 91)))
-                        .addGap(74, 74, 74))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAdisyonEkle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnMasaAktar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnIndırımUygula)
-                        .addGap(43, 43, 43))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblIslemler)
-                        .addGap(169, 169, 169))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(lblMasaAdi))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblGecenSure)
+                                .addComponent(lblAcilisZamani)
+                                .addComponent(lblMusteri)
+                                .addComponent(lblTarife)
+                                .addComponent(lblAdisyonTutari)
+                                .addComponent(lblToplamTutar)
+                                .addComponent(lblKullanimTutari))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAdisyonDetayiGoruntule))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pnlIslemler, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(pnlMasaKapat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(35, 35, 35))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,26 +175,17 @@ public class MasaKapatPanel extends javax.swing.JFrame {
                 .addComponent(lblMusteri)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblKullanimTutari)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAdisyonTutari)
                     .addComponent(lblAdisyonDetayiGoruntule))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblToplamTutar)
-                .addGap(15, 15, 15)
-                .addComponent(lblIslemler)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdisyonEkle)
-                    .addComponent(btnMasaAktar)
-                    .addComponent(btnIndırımUygula))
-                .addGap(37, 37, 37)
-                .addComponent(lblMasaKapat)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMasaKapat)
-                    .addComponent(btnKismenOdendi))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(pnlIslemler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(pnlMasaKapat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -216,12 +236,12 @@ public class MasaKapatPanel extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdisyonDetayiGoruntule;
     private javax.swing.JLabel lblAdisyonTutari;
     private javax.swing.JLabel lblGecenSure;
-    private javax.swing.JLabel lblIslemler;
     private javax.swing.JLabel lblKullanimTutari;
     private javax.swing.JLabel lblMasaAdi;
-    private javax.swing.JLabel lblMasaKapat;
     private javax.swing.JLabel lblMusteri;
     private javax.swing.JLabel lblTarife;
     private javax.swing.JLabel lblToplamTutar;
+    private javax.swing.JPanel pnlIslemler;
+    private javax.swing.JPanel pnlMasaKapat;
     // End of variables declaration//GEN-END:variables
 }

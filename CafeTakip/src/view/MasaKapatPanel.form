@@ -23,55 +23,39 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Component id="lblMasaAdi" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="299" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lblGecenSure" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAcilisZamani" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblMusteri" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblTarife" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAdisyonTutari" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblToplamTutar" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblKullanimTutari" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblAdisyonDetayiGoruntule" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnKismenOdendi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnMasaKapat" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="lblMasaAdi" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblGecenSure" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAcilisZamani" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMusteri" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTarife" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAdisyonTutari" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblToplamTutar" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblKullanimTutari" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblMasaKapat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblAdisyonDetayiGoruntule" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="pnlIslemler" min="-2" pref="320" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="pnlMasaKapat" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnAdisyonEkle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnMasaAktar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnIndırımUygula" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblIslemler" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,29 +74,18 @@
               <Component id="lblMusteri" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblKullanimTutari" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblAdisyonTutari" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblAdisyonDetayiGoruntule" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblToplamTutar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Component id="lblIslemler" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="pnlIslemler" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <Component id="pnlMasaKapat" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAdisyonEkle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnMasaAktar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnIndırımUygula" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="lblMasaKapat" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnMasaKapat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnKismenOdendi" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -163,21 +136,6 @@
         <Property name="text" type="java.lang.String" value="Adisyon Tutar&#x131; :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnMasaKapat">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tamamen &#xd6;dendi"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnAdisyonEkle">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Adisyon Ekle"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnMasaAktar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Masa Aktar"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblToplamTutar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -194,31 +152,107 @@
         <Property name="text" type="java.lang.String" value="Adisyon Detay&#x131; G&#xf6;r&#xfc;nt&#xfc;le"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnInd&#x131;r&#x131;mUygula">
+    <Container class="javax.swing.JPanel" name="pnlIslemler">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x130;ndirim uygula"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnKismenOdendi">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="K&#x131;smen &#xd6;dendi"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblMasaKapat">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="11" style="1"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="2" title="&#x130;&#x15f;lemler"/>
+          </Border>
         </Property>
-        <Property name="text" type="java.lang.String" value="Masa Kapat"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblIslemler">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnAdisyonEkle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="btnMasaAktar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnIndırımUygula" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnAdisyonEkle" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnMasaAktar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnIndırımUygula" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btnMasaAktar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Masa Aktar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAdisyonEkle">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Adisyon Ekle"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnInd&#x131;r&#x131;mUygula">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x130;ndirim uygula"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="pnlMasaKapat">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="11" style="1"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="2" title="Masa Kapat"/>
+          </Border>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x130;&#x15f;lemler"/>
       </Properties>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnKismenOdendi" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="btnMasaKapat" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnMasaKapat" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnKismenOdendi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btnMasaKapat">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tamamen &#xd6;dendi"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnKismenOdendi">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="K&#x131;smen &#xd6;dendi"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
