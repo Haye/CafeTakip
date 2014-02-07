@@ -48,7 +48,7 @@ public class Sira extends javax.swing.JFrame {
         spnBaslangicDk = new javax.swing.JSpinner();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblSira = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         txtToplamKisi = new javax.swing.JTextField();
 
@@ -187,7 +187,7 @@ public class Sira extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSira.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -213,7 +213,7 @@ public class Sira extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblSira);
 
         jLabel8.setText("Toplam Sırada ki kişi :");
 
@@ -301,13 +301,13 @@ public class Sira extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JSpinner spnBaslangicDk;
     private javax.swing.JSpinner spnBaslangicSaat;
     private javax.swing.JSpinner spnBitisDk;
     private javax.swing.JSpinner spnBitisSaat;
     private javax.swing.JSpinner spnMasaNo;
     private javax.swing.JSpinner spnSiraNo;
+    private javax.swing.JTable tblSira;
     private javax.swing.JTextField txtAd;
     private javax.swing.JTextField txtSoyad;
     private javax.swing.JTextField txtTelefon;
