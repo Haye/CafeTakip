@@ -80,7 +80,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\yetishbey\Desktop\1391752140_User_Computer.png"/>
+          <Image iconType="3" name="/resimler/1391752140_User_Computer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa 1"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -91,7 +91,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\yetishbey\Desktop\1391752205_Computer.png"/>
+          <Image iconType="3" name="/resimler/1391752205_Computer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa 2"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -102,7 +102,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\yetishbey\Desktop\1391752205_Computer.png"/>
+          <Image iconType="3" name="/resimler/1391752205_Computer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa 3"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -113,7 +113,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\yetishbey\Desktop\1391752205_Computer.png"/>
+          <Image iconType="3" name="/resimler/1391752205_Computer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa 5"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -124,7 +124,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\yetishbey\Desktop\1391752205_Computer.png"/>
+          <Image iconType="3" name="/resimler/1391752205_Computer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa 4"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -135,7 +135,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\yetishbey\Desktop\1391752205_Computer.png"/>
+          <Image iconType="3" name="/resimler/1391752205_Computer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa 6"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -146,7 +146,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\yetishbey\Desktop\1391752140_User_Computer.png"/>
+          <Image iconType="3" name="/resimler/1391752140_User_Computer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa 7"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -157,7 +157,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\yetishbey\Desktop\1391752205_Computer.png"/>
+          <Image iconType="3" name="/resimler/1391752205_Computer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa 8"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -168,7 +168,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\yetishbey\Desktop\1391752205_Computer.png"/>
+          <Image iconType="3" name="/resimler/1391752205_Computer.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa 9"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
