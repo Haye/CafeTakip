@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 
 public class BilgisayarListesi extends javax.swing.JFrame {
 
-    ArrayList<javax.swing.JLabel> labeller = new ArrayList<javax.swing.JLabel>();
+    ArrayList<JLabel> labeller = new ArrayList<JLabel>();
     public BilgisayarListesi(String [] masaAdlari) { 
            
     }
