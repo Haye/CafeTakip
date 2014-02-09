@@ -32,9 +32,22 @@ public class AnaEkran extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         siraPanel1 = new view.SiraPanel();
         masalar1 = new view.Masalar();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuDosya = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        menuRapor = new javax.swing.JMenu();
+        menuGorunum = new javax.swing.JMenu();
+        menuAraclar = new javax.swing.JMenu();
+        menuYardim = new javax.swing.JMenu();
+
+        jMenu1.setText("jMenu1");
+
+        jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +66,27 @@ public class AnaEkran extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab1", masalar1);
 
+        menuDosya.setText("Dosya");
+
+        jMenu4.setText("jMenu4");
+        menuDosya.add(jMenu4);
+
+        jMenuBar1.add(menuDosya);
+
+        menuRapor.setText("Rapor");
+        jMenuBar1.add(menuRapor);
+
+        menuGorunum.setText("Görünüm");
+        jMenuBar1.add(menuGorunum);
+
+        menuAraclar.setText("Araçlar");
+        jMenuBar1.add(menuAraclar);
+
+        menuYardim.setText("Yardım");
+        jMenuBar1.add(menuYardim);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,7 +96,7 @@ public class AnaEkran extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -106,8 +140,17 @@ public class AnaEkran extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private view.Masalar masalar1;
+    private javax.swing.JMenu menuAraclar;
+    private javax.swing.JMenu menuDosya;
+    private javax.swing.JMenu menuGorunum;
+    private javax.swing.JMenu menuRapor;
+    private javax.swing.JMenu menuYardim;
     private view.SiraPanel siraPanel1;
     // End of variables declaration//GEN-END:variables
 }
