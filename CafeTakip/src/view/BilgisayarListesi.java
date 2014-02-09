@@ -12,8 +12,10 @@
 
 package view;
 
+import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 
@@ -65,16 +67,43 @@ public class BilgisayarListesi extends javax.swing.JFrame {
             JLabel jLabel1 = new JLabel();
         
             jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/kapali.png"))); // NOI18N
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/kapali.png"))); 
             jLabel1.setText(masaAdi);
             jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
             jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-            labeller.add(jLabel1);
             
+            //Bilgisayarların etrafına padding ekleme 
+            javax.swing.border.Border paddingBorder = javax.swing.BorderFactory.createEmptyBorder(10,10,10,10);
+            jLabel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(null,paddingBorder));
+            
+            
+            //Mouse listener ekle, tıklandığında jLabelMouseClicked çalışması için
+            jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    jLabelMouseClicked(evt);
+                }
+             });
+            
+            
+            labeller.add(jLabel1);
             //Oluşturulan labeli konteynırına ekler
             jPanel1.add(jLabel1);
     }
     
+    private void jLabelMouseClicked(java.awt.event.MouseEvent evt) { 
+        //Tıklanılan nesneyi al
+        JLabel j = (JLabel) evt.getSource();
+        
+        //Diğer bilgisayarları eski haline getir
+        for(int i=0;i<labeller.size();i++){
+            labeller.get(i).setForeground(Color.black);
+            labeller.get(i).setOpaque(false);
+        }
+        //tıklanılan nesnenin arkaplanını gri yap
+        j.setOpaque(true);
+        j.setForeground(Color.blue);
+        j.setBackground(Color.lightGray);
+    }
     
     //Program çalışma esnasında bir masayı siler
     public void masaSil(String masaAdi){
@@ -135,11 +164,11 @@ public class BilgisayarListesi extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 121, Short.MAX_VALUE)
+            .addGap(0, 254, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,21 +176,20 @@ public class BilgisayarListesi extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(557, 557, 557)
-                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(557, 557, 557)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(111, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(163, 163, 163)
+                .addGap(30, 30, 30)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
