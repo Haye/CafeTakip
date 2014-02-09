@@ -28,6 +28,7 @@ import javax.swing.JPopupMenu;
  */
 public class Masalar extends javax.swing.JPanel {
     public ArrayList<JLabel> labeller = new ArrayList<JLabel>();
+    public JLabel seciliLabel;
     /**
      * Creates new form Masalar
      */
@@ -72,7 +73,7 @@ public class Masalar extends javax.swing.JPanel {
             
             //Mouse listener ekle, tıklandığında jLabelMouseClicked çalışması için
             jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                public void mousePressed(java.awt.event.MouseEvent evt) {
                     jLabelMouseClicked(evt);
                 }
              });
@@ -90,18 +91,24 @@ public class Masalar extends javax.swing.JPanel {
  
     
     private void jLabelMouseClicked(java.awt.event.MouseEvent evt) { 
-        //Tıklanılan nesneyi al
-        JLabel j = (JLabel) evt.getSource();
-        
-        //Diğer bilgisayarları eski haline getir
-        for(int i=0;i<labeller.size();i++){
-            labeller.get(i).setForeground(Color.black);
-            labeller.get(i).setOpaque(false);
+        seciliMasaDegis((JLabel) evt.getSource());
+    }
+    
+    private void seciliMasaDegis(JLabel yeniLabel){
+        //Eski seçili bilgisayarı varsayılan haline getir
+        if(seciliLabel!=null){
+            seciliLabel.setForeground(Color.black);
+            seciliLabel.setOpaque(false);
+            seciliLabel.getComponentPopupMenu().setVisible(false);
         }
-        //tıklanılan nesnenin arkaplanını gri yap
-        j.setOpaque(true);
-        j.setForeground(Color.blue);
-        j.setBackground(Color.lightGray);
+        
+        //Tıklanılan nesneyi al
+        seciliLabel = yeniLabel;
+        
+        //yeni seçili nesnenin arkaplanını gri yap
+        seciliLabel.setOpaque(true);
+        seciliLabel.setForeground(Color.blue);
+        seciliLabel.setBackground(Color.lightGray);
     }
     
     //Program çalışma esnasında bir masayı siler
@@ -149,7 +156,7 @@ public class Masalar extends javax.swing.JPanel {
     ActionListener menuListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent event) {
-            System.out.println("["+ event.getActionCommand() + "] tıklandı");
+            System.out.println(seciliLabel.getText()+ "["+ event.getActionCommand() + "] tıklandı");
         }
     };
     
