@@ -1,39 +1,46 @@
+/*
+        MEVCUT FONKSİYONLAR :
+
+    public void init(String [] masaAdlari); - İlk açılışta masaların oluşturulması
+    public void masaEkle(String masaAdi); - Çalışma esnasında masa oluşturma
+    public void masaSil(String masaAdi); - Çalışma esnasında masanın silinmesi
+    private JLabel masaBul(String masaAdi); - Masanın adından masa Labelini getirir
+
+    public enum Durum {ACIK, KAPALI, SURELI};
+    public void durumDegis(String masaAdi, Durum durum); - Masanın görüntüsünü değiştirir.
+*/
+
 package view;
 
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
-import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 
 public class BilgisayarListesi extends javax.swing.JFrame {
 
     ArrayList<javax.swing.JLabel> labeller = new ArrayList<javax.swing.JLabel>();
-    public BilgisayarListesi(String [] masaAdlari) {
-        //init(masaAdlari);   
-        //masaEkle(masaAdi);
-        //masaSil(masaAdi);
- 
-        /*
-        masaAcButonAction(Event evt){
-		if(getAnaKontrol.masaAc(lblMAsadi.getText(), lblHesapTuru.getText()))
-			this.durumGuncelle(lblMasaAdi,hesapTuru);
-        }
-        */
-
-        //durumDegis(masaAdi,durum)
-        
+    public BilgisayarListesi(String [] masaAdlari) { 
+           
     }
     
     public BilgisayarListesi() {
         
         initComponents();  
+        
+        //Test 
         String masaAdlari[] = {"Masa 1", "Masa 2", "Masa 3", "Masa 4", "Masa 5","Masa 6"};
         
         init(masaAdlari);
+        masaEkle("Sonradan Ekleme");
+        durumDegis("Masa 1", Durum.ACIK); 
+        durumDegis("Masa 2", Durum.ACIK); 
+        durumDegis("Masa 3", Durum.ACIK); 
+        durumDegis("Masa 3", Durum.KAPALI); 
+        masaSil("Masa 3");
     }
 
-    
+    //Açılıştaki masaların labellerini oluşturarak ekler
     public void init(String [] masaAdlari){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
@@ -41,27 +48,73 @@ public class BilgisayarListesi extends javax.swing.JFrame {
         FlowLayout layout = new FlowLayout(FlowLayout.TRAILING, 20, 20);
         //Layoutu hangi nesne için kullanacağımız. Direk eklemek için getContntPane().setLayout(_);
         jPanel1.setLayout(layout);
+        // FlowLayoutun sola veya sağa göre konumlandırmasını sağlar
+        jPanel1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+
+         
         
+        //Masaların eklenmesi
         for(int i=0; i<masaAdlari.length; i++){
-            javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+            masaEkle(masaAdlari[i]);
+        }
+
+    }
+    
+    //Program çalışma esnasında kapalı halde yeni bir masa ekler
+    public void masaEkle(String masaAdi){
+            JLabel jLabel1 = new JLabel();
         
             jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/1391752205_Computer.png"))); // NOI18N
-            jLabel1.setText(masaAdlari[i]);
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/kapali.png"))); // NOI18N
+            jLabel1.setText(masaAdi);
             jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
             jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
             labeller.add(jLabel1);
             
             //Oluşturulan labeli konteynırına ekler
-            jPanel1.add(labeller.get(i));
-        }
-
+            jPanel1.add(jLabel1);
+    }
+    
+    
+    //Program çalışma esnasında bir masayı siler
+    public void masaSil(String masaAdi){
+            JLabel jLabel1 = masaBul(masaAdi);
         
-         // FlowLayoutun sola veya sağa göre konumlandırmasını sağlar
-         jPanel1.setComponentOrientation(
-                ComponentOrientation.LEFT_TO_RIGHT);
+            labeller.remove(jLabel1); 
+            //Silinen labeli konteynırından siler
+            jPanel1.remove(jLabel1);
+    }
+  
+    //Masa isminden masaya ait JLabel nesnesini döndürür
+    private JLabel masaBul(String masaAdi){
+        for(int i=0;i<labeller.size();i++){
+            if(labeller.get(i).getText() == masaAdi){
+                return labeller.get(i);
+            }
+        }
+        return null;
+    }
+    
+    
+    //Duruma göre masaya ait iconu günceller
+    public enum Durum {ACIK, KAPALI, SURELI};
+    public void durumDegis(String masaAdi, Durum durum){
+        JLabel masaLabel = masaBul(masaAdi);
+        if(masaLabel != null) {
+            switch(durum) {
+                case ACIK:
+                    masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/acik.png"))); 
+                break;
 
- 
+                case KAPALI:
+                     masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/kapali.png")));      
+                break;
+
+                case SURELI:
+                     masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/acik.png")));
+                break;
+            }
+        }
     }
    
     @SuppressWarnings("unchecked")
