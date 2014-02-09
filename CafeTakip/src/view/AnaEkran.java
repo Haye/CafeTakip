@@ -18,7 +18,7 @@ public class AnaEkran extends javax.swing.JFrame {
     public AnaEkran() {
         initComponents();
         String masaAdlari[] = {"Masa 1", "Masa 2", "Masa 3", "Masa 4", "Masa 5","Masa 6"};
-        
+//he yok build yapmak gerk bunları :D anahtar da ondanmış
         masalar1.init(masaAdlari);
         masalar1.masaEkle("Masa X");
     }
@@ -33,40 +33,37 @@ public class AnaEkran extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        siraPanel1 = new view.SiraPanel();
         masalar1 = new view.Masalar();
-        siraPanel2 = new view.SiraPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        masalar1.setBorder(javax.swing.BorderFactory.createTitledBorder("Bilgisayarlar"));
+        jTabbedPane1.addTab("tab2", siraPanel1);
 
         javax.swing.GroupLayout masalar1Layout = new javax.swing.GroupLayout(masalar1);
         masalar1.setLayout(masalar1Layout);
         masalar1Layout.setHorizontalGroup(
             masalar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
+            .addGap(0, 672, Short.MAX_VALUE)
         );
         masalar1Layout.setVerticalGroup(
             masalar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
+            .addGap(0, 425, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Bilgisayarlar", masalar1);
-        jTabbedPane1.addTab("Sıra", siraPanel2);
+        jTabbedPane1.addTab("tab1", masalar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -111,6 +108,6 @@ public class AnaEkran extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane1;
     private view.Masalar masalar1;
-    private view.SiraPanel siraPanel2;
+    private view.SiraPanel siraPanel1;
     // End of variables declaration//GEN-END:variables
 }
