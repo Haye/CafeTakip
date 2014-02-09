@@ -39,8 +39,10 @@ public class AnaEkran extends javax.swing.JFrame {
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        siraPanel1 = new view.SiraPanel();
         masalar1 = new view.Masalar();
+        siraPanel1 = new view.SiraPanel();
+        pnlKisayollar = new javax.swing.JPanel();
+        toolbox1 = new view.Toolbox();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuDosya = new javax.swing.JMenu();
         menuItemCıkıs = new javax.swing.JMenuItem();
@@ -119,8 +121,6 @@ public class AnaEkran extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.addTab("tab2", siraPanel1);
-
         javax.swing.GroupLayout masalar1Layout = new javax.swing.GroupLayout(masalar1);
         masalar1.setLayout(masalar1Layout);
         masalar1Layout.setHorizontalGroup(
@@ -132,7 +132,25 @@ public class AnaEkran extends javax.swing.JFrame {
             .addGap(0, 425, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab1", masalar1);
+        jTabbedPane1.addTab("Masalar", masalar1);
+        jTabbedPane1.addTab("Sıralar", siraPanel1);
+
+        javax.swing.GroupLayout pnlKisayollarLayout = new javax.swing.GroupLayout(pnlKisayollar);
+        pnlKisayollar.setLayout(pnlKisayollarLayout);
+        pnlKisayollarLayout.setHorizontalGroup(
+            pnlKisayollarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlKisayollarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(toolbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlKisayollarLayout.setVerticalGroup(
+            pnlKisayollarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlKisayollarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(toolbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         menuDosya.setText("Dosya");
 
@@ -343,14 +361,16 @@ public class AnaEkran extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1)
+            .addComponent(pnlKisayollar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(pnlKisayollar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -471,6 +491,8 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemCıkıs;
     private javax.swing.JMenu menuRapor;
     private javax.swing.JMenu menuYardim;
+    private javax.swing.JPanel pnlKisayollar;
     private view.SiraPanel siraPanel1;
+    private view.Toolbox toolbox1;
     // End of variables declaration//GEN-END:variables
 }
