@@ -228,6 +228,7 @@ public class MusteriPaneli extends javax.swing.JPanel {
         radioStandar.setText("Standart");
 
         buttonGroup1.add(radioUyeUcreti);
+        radioUyeUcreti.setSelected(true);
         radioUyeUcreti.setText("Üye Ücreti");
 
         buttonGroup1.add(radioUcretsiz);
@@ -255,9 +256,10 @@ public class MusteriPaneli extends javax.swing.JPanel {
                 .addComponent(radioUcretsiz))
         );
 
-        pnlUcretSecenekleri1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ücret Seçenekleri"));
+        pnlUcretSecenekleri1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ödeme Seçenekleri"));
 
         buttonGroup2.add(radioOnceden);
+        radioOnceden.setSelected(true);
         radioOnceden.setText("Önceden Ödenmiş");
 
         buttonGroup2.add(radioSonradan);
