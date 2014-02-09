@@ -15,8 +15,12 @@ package view;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 /**
  *
@@ -52,6 +56,7 @@ public class Masalar extends javax.swing.JPanel {
     
     //Program çalışma esnasında kapalı halde yeni bir masa ekler
     public void masaEkle(String masaAdi){
+            
             JLabel jLabel1 = new JLabel();
         
             jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -73,10 +78,16 @@ public class Masalar extends javax.swing.JPanel {
              });
             
             
+            //Label popup ekleme 
+            jLabel1.setComponentPopupMenu(getPopUpMenu());
+                 
+        
             labeller.add(jLabel1);
             //Oluşturulan labeli konteynırına ekler
             this.add(jLabel1);
     }
+    
+ 
     
     private void jLabelMouseClicked(java.awt.event.MouseEvent evt) { 
         //Tıklanılan nesneyi al
@@ -134,6 +145,31 @@ public class Masalar extends javax.swing.JPanel {
         }
     }
     
+    //Popup listener
+    ActionListener menuListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            System.out.println("["+ event.getActionCommand() + "] tıklandı");
+        }
+    };
+    
+    //Popup menu içeriği
+    private JPopupMenu getPopUpMenu(){
+        String [] liste = {"Masa Aç", "Süreli Aç","-","Masa Kapat"};
+        JPopupMenu popup = new JPopupMenu();
+        
+        for (String item : liste) {
+            if(item == "-"){
+                popup.addSeparator();
+            }else{
+                JMenuItem menu = new JMenuItem(item);
+                menu.addActionListener(menuListener);
+                popup.add(menu);
+            }
+        }
+        
+        return popup;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
