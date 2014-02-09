@@ -79,7 +79,7 @@ public class Masalar extends javax.swing.JPanel {
             
             
             //Label popup ekleme 
-            jLabel1.setComponentPopupMenu(getPopUpMenu());
+            jLabel1.setComponentPopupMenu(getPopUpMenu(jLabel1.getText()));
                  
         
             labeller.add(jLabel1);
@@ -154,10 +154,11 @@ public class Masalar extends javax.swing.JPanel {
     };
     
     //Popup menu içeriği
-    private JPopupMenu getPopUpMenu(){
-        String [] liste = {"Masa Aç", "Süreli Aç","-","Masa Kapat"};
+    private JPopupMenu getPopUpMenu(String masaAdi){
+        String [] liste = {"-","Masa Aç", "Süreli Aç","Masa Kapat"};
         JPopupMenu popup = new JPopupMenu();
         
+        popup.add(masaAdi);
         for (String item : liste) {
             if(item == "-"){
                 popup.addSeparator();
@@ -166,8 +167,7 @@ public class Masalar extends javax.swing.JPanel {
                 menu.addActionListener(menuListener);
                 popup.add(menu);
             }
-        }
-        
+        } 
         return popup;
     }
     
