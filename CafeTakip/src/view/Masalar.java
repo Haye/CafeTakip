@@ -40,7 +40,7 @@ public class Masalar extends javax.swing.JPanel {
     //Açılıştaki masaların labellerini oluşturarak ekler
     public void init(String [] masaAdlari){        
         //FlowLayout için padding değerleri ( _ , Pad1, Pad2)
-        FlowLayout layout = new FlowLayout(FlowLayout.TRAILING, 20, 20);
+        FlowLayout layout = new FlowLayout(FlowLayout.LEFT, 20, 20);
         //Layoutu hangi nesne için kullanacağımız. Direk eklemek için getContntPane().setLayout(_);
         this.setLayout(layout);
         // FlowLayoutun sola veya sağa göre konumlandırmasını sağlar
@@ -94,12 +94,12 @@ public class Masalar extends javax.swing.JPanel {
         seciliMasaDegis((JLabel) evt.getSource());
     }
     
+    
     private void seciliMasaDegis(JLabel yeniLabel){
         //Eski seçili bilgisayarı varsayılan haline getir
         if(seciliLabel!=null){
             seciliLabel.setForeground(Color.black);
             seciliLabel.setOpaque(false);
-            seciliLabel.getComponentPopupMenu().setVisible(false);
         }
         
         //Tıklanılan nesneyi al

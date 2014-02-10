@@ -39,8 +39,8 @@ public class AnaEkran extends javax.swing.JFrame {
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        masalar1 = new view.Masalar();
         siraPanel1 = new view.SiraPanel();
+        masalar1 = new view.Masalar();
         pnlKisayollar = new javax.swing.JPanel();
         toolbox1 = new view.Toolbox();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -121,11 +121,13 @@ public class AnaEkran extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPane1.addTab("Sıralar", siraPanel1);
+
         javax.swing.GroupLayout masalar1Layout = new javax.swing.GroupLayout(masalar1);
         masalar1.setLayout(masalar1Layout);
         masalar1Layout.setHorizontalGroup(
             masalar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
+            .addGap(0, 618, Short.MAX_VALUE)
         );
         masalar1Layout.setVerticalGroup(
             masalar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +135,6 @@ public class AnaEkran extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Masalar", masalar1);
-        jTabbedPane1.addTab("Sıralar", siraPanel1);
 
         javax.swing.GroupLayout pnlKisayollarLayout = new javax.swing.GroupLayout(pnlKisayollar);
         pnlKisayollar.setLayout(pnlKisayollarLayout);
@@ -142,7 +143,7 @@ public class AnaEkran extends javax.swing.JFrame {
             .addGroup(pnlKisayollarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(toolbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         pnlKisayollarLayout.setVerticalGroup(
             pnlKisayollarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,8 +362,11 @@ public class AnaEkran extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
             .addComponent(pnlKisayollar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
