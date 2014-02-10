@@ -9,7 +9,7 @@ public class CafeTakip {
     private ArrayList <Bilgisayar> bilgisayarlar;
     
     public static void main(String[] args) {
-       AnaProgram a = new AnaProgram();
+       view.AnaEkran a = new view.AnaEkran();
        a.show();
     }
     

@@ -29,7 +29,7 @@ public class MasaBilgisi extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblMasaAdi = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         prgGecenSure = new javax.swing.JProgressBar();
@@ -43,8 +43,8 @@ public class MasaBilgisi extends javax.swing.JPanel {
 
         jLabel2.setText("Açılış Saati :");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Masa - X");
+        lblMasaAdi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMasaAdi.setText("Masa - X");
 
         jLabel5.setText("Kalan Süre :");
 
@@ -74,7 +74,7 @@ public class MasaBilgisi extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(lblMasaAdi)
                                 .addGap(0, 155, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -104,7 +104,7 @@ public class MasaBilgisi extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblMasaAdi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -133,7 +133,6 @@ public class MasaBilgisi extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -144,6 +143,7 @@ public class MasaBilgisi extends javax.swing.JPanel {
     private javax.swing.JLabel lblKalanSure;
     private javax.swing.JLabel lblKullanici;
     private javax.swing.JLabel lblKullanimUcreti;
+    public javax.swing.JLabel lblMasaAdi;
     private javax.swing.JProgressBar prgGecenSure;
     // End of variables declaration//GEN-END:variables
 }

@@ -44,7 +44,7 @@ public class Masalar extends javax.swing.JPanel {
         //Layoutu hangi nesne için kullanacağımız. Direk eklemek için getContntPane().setLayout(_);
         this.setLayout(layout);
         // FlowLayoutun sola veya sağa göre konumlandırmasını sağlar
-        this.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        //this.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
          
         
