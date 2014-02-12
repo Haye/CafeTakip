@@ -1,21 +1,15 @@
 
-package ServerModel.kisi;
+package controller;
 
-import controller.KisiInterface;
+import ServerModel.kisi.Kisi;
 
 /**
  *
  * @author MustafaS
  */
-public class Kisi implements KisiInterface{
-    private int kisiId;
-    private String ad;
-    private String soyad;
-    private int telefon;
-    private String kullaniciAdi;
-    private String sifre;
+public class KisiController implements KisiInterface{
 
-    @Override
+     @Override
     public boolean girisYap(String kullaniciAdi, String sifre) {
         return true;
     }
@@ -34,4 +28,5 @@ public class Kisi implements KisiInterface{
     public boolean hesapBilgiGuncelle(String kullaniciAdi, Kisi kisi) {
         return true;
     }
+    
 }
