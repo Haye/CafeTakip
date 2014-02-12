@@ -14,7 +14,6 @@ public class KisiController implements KisiInterface{
     
      @Override
     public boolean girisYap(String kullaniciAdi, String sifre) {
-         hayır
          if (!kullaniciAdi.isEmpty() && !sifre.isEmpty()) {
              kullanici = new Kisi();
              if (kullanici.girisYap(kullaniciAdi, sifre)) {
