@@ -19,15 +19,16 @@ public interface KisiInterface {
     
     
     /**
-     *
+     * Kullanıcıya ait bilgileri getirir.
      * @param kullaniciAdi : Kullanıcı adı
-     * @return : Kullanıcı adına karşılık gelen bilgileri getirir
+     * @return : Kullanıcı adına karşılık gelen bilgileri 
+     *          Kişi nesnesi şeklinde getirir.
      */
     public Kisi bilgileriGetir(String kullaniciAdi);
     
     
     /**
-     * 
+     * Kişi bilgisini siler.
      * @param kullaniciAdi : Kullanıcı Adı
      * @return : Kullanıcı adına karşılık gelen alanı siler.
      *          Ve geriye true dönderir
@@ -36,7 +37,7 @@ public interface KisiInterface {
     
     
     /**
-     * 
+     * Kişi bilgilerini günceller. 
      * @param Kisi : Yeni kişi bilgisi
      * @param  KullaniciAdi : Kullanıcı adı.
      *                      Eğer güncellenmiş ise eski kullanıcı adı
