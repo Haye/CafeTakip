@@ -10,7 +10,7 @@ import ServerModel.kisi.Kisi;
 public interface KisiInterface {
     
     /**
-     *
+     * Kullanıcı adı ve şifre alarak kişinin kayıtlı olup olmadığını kontrol eder.
      * @param kullaniciAdi: Kullanıcı Adı
      * @param sifre : Şifre
      * @return Kullanıcı adı ve şifre doğru ise true, değilse false
