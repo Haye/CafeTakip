@@ -31,6 +31,11 @@ public class GirisPaneli extends javax.swing.JFrame {
         lblSifre.setText("Şifre :");
 
         btnGirisYap.setText("Giriş Yap");
+        btnGirisYap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnGirisYapMousePressed(evt);
+            }
+        });
 
         btnVazgec.setText("Vazgeç");
 
@@ -75,6 +80,18 @@ public class GirisPaneli extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGirisYapMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGirisYapMousePressed
+        String kulAdi = txtKullaniciAdi.getText().trim();
+        String sifre = txtSifre.getText().trim();
+        
+        if(cafetakip.CafeTakip.mainCont.getKisiCont().girisYap(kulAdi, sifre)){
+            System.out.println("Eyvallah gardaş.");
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnGirisYapMousePressed
 
     /**
      * @param args the command line arguments

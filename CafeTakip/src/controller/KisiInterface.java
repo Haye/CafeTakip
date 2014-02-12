@@ -24,7 +24,7 @@ public interface KisiInterface {
      * @return : Kullanıcı adına karşılık gelen bilgileri 
      *          Kişi nesnesi şeklinde getirir.
      */
-    public Kisi bilgileriGetir(String kullaniciAdi);
+    public void bilgileriGetir(String kullaniciAdi);
     
     
     /**

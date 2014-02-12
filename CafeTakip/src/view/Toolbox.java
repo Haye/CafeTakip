@@ -1,6 +1,8 @@
 
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MustafaS
@@ -22,6 +24,11 @@ public class Toolbox extends javax.swing.JPanel {
 
         btnSecenek.setText("Seçenekler");
         btnSecenek.setPreferredSize(new java.awt.Dimension(60, 60));
+        btnSecenek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSecenekActionPerformed(evt);
+            }
+        });
 
         btnKasiyer.setText("Kasiyer");
         btnKasiyer.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -53,6 +60,14 @@ public class Toolbox extends javax.swing.JPanel {
             .addComponent(btnBilet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSecenekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSecenekActionPerformed
+        if(cafetakip.CafeTakip.mainCont.getKisiCont().getKullanici().getTip()!=1){
+            JOptionPane.showMessageDialog(null, "Admine özel", "Uyarı", 
+                     JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSecenekActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBilet;
     private javax.swing.JButton btnKafeterya;

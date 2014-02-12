@@ -89,6 +89,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Giri&#x15f; Yap"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGirisYapMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnVazgec">
       <Properties>

@@ -1,16 +1,18 @@
 package cafetakip;
 
-import ServerModel.*;
-import java.util.ArrayList;
+import controller.MainContorller;
+import view.GirisPaneli;
 
 
 
 public class CafeTakip {
-    private ArrayList <Bilgisayar> bilgisayarlar;
     
+    public static MainContorller mainCont;
     public static void main(String[] args) {
-       view.AnaEkran a = new view.AnaEkran();
-       a.show();
+        mainCont = new MainContorller();
+
+        GirisPaneli g = new GirisPaneli();
+        g.show();
     }
     
 }
