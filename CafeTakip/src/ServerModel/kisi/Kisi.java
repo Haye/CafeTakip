@@ -2,37 +2,35 @@
 package ServerModel.kisi;
 
 import controller.KisiInterface;
+import java.sql.Timestamp;
 
 /**
  *
  * @author MustafaS
  */
-public class Kisi implements KisiInterface{
+public  class Kisi implements KisiInterface{
     private int kisiId;
     private String ad;
     private String soyad;
-    private int telefon;
-    private int tip;
+    private String telefon;
+    private String kullaniciAdi;
+    private String sifre;
+    private Timestamp kayitTarihi;
+    
     
     public Kisi(){}
 
-    public Kisi(int kisiId, String ad, String soyad, int telefon, int tip) {
+    public Kisi(int kisiId, String ad, String soyad, String telefon, int tip) {
         this.kisiId = kisiId;
         this.ad = ad;
         this.soyad = soyad;
         this.telefon = telefon;
-        this.tip = tip;
     }
 
-    @Override
-    public boolean girisYap(String kullaniciAdi, String sifre) {
-        
-        if(kullaniciAdi.equals("asd") && sifre.equals("123"))
-            return true; 
-        
-        return false;
-    }
-
+   
+     @Override
+    public  boolean girisYap(String kullaniciAdi, String sifre){return false;}
+     
     @Override
     public void bilgileriGetir(String kullaniciAdi) {
         //String sql = "SELECT * from kisi where kullaniiAdi = '"+ kullaniciAdi +"'";
@@ -40,8 +38,7 @@ public class Kisi implements KisiInterface{
         this.kisiId = 1;
         this.ad = "Mustafa";
         this.soyad = "Şahin";
-        this.telefon = 1234;
-        this.tip = 2;
+        this.telefon = "1234";
     }
 
     @Override
@@ -78,20 +75,36 @@ public class Kisi implements KisiInterface{
         this.soyad = soyad;
     }
 
-    public int getTelefon() {
+    public String getTelefon() {
         return telefon;
     }
 
-    public void setTelefon(int telefon) {
+    public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
 
-    public int getTip() {
-        return tip;
+    public String getKullaniciAdi() {
+        return kullaniciAdi;
     }
 
-    public void setTip(int tip) {
-        this.tip = tip;
+    public void setKullaniciAdi(String kullaniciAdi) {
+        this.kullaniciAdi = kullaniciAdi;
+    }
+
+    public String getSifre() {
+        return sifre;
+    }
+
+    public void setSifre(String sifre) {
+        this.sifre = sifre;
+    }
+
+    public Timestamp getKayitTarihi() {
+        return kayitTarihi;
+    }
+
+    public void setKayitTarihi(Timestamp kayitTarihi) {
+        this.kayitTarihi = kayitTarihi;
     }
     
     

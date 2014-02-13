@@ -1,6 +1,7 @@
 
 package controller;
 
+import ServerModel.kisi.Calisan;
 import ServerModel.kisi.Kisi;
 import javax.swing.JOptionPane;
 import view.AnaEkran;
@@ -10,12 +11,12 @@ import view.AnaEkran;
  * @author MustafaS
  */
 public class KisiController implements KisiInterface{
-    private Kisi kullanici;
+    private Calisan kullanici;
     
      @Override
     public boolean girisYap(String kullaniciAdi, String sifre) {
          if (!kullaniciAdi.isEmpty() && !sifre.isEmpty()) {
-             kullanici = new Kisi();
+             kullanici = new Calisan();
              if (kullanici.girisYap(kullaniciAdi, sifre)) {
                  kullanici.bilgileriGetir(kullaniciAdi);
                  
@@ -48,11 +49,11 @@ public class KisiController implements KisiInterface{
         return true;
     }
 
-    public Kisi getKullanici() {
+    public Calisan getKullanici() {
         return kullanici;
     }
 
-    public void setKullanici(Kisi kullanici) {
+    public void setKullanici(Calisan kullanici) {
         this.kullanici = kullanici;
     }
     
