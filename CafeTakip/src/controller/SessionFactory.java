@@ -5,7 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author Mustafa-Bilgisay
+ * @author MustafaS
  */
 public class SessionFactory {
     private final static org.hibernate.SessionFactory sessionFak;

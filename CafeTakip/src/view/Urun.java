@@ -41,6 +41,8 @@ public class Urun extends javax.swing.JFrame {
 
         jLabel4.setText("Stok :");
 
+        spnStok.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+
         btnEkle.setText("Ekle");
 
         btnSil.setText("Sil");

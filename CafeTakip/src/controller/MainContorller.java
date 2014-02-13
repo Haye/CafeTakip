@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Mustafa-Bilgisay
+ * @author MustafaS
  */
 public class MainContorller {
     private ArrayList <Bilgisayar> bilgisayarlar;

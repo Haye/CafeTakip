@@ -5,7 +5,7 @@ import ServerModel.kisi.Kisi;
 
 /**
  *
- * @author Mustafa-Bilgisay
+ * @author MustafaS
  */
 public interface KisiInterface {
     
