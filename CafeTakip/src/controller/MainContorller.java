@@ -2,6 +2,7 @@
 package controller;
 
 import ServerModel.Bilgisayar;
+import controller.urun.UrunController;
 import java.util.ArrayList;
 
 /**
@@ -12,11 +13,13 @@ public class MainContorller {
     private ArrayList <Bilgisayar> bilgisayarlar;
     
     private KisiController kisiCont;
+    private UrunController urunCont;
 
     public MainContorller(){
         bilgisayarlar = new ArrayList<Bilgisayar>();
         
         kisiCont = new KisiController();
+        urunCont = new UrunController();
     }
     
     

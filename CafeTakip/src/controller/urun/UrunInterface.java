@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author MustafaS
  */
-public interface UrunInterface {
+public interface UrunInterface{
     
     
     /**
@@ -38,7 +38,7 @@ public interface UrunInterface {
      * @param urunNo Urun için ayır edici olan alan.
      * @param yeniUrun Güncelennecek olan bilgiler.
      */
-    public void urunGuncelle(int urunNo, Urun yeniUrun);
+    public boolean urunGuncelle(int urunNo, Urun yeniUrun);
     
     
     /**

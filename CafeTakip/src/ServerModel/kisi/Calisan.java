@@ -1,10 +1,8 @@
 
 package ServerModel.kisi;
 
-import controller.SessionFactory;
+import controller.HbmIslemler;
 import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
 
 /**
  *
@@ -18,15 +16,14 @@ public class Calisan extends Kisi{
     
      @Override
     public boolean girisYap(String kullaniciAdi, String sifre) {
-         Session sesion = SessionFactory.
-                 getSessionFactory().openSession();
+     
+         String hql ="from Kisi "
+                 + "where kullaniciAdi = '" + kullaniciAdi 
+                 + "' and sifre = '" + sifre + "'";
          
-         Query query = sesion.createQuery("from Kisi "
-                        + "where kullaniciAdi = '" + kullaniciAdi 
-                        + "' and sifre = '" + sifre + "'");
-         
-         List calisan = query.list();         
-         //
+         HbmIslemler hbm = new HbmIslemler();
+         List<Kisi> calisan = (List<Kisi>) hbm.list(hql);
+
         if(calisan.size() > 0)
             return true; 
         
