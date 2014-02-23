@@ -27,33 +27,33 @@ public interface UrunInterface{
     
     /**
      * Gelen ürünNosuna karşılık gelen satırı siler.
-     * @param urunNo Urun icin ayırt edici olan alan.
+     * @param urunAdi Urun icin ayırt edici olan alan.
      * @return Kayıt var ise true değilse false döner.
      */
-    public boolean urunSil(int urunNo);
+    public boolean urunSil(String urunAdi);
     
     
     /**
      * UrunNo ya karşık gelen bilgileri yeni bilgiler ile değiştirir.
-     * @param urunNo Urun için ayır edici olan alan.
+     * @param urunAdi Urun için ayır edici olan alan.
      * @param yeniUrun Güncelennecek olan bilgiler.
      */
-    public boolean urunGuncelle(int urunNo, Urun yeniUrun);
+    public boolean urunGuncelle(String urunAdi, Urun yeniUrun);
     
     
     /**
      * Satılan ürünün veritabanındaki bilgileri günceller.
-     * @param urunId Ürün için ayırt edici olan alan
+     * @param urunAdi Ürün için ayırt edici olan alan
      * @param miktar Satılan ürün miktarı.
      */
-    public void urunSat(int urunId, int miktar);
+    public void urunSat(String urunAdi, int miktar);
     
     
     /**
      * Alınan ürünün veritabanındaki bilgileri günceller.
-     * @param urunId Ürün için ayırt edici olan alan
+     * @param urunAdi Ürün için ayırt edici olan alan
      * @param miktar Alınan ürün miktarı.
      */
-    public void urunAl(int urunId, int miktar);
+    public void urunAl(String urunAdi, int miktar);
     
 }

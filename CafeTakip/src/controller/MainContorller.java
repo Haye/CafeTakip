@@ -39,6 +39,10 @@ public class MainContorller {
     public void setKisiCont(KisiController kisiCont) {
         this.kisiCont = kisiCont;
     }
+
+    public UrunController getUrunCont() {
+        return urunCont;
+    }
     
     
     

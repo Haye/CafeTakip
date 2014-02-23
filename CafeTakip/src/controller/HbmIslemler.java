@@ -32,7 +32,7 @@ public class HbmIslemler {
     
     }
     
-    public boolean sil(int id, Class clas)throws HibernateException{
+    public boolean sil(String id, Class clas)throws HibernateException{
         
         Session sesion = SessionFactory.getSessionFactory()
                 .openSession();
@@ -77,7 +77,7 @@ public class HbmIslemler {
         
     }
     
-    public boolean guncelle(int id, Object obj) throws HibernateException{
+    public boolean guncelle(String id, Object obj) throws HibernateException{
     
         Session sesion = SessionFactory.getSessionFactory()
                 .openSession();
@@ -102,7 +102,7 @@ public class HbmIslemler {
         }
     }
     
-    public Object bilgiGetir(int id, Class clas){
+    public Object bilgiGetir(String id, Class clas){
         
         Session sesion = SessionFactory.getSessionFactory()
                 .openSession();
@@ -110,7 +110,7 @@ public class HbmIslemler {
         Transaction tr = sesion.beginTransaction();
         
         try {            
-            Object obj  = sesion.get(clas, id);
+            Object obj = sesion.get(clas, id);
             tr.commit();
             return obj;
         } catch (HibernateException ex) {

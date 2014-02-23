@@ -35,6 +35,11 @@ public class Toolbox extends javax.swing.JPanel {
 
         btnKafeterya.setText("Kafeterya");
         btnKafeterya.setPreferredSize(new java.awt.Dimension(100, 100));
+        btnKafeterya.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnKafeteryaMousePressed(evt);
+            }
+        });
 
         btnBilet.setText("Bilet");
         btnBilet.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -67,6 +72,13 @@ public class Toolbox extends javax.swing.JPanel {
                      JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSecenekActionPerformed
+
+    private void btnKafeteryaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKafeteryaMousePressed
+
+        Urun urunFrame = new Urun();
+        urunFrame.show();
+        
+    }//GEN-LAST:event_btnKafeteryaMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBilet;

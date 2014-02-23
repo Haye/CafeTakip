@@ -4,7 +4,6 @@ import controller.HbmIslemler;
 import controller.urun.UrunInterface;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
 /**
@@ -12,10 +11,19 @@ import org.hibernate.HibernateException;
  * @author MustafaS
  */
 public class Urun implements UrunInterface{
-    
+       
     private int barkod,stok;
-    private float birimFiyat;
+    private double birimFiyat;
     private String urunAdi;
+    
+    public Urun(){}
+
+    public Urun(int barkod, int stok, double birimFiyat, String urunAdi) {
+        this.barkod = barkod;
+        this.stok = stok;
+        this.birimFiyat = birimFiyat;
+        this.urunAdi = urunAdi;
+    }
     
     
     
@@ -36,12 +44,12 @@ public class Urun implements UrunInterface{
     }
 
     @Override
-    public boolean urunSil(int urunNo) {
+    public boolean urunSil(String urunAdi) {
         
         HbmIslemler hbm = new HbmIslemler();
         
         try {
-            return hbm.sil(urunNo, Urun.class);
+            return hbm.sil(urunAdi, Urun.class);
         } catch (HibernateException ex) {         
             ex.printStackTrace();
             throw ex;
@@ -49,12 +57,12 @@ public class Urun implements UrunInterface{
     }
 
     @Override
-    public boolean urunGuncelle(int urunNo, Urun yeniUrun) {
+    public boolean urunGuncelle(String urunAdi, Urun yeniUrun) {
         
         HbmIslemler hbm = new HbmIslemler();
         
         try{
-            return hbm.guncelle(urunNo, yeniUrun);
+            return hbm.guncelle(urunAdi, yeniUrun);
         }catch(HibernateException ex){
             ex.printStackTrace();
             throw ex;
@@ -62,27 +70,27 @@ public class Urun implements UrunInterface{
     }
 
     @Override
-    public void urunSat(int urunId, int miktar) {
+    public void urunSat(String urunAdi, int miktar) {
         
         HbmIslemler hbm = new HbmIslemler();
-        Urun urun = (Urun) hbm.bilgiGetir(urunId, Urun.class);
+        Urun urun = (Urun) hbm.bilgiGetir(urunAdi, Urun.class);
         
         int yeniStok = urun.getStok() - miktar;
         
         urun.setStok(yeniStok);
-        hbm.guncelle(urunId, urun);
+        hbm.guncelle(urunAdi, urun);
                
     }
 
     @Override
-    public void urunAl(int urunId, int miktar) {
+    public void urunAl(String urunAdi, int miktar) {
         
         HbmIslemler hbm = new HbmIslemler();        
-        Urun urun = (Urun) hbm.bilgiGetir(urunId, Urun.class);
+        Urun urun = (Urun) hbm.bilgiGetir(urunAdi, Urun.class);
         
         int yeniMiktar = urun.getStok() + miktar;        
         urun.setStok(yeniMiktar);
-        hbm.guncelle(urunId, urun);        
+        hbm.guncelle(urunAdi, urun);        
     }
     
     
@@ -104,11 +112,11 @@ public class Urun implements UrunInterface{
         this.stok = stok;
     }
 
-    public float getBirimFiyat() {
+    public double getBirimFiyat() {
         return birimFiyat;
     }
 
-    public void setBirimFiyat(float birimFiyat) {
+    public void setBirimFiyat(double birimFiyat) {
         this.birimFiyat = birimFiyat;
     }
 
@@ -119,6 +127,7 @@ public class Urun implements UrunInterface{
     public void setUrunAdi(String urunAdi) {
         this.urunAdi = urunAdi;
     }
+
     
     
     
