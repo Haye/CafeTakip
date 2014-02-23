@@ -5,7 +5,6 @@
  */
 
 package view;
-/* deneme ? */
 
 /**
  *
