@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="ServerModel.kisi.Kisi" table="KISI">
+    <class name="model.kisi.Kisi" table="KISI">
         <id name = "kisiId" column="KISI_ID">
             <generator class="increment"/>
         </id>
