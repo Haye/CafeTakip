@@ -41,10 +41,10 @@ public class AnaEkran extends javax.swing.JFrame {
         jMenuItem20 = new javax.swing.JMenuItem();
         aracCubuguV1 = new view.AracCubuguV();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        siraV1 = new view.SiraV();
         jPanel1 = new javax.swing.JPanel();
         masaBilgisiV1 = new view.MasaBilgisiV();
         masalarV1 = new view.MasalarV();
+        siraV1 = new view.SiraV();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuDosya = new javax.swing.JMenu();
         menuItemCıkıs = new javax.swing.JMenuItem();
@@ -123,8 +123,6 @@ public class AnaEkran extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.addTab("Sıra", siraV1);
-
         masalarV1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout masalarV1Layout = new javax.swing.GroupLayout(masalarV1);
@@ -159,6 +157,7 @@ public class AnaEkran extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Masalar", jPanel1);
+        jTabbedPane1.addTab("Sıra", siraV1);
 
         menuDosya.setText("Dosya");
 
@@ -380,9 +379,8 @@ public class AnaEkran extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(aracCubuguV1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
