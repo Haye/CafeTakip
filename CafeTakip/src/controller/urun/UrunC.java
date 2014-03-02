@@ -29,7 +29,7 @@ public class UrunC implements UrunI{
             JOptionPane.showMessageDialog(null, 
                     "Urun fiyatı 0'dan küçük olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
         else{
-        	urunEkle(new Urun(barkod, stok, birimFiyat, urunAdi));
+        	urunEkle(new Urun(0,barkod, stok, birimFiyat, urunAdi));
         }
     }
     
@@ -68,13 +68,13 @@ public class UrunC implements UrunI{
     	List<Urun> urunList = urunListesi();
     	
     	for(Urun u : urunList){
-    		dtm.addRow(new String[]{	u.getUrunID() + "",
-    									u.getUrunAdi(), 
-    									u.getBarkod()+"", 
-    									u.getBirimFiyat() + " TL", 
-    									u.getStok() + ""
-									});
-    	}
+    		dtm.addRow(new String[]{u.getUrunID() + "",
+                                        u.getUrunAdi(), 
+                                        u.getBarkod()+"", 
+                                        u.getBirimFiyat() + " TL", 
+                                        u.getStok() + ""
+                                        });
+}
     	
     	return dtm;
     }
@@ -110,8 +110,8 @@ public class UrunC implements UrunI{
         return false;
     }
 
-	@SuppressWarnings("finally")
-	@Override
+    @SuppressWarnings("finally")
+    @Override
     public boolean urunGuncelle(int urunID, Urun yeniUrun) {
         try {
             Urun urun = new Urun();

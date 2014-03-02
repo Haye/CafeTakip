@@ -20,7 +20,8 @@ public class Urun implements UrunI{
     
     public Urun(){}
 
-    public Urun(int barkod, int stok, double birimFiyat, String urunAdi) {
+    public Urun(int urunID, int barkod, int stok, double birimFiyat, String urunAdi) {
+        this.urunID = urunID;
         this.barkod = barkod;
         this.stok = stok;
         this.birimFiyat = birimFiyat;
@@ -64,7 +65,6 @@ public class Urun implements UrunI{
         HbmIslemler hbm = new HbmIslemler();
         
         try{
-        	
             return hbm.guncelle(urunID, yeniUrun);
         }catch(HibernateException ex){
             ex.printStackTrace();

@@ -3,6 +3,7 @@ package view;
 
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.urun.Urun;
 
 /**
  *
@@ -31,6 +32,7 @@ public class UrunV extends javax.swing.JFrame {
         btnEkle = new javax.swing.JButton();
         btnSil = new javax.swing.JButton();
         btnTemizle = new javax.swing.JButton();
+        btnGuncelle = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUrunList = new javax.swing.JTable();
 
@@ -72,21 +74,21 @@ public class UrunV extends javax.swing.JFrame {
             }
         });
 
+        btnGuncelle.setText("Güncelle");
+        btnGuncelle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnGuncelleMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnEkle, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSil, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnTemizle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
@@ -101,7 +103,16 @@ public class UrunV extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtBirimFiyati)
-                            .addComponent(spnStok, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(spnStok, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btnEkle, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGuncelle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSil, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnTemizle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
@@ -123,7 +134,8 @@ public class UrunV extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEkle)
                     .addComponent(btnSil)
-                    .addComponent(btnTemizle))
+                    .addComponent(btnTemizle)
+                    .addComponent(btnGuncelle))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -181,6 +193,9 @@ public class UrunV extends javax.swing.JFrame {
             
             mutlakkafe.MutlakKafe.mainCont.getUrunCont()
                     .urunEkle(barkod, stok, birimFiyati, urunAdi);
+            
+            tblUrunList.setModel(mutlakkafe.MutlakKafe
+                .mainCont.getUrunCont().urunListesiModel());
             temizle();
             
         } catch (NumberFormatException ex) {
@@ -193,9 +208,13 @@ public class UrunV extends javax.swing.JFrame {
 
     private void btnSilMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSilMousePressed
 
-        int urunAdi = Integer.parseInt((String) tblUrunList.getValueAt(tblUrunList.getSelectedRow(), 0));
+        int urunID = Integer.parseInt((String) tblUrunList
+                .getValueAt(tblUrunList.getSelectedRow(), 0));
         
-        mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunSil(urunAdi);
+        mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunSil(urunID);
+        
+        tblUrunList.setModel(mutlakkafe.MutlakKafe
+                .mainCont.getUrunCont().urunListesiModel());
         
     }//GEN-LAST:event_btnSilMousePressed
 
@@ -204,13 +223,31 @@ public class UrunV extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTemizleMousePressed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        
-        List<model.urun.Urun> urunList = mutlakkafe.MutlakKafe.
-                                    mainCont.getUrunCont().urunListesi();
-        
-        
+        tblUrunList.setModel(mutlakkafe.MutlakKafe
+                .mainCont.getUrunCont().urunListesiModel());
         
     }//GEN-LAST:event_formComponentShown
+
+    private void btnGuncelleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuncelleMousePressed
+
+        int urunID= Integer.parseInt((String) tblUrunList
+                .getValueAt(tblUrunList.getSelectedRow(), 0));
+       
+        String urunAdi = (String) tblUrunList.getValueAt
+                                (tblUrunList.getSelectedRow(), 1);
+        
+        int barkod = Integer.parseInt((String) tblUrunList
+                .getValueAt(tblUrunList.getSelectedRow(), 2));
+        
+        double birimFiyati = Double.parseDouble(tblUrunList.getValueAt
+                (tblUrunList.getSelectedRow(), 3).toString().split(" ")[0]);
+        
+        int stok = Integer.parseInt((String) tblUrunList
+                .getValueAt(tblUrunList.getSelectedRow(), 4));
+        System.out.println("Stok :" + stok);
+        mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunGuncelle(urunID,
+                new Urun(urunID,barkod, stok, birimFiyati, urunAdi));
+    }//GEN-LAST:event_btnGuncelleMousePressed
 
     
     public void temizle(){
@@ -255,6 +292,7 @@ public class UrunV extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEkle;
+    private javax.swing.JButton btnGuncelle;
     private javax.swing.JButton btnSil;
     private javax.swing.JButton btnTemizle;
     private javax.swing.JLabel jLabel1;

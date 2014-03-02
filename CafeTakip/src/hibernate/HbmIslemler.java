@@ -87,15 +87,9 @@ public class HbmIslemler {
         Transaction tr = sesion.beginTransaction();
         
         try{
-            Object oldObj = sesion.get(obj.getClass(), id);
-            
-            if( oldObj != null){
-                oldObj = obj;
-                tr.commit();
-                return true;
-            }
-            
-            return false;
+            sesion.update(obj);
+            tr.commit();
+            return true;
         }catch(HibernateException ex){
             tr.rollback();
             throw ex;
