@@ -25,6 +25,8 @@ public class GirisV extends javax.swing.JFrame {
         txtSifre = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         lblKullaniciAdi.setText("Kullanıcı Adı : ");
 
@@ -38,6 +40,11 @@ public class GirisV extends javax.swing.JFrame {
         });
 
         btnVazgec.setText("Vazgeç");
+        btnVazgec.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnVazgecMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +86,7 @@ public class GirisV extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGirisYapMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGirisYapMousePressed
@@ -90,6 +98,11 @@ public class GirisV extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnGirisYapMousePressed
+
+    private void btnVazgecMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVazgecMousePressed
+        txtKullaniciAdi.setText("");
+        txtSifre.setText("");
+    }//GEN-LAST:event_btnVazgecMousePressed
 
     /**
      * @param args the command line arguments
