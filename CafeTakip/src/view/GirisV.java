@@ -57,7 +57,8 @@ public class GirisV extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtKullaniciAdi, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(txtSifre)))))
+                            .addComponent(txtSifre))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,10 +86,8 @@ public class GirisV extends javax.swing.JFrame {
         String sifre = txtSifre.getText().trim();
         
         if(mutlakkafe.MutlakKafe.mainCont.getKisiCont().girisYap(kulAdi, sifre)){
-            System.out.println("Eyvallah gardaş.");
+            this.hide();
         }
-        
-        
         
     }//GEN-LAST:event_btnGirisYapMousePressed
 
