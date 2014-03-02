@@ -11,7 +11,7 @@
         <property name="urunAdi" column="URUN_ADI" type = "string" />
         <property name="barkod" column="BARKOD" type = "integer" />
         <property name="stok" column="STOK" type = "integer" />
-        <property name="birimFiyat" column="FIYATI" type = "double" />
+        <property name="birimFiyat" column="FIYAT" type = "double" />
         
     </class>
 </hibernate-mapping>

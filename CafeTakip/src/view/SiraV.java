@@ -1,6 +1,8 @@
 
 package view;
 
+import java.util.HashMap;
+
 /**
  *
  * @author MustafaS
@@ -20,9 +22,9 @@ public class SiraV extends javax.swing.JPanel {
         txtToplamKisi = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSil = new javax.swing.JButton();
         txtSoyad = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnEkle = new javax.swing.JButton();
         txtAd = new javax.swing.JTextField();
         spnBitisDk = new javax.swing.JSpinner();
         spnBitisSaat = new javax.swing.JSpinner();
@@ -38,21 +40,37 @@ public class SiraV extends javax.swing.JPanel {
         spnMasaNo = new javax.swing.JSpinner();
         spnBaslangicSaat = new javax.swing.JSpinner();
         spnBaslangicDk = new javax.swing.JSpinner();
-        jButton4 = new javax.swing.JButton();
+        btnVazgec = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSira = new javax.swing.JTable();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         txtToplamKisi.setEnabled(false);
 
         jButton3.setText("Süre Artır");
         jButton3.setPreferredSize(new java.awt.Dimension(80, 23));
 
-        jButton2.setText("Sil");
-        jButton2.setPreferredSize(new java.awt.Dimension(80, 23));
+        btnSil.setText("Sil");
+        btnSil.setPreferredSize(new java.awt.Dimension(80, 23));
+        btnSil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSilMousePressed(evt);
+            }
+        });
 
-        jButton1.setText("Ekle");
-        jButton1.setPreferredSize(new java.awt.Dimension(80, 23));
+        btnEkle.setText("Ekle");
+        btnEkle.setPreferredSize(new java.awt.Dimension(80, 23));
+        btnEkle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEkleMousePressed(evt);
+            }
+        });
 
         spnBitisDk.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), null, Integer.valueOf(60), Integer.valueOf(1)));
         spnBitisDk.setToolTipText("Dakika");
@@ -89,8 +107,13 @@ public class SiraV extends javax.swing.JPanel {
         spnBaslangicDk.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
         spnBaslangicDk.setToolTipText("Dakika");
 
-        jButton4.setText("Vazgeç");
-        jButton4.setPreferredSize(new java.awt.Dimension(80, 23));
+        btnVazgec.setText("Vazgeç");
+        btnVazgec.setPreferredSize(new java.awt.Dimension(80, 23));
+        btnVazgec.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnVazgecMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,13 +154,13 @@ public class SiraV extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(spnBitisDk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEkle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnVazgec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -170,10 +193,10 @@ public class SiraV extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEkle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnVazgec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -238,11 +261,62 @@ public class SiraV extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEkleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEkleMousePressed
+        HashMap<String, String> values = new HashMap<>();
+    	
+    	values.put("ad", txtAd.getText().trim());
+    	values.put("soyad", txtSoyad.getText().trim());
+    	values.put("telefon", txtTelefon.getText().trim());
+    	values.put("siraNo", spnSiraNo.getValue().toString());
+    	values.put("masaNo", spnMasaNo.getValue().toString());
+    	values.put("baslangicSaat", spnBaslangicSaat.getValue().toString());
+    	values.put("baslangicDk", spnBaslangicDk.getValue().toString());
+    	values.put("bitisSaat", spnBitisSaat.getValue().toString());
+    	values.put("bitisDk", spnBitisDk.getValue().toString());
+    	
+    	mutlakkafe.MutlakKafe.mainCont.getSiraCont().ekle(values);
+    	
+    	tblSira.setModel(mutlakkafe.MutlakKafe.mainCont.getSiraCont().listModel());
+    }//GEN-LAST:event_btnEkleMousePressed
+
+    private void btnSilMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSilMousePressed
+        int siraID = Integer.parseInt(tblSira.getValueAt(tblSira.getSelectedRow(), 3).toString());
+    	
+    	
+    	mutlakkafe.MutlakKafe.mainCont.getSiraCont().sil(siraID);
+
+    }//GEN-LAST:event_btnSilMousePressed
+
+    private void btnVazgecMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVazgecMousePressed
+        temizle();
+    }//GEN-LAST:event_btnVazgecMousePressed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        tblSira.setModel(mutlakkafe.MutlakKafe.mainCont.getSiraCont().listModel());
+    	txtToplamKisi.setText(tblSira.getModel().getRowCount() + "");
+    }//GEN-LAST:event_formComponentShown
+
+     private void temizle(){
+    	
+    	this.txtAd.setText("");
+    	this.txtSoyad.setText("");
+    	this.txtTelefon.setText("");
+    	this.spnBaslangicDk.setValue(0);
+    	this.spnBaslangicSaat.setValue(0);
+    	this.spnBitisDk.setValue(0);
+    	this.spnBitisSaat.setValue(0);
+    	this.spnMasaNo.setValue(0);
+    	this.spnSiraNo.setValue(0);
+
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEkle;
+    private javax.swing.JButton btnSil;
+    private javax.swing.JButton btnVazgec;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

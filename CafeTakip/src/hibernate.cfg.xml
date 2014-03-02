@@ -7,7 +7,8 @@
     <property name="hibernate.connection.url">jdbc:derby://localhost:1527/Kafe</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.default_schema">APP</property>
-    <mapping resource="orm/Kisi.hbm.xml"/>
     <mapping resource="orm/Urun.hbm.xml"/>
+    <mapping resource="orm/Sira.hbm.xml"/>
+    <mapping resource="orm/Kisi.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

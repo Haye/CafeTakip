@@ -18,7 +18,9 @@ public class AnaEkran extends javax.swing.JFrame {
     public AnaEkran() {
         initComponents();
         String masaAdlari[] = {"Masa 1", "Masa 2", "Masa 3", "Masa 4", "Masa 5","Masa 6"};
-//he yok build yapmak gerk bunları :D anahtar da ondanmış
+
+        masalarV1.init(masaAdlari);
+        masalarV1.masaEkle("Masa X");
         
     }
 

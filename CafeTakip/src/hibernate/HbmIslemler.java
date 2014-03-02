@@ -33,8 +33,8 @@ public class HbmIslemler {
     
     }
     
-    @SuppressWarnings("rawtypes")
-	public boolean sil(int id, Class clas)throws HibernateException{
+    
+    public boolean sil(int id, Class clas)throws HibernateException{
         
         Session sesion = SessionFactory.getSessionFactory()
                 .openSession();
@@ -58,8 +58,7 @@ public class HbmIslemler {
         }
     }
     
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-	public List<? extends Object> list(String hql)throws HibernateException{
+    public List<? extends Object> list(String hql)throws HibernateException{
         
         Session sesion = SessionFactory.getSessionFactory()
                 .openSession();
