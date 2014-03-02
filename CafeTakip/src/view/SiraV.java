@@ -45,12 +45,6 @@ public class SiraV extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSira = new javax.swing.JTable();
 
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
-
         txtToplamKisi.setEnabled(false);
 
         jButton3.setText("Süre Artır");
@@ -229,6 +223,11 @@ public class SiraV extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblSira.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                tblSiraComponentShown(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblSira);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -239,7 +238,7 @@ public class SiraV extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel8)
@@ -292,10 +291,10 @@ public class SiraV extends javax.swing.JPanel {
         temizle();
     }//GEN-LAST:event_btnVazgecMousePressed
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+    private void tblSiraComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tblSiraComponentShown
         tblSira.setModel(mutlakkafe.MutlakKafe.mainCont.getSiraCont().listModel());
     	txtToplamKisi.setText(tblSira.getModel().getRowCount() + "");
-    }//GEN-LAST:event_formComponentShown
+    }//GEN-LAST:event_tblSiraComponentShown
 
      private void temizle(){
     	

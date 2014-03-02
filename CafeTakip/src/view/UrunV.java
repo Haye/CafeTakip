@@ -179,7 +179,7 @@ public class UrunV extends javax.swing.JFrame {
             Double birimFiyati = Double.parseDouble(txtBirimFiyati.getText().trim());
             int stok = spnStok.getComponentCount() + 1;
             
-            cafetakip.CafeTakip.mainCont.getUrunCont()
+            mutlakkafe.MutlakKafe.mainCont.getUrunCont()
                     .urunEkle(barkod, stok, birimFiyati, urunAdi);
             temizle();
             
@@ -195,7 +195,7 @@ public class UrunV extends javax.swing.JFrame {
 
         int urunAdi = Integer.parseInt((String) tblUrunList.getValueAt(tblUrunList.getSelectedRow(), 0));
         
-        cafetakip.CafeTakip.mainCont.getUrunCont().urunSil(urunAdi);
+        mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunSil(urunAdi);
         
     }//GEN-LAST:event_btnSilMousePressed
 
@@ -205,7 +205,7 @@ public class UrunV extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         
-        List<model.urun.Urun> urunList = cafetakip.CafeTakip.
+        List<model.urun.Urun> urunList = mutlakkafe.MutlakKafe.
                                     mainCont.getUrunCont().urunListesi();
         
         

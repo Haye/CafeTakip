@@ -84,7 +84,7 @@ public class GirisV extends javax.swing.JFrame {
         String kulAdi = txtKullaniciAdi.getText().trim();
         String sifre = txtSifre.getText().trim();
         
-        if(cafetakip.CafeTakip.mainCont.getKisiCont().girisYap(kulAdi, sifre)){
+        if(mutlakkafe.MutlakKafe.mainCont.getKisiCont().girisYap(kulAdi, sifre)){
             System.out.println("Eyvallah gardaş.");
         }
         
