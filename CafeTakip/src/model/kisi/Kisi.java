@@ -33,8 +33,7 @@ public  class Kisi implements KisiI{
      
     @Override
     public void bilgileriGetir(String kullaniciAdi) {
-        //String sql = "SELECT * from kisi where kullaniiAdi = '"+ kullaniciAdi +"'";
-        //Hilbernate
+        
         this.kisiId = 1;
         this.ad = "Mustafa";
         this.soyad = "Sahin";

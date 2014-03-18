@@ -79,7 +79,7 @@ public class HbmIslemler {
         
     }
     
-    public boolean guncelle(int id, Object obj) throws HibernateException{
+    public boolean guncelle(Object obj) throws HibernateException{
     
         Session sesion = SessionFactory.getSessionFactory()
                 .openSession();

@@ -65,7 +65,7 @@ public class Urun implements UrunI{
         HbmIslemler hbm = new HbmIslemler();
         
         try{
-            return hbm.guncelle(urunID, yeniUrun);
+            return hbm.guncelle(yeniUrun);
         }catch(HibernateException ex){
             ex.printStackTrace();
             throw ex;
@@ -81,7 +81,7 @@ public class Urun implements UrunI{
         int yeniStok = urun.getStok() - miktar;
         
         urun.setStok(yeniStok);
-        hbm.guncelle(urunID, urun);
+        hbm.guncelle(urun);
                
     }
 
@@ -93,7 +93,7 @@ public class Urun implements UrunI{
         
         int yeniMiktar = urun.getStok() + miktar;        
         urun.setStok(yeniMiktar);
-        hbm.guncelle(urunID, urun);        
+        hbm.guncelle(urun);        
     }
     
     
