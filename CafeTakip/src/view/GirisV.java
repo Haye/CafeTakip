@@ -32,6 +32,8 @@ public class GirisV extends javax.swing.JFrame {
 
         lblSifre.setText("Şifre :");
 
+        txtKullaniciAdi.setText("mutlak");
+
         btnGirisYap.setText("Giriş Yap");
         btnGirisYap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -45,6 +47,8 @@ public class GirisV extends javax.swing.JFrame {
                 btnVazgecMousePressed(evt);
             }
         });
+
+        txtSifre.setText("123");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,7 +97,7 @@ public class GirisV extends javax.swing.JFrame {
         String kulAdi = txtKullaniciAdi.getText().trim();
         String sifre = txtSifre.getText().trim();
         
-        if(mutlakkafe.MutlakKafe.mainCont.getKisiCont().girisYap(kulAdi, sifre)){
+        if(mutlakkafe.MutlakKafe.mainCont.getCalisanCont().girisYap(kulAdi, sifre)){
             this.hide();
         }
         

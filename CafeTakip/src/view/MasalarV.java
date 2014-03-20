@@ -13,14 +13,15 @@
 package view;
 
 import java.awt.Color;
-import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import model.bilgisayar.Bilgisayar;
 
 /**
  *
@@ -38,7 +39,7 @@ public class MasalarV extends javax.swing.JPanel {
 
     
     //Açılıştaki masaların labellerini oluşturarak ekler
-    public void init(String [] masaAdlari){        
+    public void init(ArrayList<Bilgisayar>  masaAdlari){        
         //FlowLayout için padding değerleri ( _ , Pad1, Pad2)
         FlowLayout layout = new FlowLayout(FlowLayout.LEFT, 20, 20);
         //Layoutu hangi nesne için kullanacağımız. Direk eklemek için getContntPane().setLayout(_);
@@ -49,8 +50,8 @@ public class MasalarV extends javax.swing.JPanel {
          
         
         //Masaların eklenmesi
-        for(int i=0; i<masaAdlari.length; i++){
-            masaEkle(masaAdlari[i]);
+        for(int i=0; i<masaAdlari.size(); i++){
+            masaEkle(masaAdlari.get(i).getMasaAdi());
         }
 
     }
@@ -157,6 +158,11 @@ public class MasalarV extends javax.swing.JPanel {
         @Override
         public void actionPerformed(ActionEvent event) {
             System.out.println(seciliLabel.getText()+ "["+ event.getActionCommand() + "] tıklandı");
+            if(event.getActionCommand().equals("Masa Aç")){
+                if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText())){
+                    durumDegis(seciliLabel.getText(),Durum.ACIK);
+                }
+            }
         }
     };
     

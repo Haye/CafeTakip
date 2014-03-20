@@ -9,6 +9,10 @@ import model.kisi.Kisi;
  */
 public interface KisiI {
     
+    public static final int ADMIN = 1;
+    public static final int KASIYER = 2;
+    public static final int MUSTERI = 3;
+    
     /**
      * Kullanı adı ve şifre alarak kişinin kayıtlı olup olmadığını kontrol eder.
      * @param kullaniciAdi: Kullanı Adı

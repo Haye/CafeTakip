@@ -8,12 +8,14 @@ import java.util.List;
 import org.hibernate.HibernateException;
 
 import controller.sira.SiraI;
+import java.util.ArrayList;
 
 /**
  *
  * @author MustafaS
  */
 public class Sira implements SiraI{
+    private static ArrayList<Sira> siradakiler = new ArrayList<>();
     private int telefon;
     private String ad;
     private String soyad;
@@ -22,13 +24,14 @@ public class Sira implements SiraI{
     private String baslangicSaat;
     private String bitisSaat;
     
-    public Sira(){}
+    public Sira(){    }
     
     
     
     public Sira(int telefon, String ad, String soyad, int siraNo, int masaNo,
 			String baslangicSaat, String bitisSaat) {
 		super();
+               
 		this.telefon = telefon;
 		this.ad = ad;
 		this.soyad = soyad;
@@ -36,6 +39,7 @@ public class Sira implements SiraI{
 		this.masaNo = masaNo;
 		this.baslangicSaat = baslangicSaat;
 		this.bitisSaat = bitisSaat;
+                
 	}
 
 
@@ -43,8 +47,12 @@ public class Sira implements SiraI{
 	@Override
 	public void ekle(Sira sira) {
 		try {
+                    /*
 			HbmIslemler hbm = new HbmIslemler();
 			hbm.ekle(sira);
+                     */
+                    siradakiler.add(sira);
+                    
 		} catch (HibernateException e) {
 			throw e;
 		}
@@ -63,8 +71,16 @@ public class Sira implements SiraI{
 	public boolean sil(int siraID) {
 		
 		try {
+                    /*
 			HbmIslemler hbm = new HbmIslemler();
 			return hbm.sil(siraID, this.getClass());
+                        * */
+                    Sira sira = siraBul(siraID);
+                    if(sira!=null){
+                        if(siradakiler.remove(sira))
+                            return true;      
+                    }
+                    return false;
 		} catch (HibernateException e) {
 			throw e;
 		}
@@ -75,13 +91,15 @@ public class Sira implements SiraI{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Sira> liste() {
+	public ArrayList<Sira> liste() {
 
 		try {
+                    /*
 			HbmIslemler hbm = new HbmIslemler();
 			
 			return (List<Sira>) hbm.list("from Sira");
-			
+			*/
+                    return siradakiler;
 		} catch (HibernateException e) {
 			throw e;
 		}	
@@ -92,10 +110,12 @@ public class Sira implements SiraI{
 	public boolean sureUzat(int siraID, int saat, int dakika) {
 	
 		try {
+                    /*
 			HbmIslemler hbm = new HbmIslemler();
 			
 			Sira siraBilgisi = (Sira) hbm.bilgiGetir(siraID , this.getClass());
-			
+                        * */
+                        Sira siraBilgisi = siraBul(siraID);
 			if(siraBilgisi == null)
 				return false;
 			
@@ -116,6 +136,14 @@ public class Sira implements SiraI{
 		}
 		
 	}
+        
+        public Sira siraBul(int id){
+            for(int i=0;i<siradakiler.size(); i++){
+                if(siradakiler.get(i).getSiraNo() == id)
+                    return siradakiler.get(i);
+            }
+            return null;
+        }
 	
 	
 

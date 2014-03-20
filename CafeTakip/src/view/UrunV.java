@@ -189,13 +189,15 @@ public class UrunV extends javax.swing.JFrame {
             String urunAdi = txtUrunAdi.getText().trim();
             int barkod = Integer.parseInt(txtBarkod.getText().trim());            
             Double birimFiyati = Double.parseDouble(txtBirimFiyati.getText().trim());
-            int stok = spnStok.getComponentCount() + 1;
+            int stok = Integer.parseInt(spnStok.getValue().toString());
             
             mutlakkafe.MutlakKafe.mainCont.getUrunCont()
                     .urunEkle(barkod, stok, birimFiyati, urunAdi);
             
             tblUrunList.setModel(mutlakkafe.MutlakKafe
                 .mainCont.getUrunCont().urunListesiModel());
+           
+            
             temizle();
             
         } catch (NumberFormatException ex) {
@@ -285,6 +287,7 @@ public class UrunV extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new UrunV().setVisible(true);
             }

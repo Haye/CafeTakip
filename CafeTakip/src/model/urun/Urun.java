@@ -17,11 +17,15 @@ public class Urun implements UrunI{
     private int barkod,stok, urunID;
     private double birimFiyat;
     private String urunAdi;
+    private static ArrayList <Urun> urunler = new ArrayList<>(); 
     
-    public Urun(){}
+    public Urun(){  
+        urunID = urunler.size();
+    }
 
+    
     public Urun(int urunID, int barkod, int stok, double birimFiyat, String urunAdi) {
-        this.urunID = urunID;
+        this.urunID = urunler.size();
         this.barkod = barkod;
         this.stok = stok;
         this.birimFiyat = birimFiyat;
@@ -32,27 +36,37 @@ public class Urun implements UrunI{
     
     @Override
     public void urunEkle(Urun urun) {
-        
+        /*
         HbmIslemler hbm = new HbmIslemler();        
         hbm.ekle(urun);
+        * */
+        urunler.add(urun);
     }
 
     @Override
-    public List<Urun> urunListesi() {
-        
+    public ArrayList<Urun> urunListesi() {
+        /*
         HbmIslemler hbm = new HbmIslemler();
         ArrayList<Urun> list =  (ArrayList<Urun>) hbm.list("from Urun");
-        
-        return list;
+        */
+        return urunler;
     }
 
     @Override
     public boolean urunSil(int urunID) {
-        
+        /*
         HbmIslemler hbm = new HbmIslemler();
-        
+        * */
         try {
+            /*
             return hbm.sil(urunID, Urun.class);
+            * */
+            Urun urun = urunBul(urunID);
+            if(urun != null){
+                if(urunler.remove(urun))
+                    return true;
+            }
+            return false;
         } catch (HibernateException ex) {         
             ex.printStackTrace();
             throw ex;
@@ -61,11 +75,20 @@ public class Urun implements UrunI{
 
     @Override
     public boolean urunGuncelle(int urunID, Urun yeniUrun) {
-        
+        /*
         HbmIslemler hbm = new HbmIslemler();
-        
+        */
         try{
+            /*
             return hbm.guncelle(yeniUrun);
+            * */
+            Urun urun = urunBul(urunID);
+            if(urun!=null){
+                //atama yapıyor mu ? özellikleri tek tek atamk mı gerekiyor
+                urun = yeniUrun;
+                return true;
+            }
+            return false;
         }catch(HibernateException ex){
             ex.printStackTrace();
             throw ex;
@@ -74,29 +97,44 @@ public class Urun implements UrunI{
 
     @Override
     public void urunSat(int urunID, int miktar) {
-        
+        /*
         HbmIslemler hbm = new HbmIslemler();
         Urun urun = (Urun) hbm.bilgiGetir(urunID, getClass());
-        
-        int yeniStok = urun.getStok() - miktar;
-        
-        urun.setStok(yeniStok);
+        */
+        Urun urun = urunler.get(urunID);
+        if(urun!=null){
+            int yeniStok = urun.getStok() - miktar;
+            urun.setStok(yeniStok);
+        }
+        /*
         hbm.guncelle(urun);
+        * */
                
     }
 
     @Override
     public void urunAl(int urunID, int miktar) {
-        
+        /*
         HbmIslemler hbm = new HbmIslemler();        
         Urun urun = (Urun) hbm.bilgiGetir(urunID, getClass());
-        
-        int yeniMiktar = urun.getStok() + miktar;        
-        urun.setStok(yeniMiktar);
-        hbm.guncelle(urun);        
+        */
+        Urun urun = urunler.get(urunID);
+        if(urun!=null){
+            int yeniMiktar = urun.getStok() + miktar;        
+            urun.setStok(yeniMiktar);
+        }
+        /*
+        hbm.guncelle(urun); 
+        * */
     }
     
-    
+    public Urun urunBul(int id){
+         for(int i=0;i<urunler.size(); i++){
+            if(urunler.get(i).getUrunID() == id)
+                return urunler.get(i);
+        }
+        return null;
+    }
     
     //GETTER AND SETTER
     
@@ -139,6 +177,11 @@ public class Urun implements UrunI{
 
     public void setUrunAdi(String urunAdi) {
         this.urunAdi = urunAdi;
+    }
+
+    @Override
+    public String toString() {
+        return "Urun{" + "barkod=" + barkod + ", stok=" + stok + ", urunID=" + urunID + ", birimFiyat=" + birimFiyat + ", urunAdi=" + urunAdi + '}';
     }
 
     

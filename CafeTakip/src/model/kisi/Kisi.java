@@ -28,9 +28,25 @@ public  class Kisi implements KisiI{
     }
 
    
-     @Override
-    public  boolean girisYap(String kullaniciAdi, String sifre){return false;}
-     
+   @Override
+    public boolean girisYap(String kullaniciAdi, String sifre) {
+         /*
+         String hql ="from Kisi "
+                 + "where kullaniciAdi = '" + kullaniciAdi 
+                 + "' and sifre = '" + sifre + "'";
+         
+         HbmIslemler hbm = new HbmIslemler();
+         List<Kisi> calisan = (List<Kisi>) hbm.list(hql);
+
+        if(calisan.size() > 0)
+            return true; 
+        */
+        if(kullaniciAdi.equals("mutlak") && sifre.equals("123")){
+  
+            return true;
+        }
+        return false;
+    }
     @Override
     public void bilgileriGetir(String kullaniciAdi) {
         

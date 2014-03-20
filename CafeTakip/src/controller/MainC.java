@@ -1,26 +1,24 @@
 package controller;
 
 import controller.bilgisayar.BilgisayarC;
-import controller.kisi.KisiC;
+import controller.kisi.CalisanC;
+import controller.kisi.MusteriC;
 import controller.sira.SiraC;
 import controller.urun.UrunC;
 
 public class MainC {
     
-    private KisiC kisiCont;
+    private CalisanC calisanCont;
+    private MusteriC musteriCont;
     private UrunC urunCont;
-
     private SiraC siraCont;
-
     private BilgisayarC bilgisayarC;
 
 
     public MainC(){        
-        kisiCont = new KisiC();
+        calisanCont = new CalisanC();
         urunCont = new UrunC();
-
         siraCont = new SiraC();
-
         bilgisayarC = new BilgisayarC();
 
     }
@@ -31,8 +29,8 @@ public class MainC {
     
     /****************************************************/
 
-    public KisiC getKisiCont() {
-        return kisiCont;
+    public CalisanC getCalisanCont() {
+        return calisanCont;
     }
 
     public UrunC getUrunCont() {

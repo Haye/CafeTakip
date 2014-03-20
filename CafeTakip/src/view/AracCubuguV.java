@@ -67,7 +67,7 @@ public class AracCubuguV extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSecenekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSecenekActionPerformed
-        if(mutlakkafe.MutlakKafe.mainCont.getKisiCont().getKullanici().getTip()!=1){
+        if(mutlakkafe.MutlakKafe.mainCont.getCalisanCont().getKullanici().getTip()!=1){
             JOptionPane.showMessageDialog(null, "Admine ozel", "Uyari", 
                      JOptionPane.WARNING_MESSAGE);
         }

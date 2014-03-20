@@ -12,11 +12,12 @@ import view.AnaEkran;
  *
  * @author MustafaS
  */
-public class KisiC implements KisiI{
+public class CalisanC implements KisiI{
     private Calisan kullanici;
     
-     @SuppressWarnings("deprecation")
-	@Override
+    
+    @SuppressWarnings("deprecation")
+    @Override
     public boolean girisYap(String kullaniciAdi, String sifre) {
          if (!kullaniciAdi.isEmpty() && !sifre.isEmpty()) {
              kullanici = new Calisan();

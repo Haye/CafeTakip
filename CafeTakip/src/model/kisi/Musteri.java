@@ -11,9 +11,6 @@ public class Musteri extends Kisi{
     private int indrim;
     
     
-    @Override
-    public boolean girisYap(String kullaniciAdi, String sifre){
-        return true;
-    }
+   
  
 }

@@ -1,6 +1,7 @@
 package controller.bilgisayar;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 import model.bilgisayar.Bilgisayar;
 
@@ -13,6 +14,9 @@ public class BilgisayarC implements BilgisayarI{
 	public BilgisayarC() {
 		super();
 		bilgisayarlar = new ArrayList<Bilgisayar>();
+                for( int i  = 0 ; i < 5 ; i ++ )
+                    this.masaEkle("Masa " + (i + 1));
+                
 	}
 
 	@Override 
@@ -30,24 +34,40 @@ public class BilgisayarC implements BilgisayarI{
 	}
 	
 	
-	@Override
+    @Override
     public boolean masaAc(String masaAdi){
     	Bilgisayar b = masaBul(masaAdi);
     	if(b != null){
-    		if(b.masaAc()){
-    			return true;
-    		}
+            if(b.getAcilisSaati() != null){
+                JOptionPane.showMessageDialog(null, "Masa Açık", "HATA", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            if(b.masaAc()){
+                return true;
+            }
     	}
+        JOptionPane.showMessageDialog(null, "Masa Açılamadı", "HATA", JOptionPane.ERROR_MESSAGE);                
+
     	return false;
-	}
+    }
     
     
 	@Override
     public Bilgisayar masaBul(String masaAdi){
     	for (Bilgisayar b : bilgisayarlar) {
-			if(b.getMasaAdi() == masaAdi)
-				return b;
-		}
+            if(b.getMasaAdi().equals(masaAdi))
+                return b;
+        }
     	return null;
     }
+
+    public ArrayList<Bilgisayar> getBilgisayarlar() {
+        return bilgisayarlar;
+    }
+
+    public void setBilgisayarlar(ArrayList<Bilgisayar> bilgisayarlar) {
+        this.bilgisayarlar = bilgisayarlar;
+    }
+        
+    
 }

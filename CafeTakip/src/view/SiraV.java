@@ -277,6 +277,8 @@ public class SiraV extends javax.swing.JPanel {
     	mutlakkafe.MutlakKafe.mainCont.getSiraCont().ekle(values);
     	
     	tblSira.setModel(mutlakkafe.MutlakKafe.mainCont.getSiraCont().listModel());
+        
+        temizle();
     }//GEN-LAST:event_btnEkleMousePressed
 
     private void btnSilMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSilMousePressed
