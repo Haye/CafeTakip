@@ -86,6 +86,9 @@
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Kullan&#x131;c&#x131; Listesi"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Default Cursor"/>
+            </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
@@ -112,6 +115,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlAra">
+          <Properties>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Default Cursor"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -156,7 +164,13 @@
             <Component class="javax.swing.JButton" name="btnAra">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ara"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Default Cursor"/>
+                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAraMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

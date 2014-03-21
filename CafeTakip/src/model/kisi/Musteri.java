@@ -40,9 +40,8 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
         this.odemeSecenek = odemeSecenek;
         this.resimURL = resimURL;
         
-        System.out.println(bitisTarihi +  " 11:59:59.0");
-        
         this.bitisTarihi = Timestamp.valueOf(bitisTarihi +  " 11:59:59.0" );
+        
         
     }
 
@@ -137,6 +136,17 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
         return null;
     }
     
-   
+    @Override
+   public boolean hesapSil(String kulAdi){
+        super.hesapSil(kulAdi);
+        
+        Musteri m = musteriAra(kulAdi);
+        
+        if(m != null){
+            musteriList.remove(m);
+            return true;
+        }
+       return false;
+   }
  
 }

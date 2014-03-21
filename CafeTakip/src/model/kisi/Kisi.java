@@ -85,6 +85,7 @@ public  class Kisi implements KisiI{
 
     @Override
     public boolean hesapSil(String kullaniciAdi) {
+        
         return true;
     }
 

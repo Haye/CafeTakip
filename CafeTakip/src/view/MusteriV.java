@@ -92,6 +92,7 @@ public class MusteriV extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(51, 153, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Kullanıcı Listesi");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setOpaque(true);
 
         lstKullaniciListesi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -102,9 +103,17 @@ public class MusteriV extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(lstKullaniciListesi);
 
+        pnlAra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         jLabel2.setText("Kullanıcı Adı");
 
         btnAra.setText("Ara");
+        btnAra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAraMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAraLayout = new javax.swing.GroupLayout(pnlAra);
         pnlAra.setLayout(pnlAraLayout);
@@ -667,18 +676,23 @@ public class MusteriV extends javax.swing.JPanel {
         lstKullaniciListesi.setModel(
                 mutlakkafe.MutlakKafe.mainCont.getMusteriCont().kullaniciAdiList());
         
+        lblToplamKayit.setText("Toplam Kayıt : " + lstKullaniciListesi.getModel().getSize());
+        
         kilitle();
         temizle();
     }//GEN-LAST:event_btnEkleMousePressed
 
     private void btnSilMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSilMousePressed
         
-        String kulAdi = txtKullaniciAdi.getText().trim();
+        String kulAdi = (String) lstKullaniciListesi.getSelectedValue();
         
         mutlakkafe.MutlakKafe.mainCont.getMusteriCont().hesapSil(kulAdi);
         
         lstKullaniciListesi.setModel(
                 mutlakkafe.MutlakKafe.mainCont.getMusteriCont().kullaniciAdiList());
+        
+        
+        lblToplamKayit.setText("Toplam Kayıt : " + lstKullaniciListesi.getModel().getSize());
         temizle();
     }//GEN-LAST:event_btnSilMousePressed
 
@@ -766,6 +780,8 @@ public class MusteriV extends javax.swing.JPanel {
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
         lstKullaniciListesi.setModel(
                 mutlakkafe.MutlakKafe.mainCont.getMusteriCont().kullaniciAdiList());
+        
+        lblToplamKayit.setText("Toplam Kayıt : " + lstKullaniciListesi.getModel().getSize());
     }//GEN-LAST:event_formComponentAdded
 
     private void lstKullaniciListesiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstKullaniciListesiValueChanged
@@ -787,7 +803,7 @@ public class MusteriV extends javax.swing.JPanel {
         txtBorc.setText(m.getBorc() + "");
         comboGun.setSelectedIndex(m.getBitisTarihi().getDay());
         comboAy.setSelectedIndex(m.getBitisTarihi().getMonth() + 1 );
-        comboYil.setSelectedIndex(m.getBitisTarihi().getYear() - 2014);
+        comboYil.setSelectedIndex(m.getBitisTarihi().getYear() - 114);
         lblKayitTarihi.setText("Kayıt Tarihi :" + m.getKayitTarihi().getDay() + "."
                 + m.getKayitTarihi().getMonth()+ "."+ m.getKayitTarihi().getYear());
         
@@ -812,6 +828,12 @@ public class MusteriV extends javax.swing.JPanel {
                 break;
         }
     }//GEN-LAST:event_lstKullaniciListesiValueChanged
+
+    private void btnAraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAraMousePressed
+        String kulAdi = txtKullaniciAdiAra.getText().trim();
+        lstKullaniciListesi.setSelectedValue(kulAdi, true);
+        
+    }//GEN-LAST:event_btnAraMousePressed
 
     private void kilitle(){
         txtAd.setEnabled(false);
