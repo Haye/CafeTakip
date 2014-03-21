@@ -14,7 +14,7 @@ import view.AnaEkran;
  */
 public class CalisanC implements KisiI{
     private Calisan kullanici;
-    
+    public static AnaEkran ana;
     
     @SuppressWarnings("deprecation")
     @Override
@@ -23,8 +23,7 @@ public class CalisanC implements KisiI{
              kullanici = new Calisan();
              if (kullanici.girisYap(kullaniciAdi, sifre)) {
                  kullanici.bilgileriGetir(kullaniciAdi);
-                 
-                 AnaEkran ana = new AnaEkran();
+                 ana = new AnaEkran();
                  ana.show();
                  return true;
              }

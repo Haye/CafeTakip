@@ -497,8 +497,8 @@ public class AnaEkran extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private view.MasaBilgisiV masaBilgisiV1;
-    private view.MasalarV masalarV1;
+    public view.MasaBilgisiV masaBilgisiV1;
+    public view.MasalarV masalarV1;
     private javax.swing.JMenu menuAraclar;
     private javax.swing.JMenu menuDosya;
     private javax.swing.JMenu menuGorunum;

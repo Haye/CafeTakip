@@ -466,6 +466,9 @@
           </Layout>
           <SubComponents>
             <Component class="view.MasaBilgisiV" name="masaBilgisiV1">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Container class="view.MasalarV" name="masalarV1">
               <Properties>
@@ -475,6 +478,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
 
               <Layout>
                 <DimensionLayout dim="0">
