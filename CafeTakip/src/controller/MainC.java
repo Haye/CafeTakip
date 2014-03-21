@@ -20,7 +20,7 @@ public class MainC {
         urunCont = new UrunC();
         siraCont = new SiraC();
         bilgisayarC = new BilgisayarC();
-
+        musteriCont = new MusteriC();
     }
     
     
@@ -37,21 +37,25 @@ public class MainC {
         return urunCont;
     }
 
-	public SiraC getSiraCont() {
-		return siraCont;
-	}
+    public SiraC getSiraCont() {
+            return siraCont;
+    }
 
     public void setUrunCont(UrunC urunCont) {
 		this.urunCont = urunCont;
-	}
-    
-	public BilgisayarC getBilgisayarC() {
-		return bilgisayarC;
-	}
+    }
 
-	public void setBilgisayarC(BilgisayarC bilgisayarC) {
-		this.bilgisayarC = bilgisayarC;
-	}  
+    public BilgisayarC getBilgisayarC() {
+            return bilgisayarC;
+    }
+
+    public void setBilgisayarC(BilgisayarC bilgisayarC) {
+            this.bilgisayarC = bilgisayarC;
+    }  
+
+    public MusteriC getMusteriCont() {
+        return musteriCont;
+    }
 
     
 

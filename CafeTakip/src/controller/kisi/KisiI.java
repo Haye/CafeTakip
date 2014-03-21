@@ -28,7 +28,7 @@ public interface KisiI {
      * @return : Kullanı adına karşılık gelen bilgileri 
      *          Kişi nesnesi şeklinde getirir.
      */
-    public void bilgileriGetir(String kullaniciAdi);
+    public Kisi bilgileriGetir(String kullaniciAdi);
     
     
     /**
@@ -50,4 +50,9 @@ public interface KisiI {
     public boolean hesapBilgiGuncelle(String kullaniciAdi, Kisi kisi);
     
     
+    /**
+     * Kişi bilgilerini ekler. 
+     * @param Kisi : Yeni kişi bilgisi
+    */
+    public void kisiEkle(Kisi k);
 }

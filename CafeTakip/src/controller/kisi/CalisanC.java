@@ -39,8 +39,8 @@ public class CalisanC implements KisiI{
     }
 
     @Override
-    public void bilgileriGetir(String kullaniciAdi) {
-        
+    public Kisi bilgileriGetir(String kullaniciAdi) {
+        return null;
     }
 
     @Override
@@ -59,6 +59,12 @@ public class CalisanC implements KisiI{
 
     public void setKullanici(Calisan kullanici) {
         this.kullanici = kullanici;
+    }
+
+    @Override
+    public void kisiEkle(Kisi k) {
+        
+        
     }
     
 }

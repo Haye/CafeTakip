@@ -1,10 +1,8 @@
 package model.urun;
 
-import hibernate.HbmIslemler;
 import controller.urun.UrunI;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.hibernate.HibernateException;
 

@@ -3,6 +3,8 @@ package model.kisi;
 
 import controller.kisi.KisiI;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -13,21 +15,44 @@ public  class Kisi implements KisiI{
     private String ad;
     private String soyad;
     private String telefon;
-    private String kullaniciAdi;
+    private String kulAdi;
     private String sifre;
     private Timestamp kayitTarihi;
+    private int tip;
     
     
-    public Kisi(){}
+    public Kisi(){
+        
+    }
 
-    public Kisi(int kisiId, String ad, String soyad, String telefon, int tip) {
+    public Kisi(int kisiId, String ad, String soyad, String telefon, 
+            String kulAdi , String sifre, int tip) {
         this.kisiId = kisiId;
         this.ad = ad;
         this.soyad = soyad;
         this.telefon = telefon;
+        this.kayitTarihi = suan();
+        this.kulAdi = kulAdi;
+        this.sifre = sifre;
+        this.tip = tip ;
+        
     }
 
-   
+    public Timestamp suan(){
+        int yil = new Date().getYear() + 1900;
+        int ay = new Date().getMonth();
+        int gun = new Date().getDay();
+        
+        int saat = new Date().getHours();
+        int dk = new Date().getMinutes();
+        int sn = new Date().getSeconds();
+        
+        
+        return Timestamp.valueOf
+                (yil + "-" + ay + "-" + gun + " " + saat + ":" + dk + ":" + sn + ".0");
+    }
+    
+    
    @Override
     public boolean girisYap(String kullaniciAdi, String sifre) {
          /*
@@ -48,12 +73,14 @@ public  class Kisi implements KisiI{
         return false;
     }
     @Override
-    public void bilgileriGetir(String kullaniciAdi) {
+    public Kisi bilgileriGetir(String kullaniciAdi) {
         
         this.kisiId = 1;
         this.ad = "Mustafa";
         this.soyad = "Sahin";
         this.telefon = "1234";
+        
+        return this;
     }
 
     @Override
@@ -66,6 +93,13 @@ public  class Kisi implements KisiI{
         return true;
     }
 
+    @Override
+    public void kisiEkle(Kisi k) {
+        
+        
+    }
+    
+    
     public int getKisiId() {
         return kisiId;
     }
@@ -98,12 +132,28 @@ public  class Kisi implements KisiI{
         this.telefon = telefon;
     }
 
-    public String getKullaniciAdi() {
-        return kullaniciAdi;
+    public Timestamp getKayitTarihi() {
+        return kayitTarihi;
     }
 
-    public void setKullaniciAdi(String kullaniciAdi) {
-        this.kullaniciAdi = kullaniciAdi;
+    public void setKayitTarihi(Timestamp kayitTarihi) {
+        this.kayitTarihi = kayitTarihi;
+    }
+
+    public int getTip() {
+        return tip;
+    }
+
+    public void setTip(int tip) {
+        this.tip = tip;
+    }
+
+    public String getKulAdi() {
+        return kulAdi;
+    }
+
+    public void setKulAdi(String kulAdi) {
+        this.kulAdi = kulAdi;
     }
 
     public String getSifre() {
@@ -114,14 +164,13 @@ public  class Kisi implements KisiI{
         this.sifre = sifre;
     }
 
-    public Timestamp getKayitTarihi() {
-        return kayitTarihi;
+    @Override
+    public String toString() {
+        return "Kisi{" + "kisiId=" + kisiId + ", ad=" + ad + ", "
+                + "soyad=" + soyad + ", telefon=" + telefon + ", "
+                + "kulAdi=" + kulAdi + ", sifre=" + sifre + ", "
+                + "kayitTarihi=" + kayitTarihi + ", tip=" + tip + '}';
     }
-
-    public void setKayitTarihi(Timestamp kayitTarihi) {
-        this.kayitTarihi = kayitTarihi;
-    }
-    
     
     
 }

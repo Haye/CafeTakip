@@ -1,6 +1,7 @@
 
 package view;
 
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.urun.Urun;
@@ -162,6 +163,11 @@ public class UrunV extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblUrunList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblUrunListMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblUrunList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,26 +191,20 @@ public class UrunV extends javax.swing.JFrame {
 
     private void btnEkleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEkleMousePressed
         
-        try {
-            String urunAdi = txtUrunAdi.getText().trim();
-            int barkod = Integer.parseInt(txtBarkod.getText().trim());            
-            Double birimFiyati = Double.parseDouble(txtBirimFiyati.getText().trim());
-            int stok = Integer.parseInt(spnStok.getValue().toString());
-            
-            mutlakkafe.MutlakKafe.mainCont.getUrunCont()
-                    .urunEkle(barkod, stok, birimFiyati, urunAdi);
-            
-            tblUrunList.setModel(mutlakkafe.MutlakKafe
+        HashMap<String, String> values = new HashMap<>();
+        
+        values.put("barkod", txtBarkod.getText().trim());
+        values.put("stok", spnStok.getValue().toString());
+        values.put("birimFiyat", txtBirimFiyati.getText().trim());
+        values.put("urunAdi", txtUrunAdi.getText().trim());
+        
+        mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunEkle(
+                mutlakkafe.MutlakKafe.mainCont.getUrunCont().getUrun(values));
+        
+        tblUrunList.setModel(mutlakkafe.MutlakKafe
                 .mainCont.getUrunCont().urunListesiModel());
-           
-            
-            temizle();
-            
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Geçersiz alan. \n"
-                    + "(Barkod ve birim fiyatı karakter içeremez)",
-                    "Hata", JOptionPane.ERROR_MESSAGE);
-        }
+        
+        temizle();
         
     }//GEN-LAST:event_btnEkleMousePressed
 
@@ -232,24 +232,40 @@ public class UrunV extends javax.swing.JFrame {
 
     private void btnGuncelleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuncelleMousePressed
 
-        int urunID= Integer.parseInt((String) tblUrunList
-                .getValueAt(tblUrunList.getSelectedRow(), 0));
-       
-        String urunAdi = (String) tblUrunList.getValueAt
-                                (tblUrunList.getSelectedRow(), 1);
+        HashMap<String, String> values = new HashMap<>();
         
-        int barkod = Integer.parseInt((String) tblUrunList
+        values.put("barkod", txtBarkod.getText().trim());
+        values.put("stok", spnStok.getValue().toString());
+        values.put("birimFiyat", txtBirimFiyati.getText().trim());
+        values.put("urunAdi", txtUrunAdi.getText().trim());
+        
+        int urunID = Integer.parseInt((String) tblUrunList.getValueAt
+                                (tblUrunList.getSelectedRow(), 0));
+        
+        mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunGuncelle(urunID,
+                mutlakkafe.MutlakKafe.mainCont.getUrunCont().getUrun(values));
+        
+        tblUrunList.setModel(mutlakkafe.MutlakKafe
+                .mainCont.getUrunCont().urunListesiModel());
+        
+        temizle();
+        
+    }//GEN-LAST:event_btnGuncelleMousePressed
+
+    private void tblUrunListMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUrunListMousePressed
+        
+       txtUrunAdi.setText((String) tblUrunList.getValueAt
+                                (tblUrunList.getSelectedRow(), 1));
+        
+        txtBarkod.setText((String) tblUrunList
                 .getValueAt(tblUrunList.getSelectedRow(), 2));
         
-        double birimFiyati = Double.parseDouble(tblUrunList.getValueAt
+        txtBirimFiyati.setText(tblUrunList.getValueAt
                 (tblUrunList.getSelectedRow(), 3).toString().split(" ")[0]);
         
-        int stok = Integer.parseInt((String) tblUrunList
+        spnStok.setValue((String) tblUrunList
                 .getValueAt(tblUrunList.getSelectedRow(), 4));
-        System.out.println("Stok :" + stok);
-        mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunGuncelle(urunID,
-                new Urun(urunID,barkod, stok, birimFiyati, urunAdi));
-    }//GEN-LAST:event_btnGuncelleMousePressed
+    }//GEN-LAST:event_tblUrunListMousePressed
 
     
     public void temizle(){

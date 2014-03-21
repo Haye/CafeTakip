@@ -3,6 +3,7 @@ package controller.urun;
 
 import model.urun.Urun;
 import hibernate.HbmIslemler;
+import java.util.HashMap;
 
 import java.util.List;
 
@@ -18,35 +19,52 @@ import org.hibernate.HibernateException;
 public class UrunC implements UrunI{
 
     
-    
-    public void urunEkle(int barkod, int stok, 
-                         double birimFiyat, String urunAdi){
-    
-        if(urunAdi.equals("") )
-            JOptionPane.showMessageDialog(null, 
-                    "Urun adı boş olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
-        else if(birimFiyat < 0)
-            JOptionPane.showMessageDialog(null, 
-                    "Urun fiyatı 0'dan küçük olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
-        else{
-        	urunEkle(new Urun(0,barkod, stok, birimFiyat, urunAdi));
+    public Urun getUrun(HashMap<String, String> values){
+        try {
+            int barkod = Integer.parseInt(values.get("barkod"));
+            int stok = Integer.parseInt(values.get("stok"));
+            double birimFiyat = Double.parseDouble(values.get("birimFiyat"));
+            String urunAdi = values.get("urunAdi");
+            
+            if(urunAdi.equals("") )
+                JOptionPane.showMessageDialog(null, 
+                        "Urun adı boş olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
+            else if(birimFiyat < 0)
+                JOptionPane.showMessageDialog(null, 
+                        "Urun fiyatı 0'dan küçük olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
+            else if(stok < 0)
+                JOptionPane.showMessageDialog(null, 
+                        "Stok miktarı 0'dan küçük olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
+
+           Urun u = new Urun(0, barkod, stok, birimFiyat, urunAdi);
+            
+           return u;
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Geçersiz alan. \n"
+                    + "(Barkod, stok veya birim fiyatı karakter içeremez)",
+                    "Hata", JOptionPane.ERROR_MESSAGE);
+            
+            return null;
         }
     }
     
+    
     @Override
     public void urunEkle(Urun urun) {
+
         try {
             urun.urunEkle(urun);
-            
+
             JOptionPane.showMessageDialog(null,
                     urun.getUrunAdi() + " ürünü eklendi!",
                     "Ekle", JOptionPane.INFORMATION_MESSAGE);
         } catch (HibernateException ex) {
-            
+
             JOptionPane.showMessageDialog(null,
                     urun.getUrunAdi() + " ürünü eklenemiyor!",
                     "Hata", JOptionPane.ERROR_MESSAGE);
         }
+        
     }
 
     @Override
