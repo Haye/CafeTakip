@@ -647,7 +647,7 @@ public class MusteriV extends javax.swing.JPanel {
         values.put("indirim", txtIndirim.getText().trim());
         
         String bitisTarih = comboYil.getSelectedItem() + "-"
-                + comboAy.getSelectedIndex() + "-" 
+                + comboAy.getSelectedIndex() + 1 + "-" 
                 + comboGun.getSelectedItem().toString();
         values.put("bitisTarih", bitisTarih);
         
@@ -670,16 +670,19 @@ public class MusteriV extends javax.swing.JPanel {
         
         values.put("odemeSecenek", odemeSekli);
         
-        mutlakkafe.MutlakKafe.mainCont.getMusteriCont().kisiEkle(
-                mutlakkafe.MutlakKafe.mainCont.getMusteriCont().getMusteri(values));
+        Musteri m = mutlakkafe.MutlakKafe.mainCont.getMusteriCont().getMusteri(values);
         
-        lstKullaniciListesi.setModel(
-                mutlakkafe.MutlakKafe.mainCont.getMusteriCont().kullaniciAdiList());
+        if(m != null){
+            mutlakkafe.MutlakKafe.mainCont.getMusteriCont().kisiEkle(m);
+
+            lstKullaniciListesi.setModel(
+                    mutlakkafe.MutlakKafe.mainCont.getMusteriCont().kullaniciAdiList());
+
+            lblToplamKayit.setText("Toplam Kayıt : " + lstKullaniciListesi.getModel().getSize());
         
-        lblToplamKayit.setText("Toplam Kayıt : " + lstKullaniciListesi.getModel().getSize());
-        
-        kilitle();
-        temizle();
+            kilitle();
+            temizle();
+        }
     }//GEN-LAST:event_btnEkleMousePressed
 
     private void btnSilMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSilMousePressed
@@ -712,8 +715,8 @@ public class MusteriV extends javax.swing.JPanel {
         values.put("borc", txtBorc.getText().trim());
         values.put("indirim", txtIndirim.getText().trim());
         
-        String bitisTarih = comboYil.getActionCommand() + "-"
-                + comboAy.getActionCommand() + "-" 
+        String bitisTarih = comboYil.getSelectedItem() + "-"
+                + comboAy.getSelectedIndex() + 1 + "-" 
                 + comboGun.getSelectedItem().toString();
         values.put("bitisTarih", bitisTarih);
         
@@ -736,12 +739,16 @@ public class MusteriV extends javax.swing.JPanel {
         
         values.put("odemeSekli", odemeSekli);
         
-        boolean sonuc = mutlakkafe.MutlakKafe.mainCont.getMusteriCont().hesapBilgiGuncelle(txtKullaniciAdi.getText(), 
-                mutlakkafe.MutlakKafe.mainCont.getMusteriCont().getMusteri(values));
+        Musteri m = mutlakkafe.MutlakKafe.mainCont.getMusteriCont().getMusteri(values);
         
-        if(sonuc)
-            kilitle();
-        temizle();
+        if(m != null){
+            boolean sonuc = mutlakkafe.MutlakKafe.mainCont.getMusteriCont().hesapBilgiGuncelle(m.getKulAdi(),m);
+
+
+            if(sonuc)
+                kilitle();
+            temizle();
+        }
     }//GEN-LAST:event_btnGuncelleMousePressed
 
     private void btnYeniMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnYeniMousePressed
@@ -769,7 +776,6 @@ public class MusteriV extends javax.swing.JPanel {
         btnEkle.setEnabled(true);
         btnGuncelle.setEnabled(true);
         
-        lstKullaniciListesi.setEnabled(false);
         temizle();
     }//GEN-LAST:event_btnYeniMousePressed
 
@@ -791,6 +797,9 @@ public class MusteriV extends javax.swing.JPanel {
         
         Musteri m = (Musteri) mutlakkafe.MutlakKafe.
                 mainCont.getMusteriCont().bilgileriGetir(kulAdi);
+        
+        if( m == null)
+            return ;
         
         txtAd.setText(m.getAd());
         txtSoyad.setText(m.getSoyad());
@@ -860,7 +869,6 @@ public class MusteriV extends javax.swing.JPanel {
         btnEkle.setEnabled(false);
         btnGuncelle.setEnabled(false);
         
-        lstKullaniciListesi.setEnabled(true);
     }
     
     private void temizle(){

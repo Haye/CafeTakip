@@ -83,7 +83,8 @@ public class Urun implements UrunI{
             Urun urun = urunBul(urunID);
             if(urun!=null){
                 //atama yapıyor mu ? özellikleri tek tek atamk mı gerekiyor
-                urun = yeniUrun;
+                urunler.remove(urun);
+                urunler.add(yeniUrun);
                 return true;
             }
             return false;

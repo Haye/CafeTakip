@@ -22,17 +22,27 @@ public class MusteriC implements KisiI, MusteriI{
 
     @Override
     public Kisi bilgileriGetir(String kullaniciAdi) {
+        
+        if(kullaniciAdi == null){
+            //JOptionPane.showMessageDialog(null, "Lütfen bir müşteri seçiniz", 
+                    //"Hata", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
         return musteriAra(kullaniciAdi);
     }
 
     @Override
     public boolean hesapSil(String kullaniciAdi) {
     
+        if(kullaniciAdi == null)
+            return false;
+        
         int sonuc = JOptionPane.showConfirmDialog(null, kullaniciAdi + 
                 " isimli müşteriyi silmek istediğinize emin misiniz?", "Müşteri Sil",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         
-        if(sonuc == JOptionPane.YES_OPTION)
+        
+        if(sonuc == JOptionPane.NO_OPTION)
             return false;
         
         if(kullaniciAdi.equals("")){
@@ -49,7 +59,7 @@ public class MusteriC implements KisiI, MusteriI{
             }
             
             JOptionPane.showMessageDialog(null, kullaniciAdi + " isimli müşteri bulunamadı!",
-                    "Hata", JOptionPane.ERROR_MESSAGE);
+                   "Hata", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, 
                         "Hata oluştu kişi bilgileri silinemiyor!", "Hata", JOptionPane.ERROR_MESSAGE);

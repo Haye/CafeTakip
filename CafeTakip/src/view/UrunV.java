@@ -263,8 +263,10 @@ public class UrunV extends javax.swing.JFrame {
         txtBirimFiyati.setText(tblUrunList.getValueAt
                 (tblUrunList.getSelectedRow(), 3).toString().split(" ")[0]);
         
-        spnStok.setValue((String) tblUrunList
-                .getValueAt(tblUrunList.getSelectedRow(), 4));
+        int stok = Integer.parseInt( (String) tblUrunList.
+                getValueAt(tblUrunList.getSelectedRow(), 4));
+        
+        spnStok.setValue(stok);
     }//GEN-LAST:event_tblUrunListMousePressed
 
     
