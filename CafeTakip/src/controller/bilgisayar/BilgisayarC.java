@@ -93,6 +93,14 @@ public class BilgisayarC implements BilgisayarI{
         }
     }
     
+    
+    public String[] masaIsimleriGetir(){
+        String [] s = new String[bilgisayarlar.size()];
+        for(int i=0;i<bilgisayarlar.size();i++){
+            s[i] = bilgisayarlar.get(i).getMasaAdi();
+        }
+        return s;
+    }
   
     @Override
     public Bilgisayar masaBul(String masaAdi){

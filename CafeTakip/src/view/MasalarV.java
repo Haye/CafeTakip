@@ -42,7 +42,7 @@ public class MasalarV extends javax.swing.JPanel {
 
     
     //Açılıştaki masaların labellerini oluşturarak ekler
-    public void init(ArrayList<Bilgisayar>  masaAdlari){        
+    public void init(String [] masaAdlari){        
         //FlowLayout için padding değerleri ( _ , Pad1, Pad2)
         FlowLayout layout = new FlowLayout(FlowLayout.LEFT, 20, 20);
         //Layoutu hangi nesne için kullanacağımız. Direk eklemek için getContntPane().setLayout(_);
@@ -53,8 +53,8 @@ public class MasalarV extends javax.swing.JPanel {
          
         
         //Masaların eklenmesi
-        for(int i=0; i<masaAdlari.size(); i++){
-            masaEkle(masaAdlari.get(i).getMasaAdi());
+        for(int i=0; i<masaAdlari.length; i++){
+            masaEkle(masaAdlari[i]);
         }
 
     }
@@ -162,18 +162,21 @@ public class MasalarV extends javax.swing.JPanel {
     
     public void masaAktar(){
         //!!! masaları dinamik al 
-        Object[] possibleValues = { "Masa 1", "Masa 2", "Masa 3", "Masa 4", "Masa 5" };
+        Object[] possibleValues = mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaIsimleriGetir();
 
         Object AktarilacakMasa = JOptionPane.showInputDialog(null,"Aktarılacak Masayı Seçiniz",
                 "Masa Seç",JOptionPane.QUESTION_MESSAGE,null,possibleValues, possibleValues[0]);
 
         if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAktar(seciliLabel.getText(),AktarilacakMasa.toString())){
                 JLabel l = masaBul(AktarilacakMasa.toString());
+                //icon değiştir
                 l.setIcon(seciliLabel.getIcon());
                 durumDegis(seciliLabel.getText(), MasalarV.Durum.KAPALI);
                 seciliMasaDegis(masaBul(AktarilacakMasa.toString()));
         }
     }
+    
+    
     
     //Popup listener
     ActionListener menuListener = new ActionListener() {
@@ -199,6 +202,9 @@ public class MasalarV extends javax.swing.JPanel {
                     break;
                 case "Masa Aktar":
                     masaAktar();
+                    break;
+                case "Adisyon Ekle":
+                    break;
             
             }
              mutlakkafe.MutlakKafe.mainCont.getCalisanCont().ana.masaBilgisiV1.init(
@@ -209,7 +215,7 @@ public class MasalarV extends javax.swing.JPanel {
     
     //Popup menu içeriği
     private JPopupMenu getPopUpMenu(String masaAdi){
-        String [] liste = {"-","Masa Aç", "Süreli Aç","Masa Aktar","Masa Kapat"};
+        String [] liste = {"-","Masa Aç", "Süreli Aç","-","Adisyon Ekle","-","Masa Aktar","Masa Kapat"};
         JPopupMenu popup = new JPopupMenu();
         
         popup.add(masaAdi);
