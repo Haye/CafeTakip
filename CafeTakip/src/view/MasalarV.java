@@ -22,6 +22,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import model.bilgisayar.Bilgisayar;
+import static view.MasalarV.Durum.ACIK;
+import static view.MasalarV.Durum.KAPALI;
+import static view.MasalarV.Durum.SURELI;
 
 /**
  *
@@ -110,21 +113,25 @@ public class MasalarV extends javax.swing.JPanel {
         seciliLabel.setOpaque(true);
         seciliLabel.setForeground(Color.blue);
         seciliLabel.setBackground(Color.lightGray);
+        
+        mutlakkafe.MutlakKafe.mainCont.getCalisanCont().ana.masaBilgisiV1.init(
+                mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(seciliLabel.getText()));
+    
     }
     
     //Program çalışma esnasında bir masayı siler
     public void masaSil(String masaAdi){
-            JLabel jLabel1 = masaBul(masaAdi);
-        
-            labeller.remove(jLabel1); 
-            //Silinen labeli konteynırından siler
-            this.remove(jLabel1);
+        JLabel jLabel1 = masaBul(masaAdi);
+
+        labeller.remove(jLabel1); 
+        //Silinen labeli konteynırından siler
+        this.remove(jLabel1);
     }
   
     //Masa isminden masaya ait JLabel nesnesini döndürür
     private JLabel masaBul(String masaAdi){
         for(int i=0;i<labeller.size();i++){
-            if(labeller.get(i).getText() == masaAdi){
+            if(labeller.get(i).getText().equals(masaAdi)){
                 return labeller.get(i);
             }
         }
@@ -134,7 +141,7 @@ public class MasalarV extends javax.swing.JPanel {
     
     //Duruma göre masaya ait iconu günceller
     public enum Durum {ACIK, KAPALI, SURELI};
-    public void durumDegis(String masaAdi, Durum durum){
+    public void durumDegis(String masaAdi, MasalarV.Durum durum){
         JLabel masaLabel = masaBul(masaAdi);
         if(masaLabel != null) {
             switch(durum) {
@@ -147,9 +154,24 @@ public class MasalarV extends javax.swing.JPanel {
                 break;
 
                 case SURELI:
-                     masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/acik.png")));
+                     masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/sureli.png")));
                 break;
             }
+        }
+    }
+    
+    public void masaAktar(){
+        //!!! masaları dinamik al 
+        Object[] possibleValues = { "Masa 1", "Masa 2", "Masa 3", "Masa 4", "Masa 5" };
+
+        Object AktarilacakMasa = JOptionPane.showInputDialog(null,"Aktarılacak Masayı Seçiniz",
+                "Masa Seç",JOptionPane.QUESTION_MESSAGE,null,possibleValues, possibleValues[0]);
+
+        if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAktar(seciliLabel.getText(),AktarilacakMasa.toString())){
+                JLabel l = masaBul(AktarilacakMasa.toString());
+                l.setIcon(seciliLabel.getIcon());
+                durumDegis(seciliLabel.getText(), MasalarV.Durum.KAPALI);
+                seciliMasaDegis(masaBul(AktarilacakMasa.toString()));
         }
     }
     
@@ -158,17 +180,36 @@ public class MasalarV extends javax.swing.JPanel {
         @Override
         public void actionPerformed(ActionEvent event) {
             System.out.println(seciliLabel.getText()+ "["+ event.getActionCommand() + "] tıklandı");
-            if(event.getActionCommand().equals("Masa Aç")){
-                if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText())){
-                    durumDegis(seciliLabel.getText(),Durum.ACIK);
-                }
+            switch(event.getActionCommand()){
+                case "Masa Aç":
+                    if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null)){
+                        durumDegis(seciliLabel.getText(),MasalarV.Durum.ACIK);
+                    }
+                    break;
+                
+                // !!!Önce süre siniri gir isteği sonra masa açik hatasi veriyor.. 
+                case "Süreli Aç":
+                    if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),true,null)){
+                        durumDegis(seciliLabel.getText(),MasalarV.Durum.SURELI);
+                    }
+                    break;
+                    
+                case "Masa Kapat":
+                    mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaKapatmaEkraniGoster(seciliLabel.getText());
+                    break;
+                case "Masa Aktar":
+                    masaAktar();
+            
             }
+             mutlakkafe.MutlakKafe.mainCont.getCalisanCont().ana.masaBilgisiV1.init(
+                mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(seciliLabel.getText()));
+    
         }
     };
     
     //Popup menu içeriği
     private JPopupMenu getPopUpMenu(String masaAdi){
-        String [] liste = {"-","Masa Aç", "Süreli Aç","Masa Kapat"};
+        String [] liste = {"-","Masa Aç", "Süreli Aç","Masa Aktar","Masa Kapat"};
         JPopupMenu popup = new JPopupMenu();
         
         popup.add(masaAdi);

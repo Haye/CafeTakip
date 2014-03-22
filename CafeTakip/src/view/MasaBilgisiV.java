@@ -6,6 +6,8 @@
 
 package view;
 
+import model.bilgisayar.Bilgisayar;
+
 /**
  *
  * @author yetishbey
@@ -17,8 +19,32 @@ public class MasaBilgisiV extends javax.swing.JPanel {
      */
     public MasaBilgisiV() {
         initComponents();
+        prgGecenSure.setStringPainted(true);
     }
 
+    public void init(Bilgisayar b){
+        lblMasaAdi.setText(b.getMasaAdi());
+        if(b.getAcilisSaati()!=null){
+            if(b.getSureSiniri()!=0){             
+                lblKalanSure.setText(Long.toString(b.getSureSiniri() - b.gecenDakikaHesapla())+" dk");
+            }else{
+                lblKalanSure.setText("-");
+            }
+            prgGecenSure.setValue(b.gecenOranHesapla());
+            lblGecenSure.setText(b.gecenDakikaHesapla()+" dk");
+            lblAcilisSaati.setText(b.getAcilisSaati().getHours()+":"+b.getAcilisSaati().getMinutes());
+            lblKullanimUcreti.setText(Float.toString(b.kullanimTutariHesapla())+" TL");     
+        }else{
+            lblGecenSure.setText("Kapalı");
+            lblKalanSure.setText("-");
+            lblAcilisSaati.setText("Kapalı");
+            lblKullanimUcreti.setText("Kapalı"); 
+            prgGecenSure.setValue(0);
+        }
+        lblKullanici.setText("Kayıtlı Değil");
+        if(b.getMusteri() != null)
+            lblKullanici.setText(b.getMusteri().getAd());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

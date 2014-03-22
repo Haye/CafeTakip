@@ -17,26 +17,58 @@ public class Bilgisayar {
  
    
     public Bilgisayar(String masaAdi) {
-		super();
-		this.masaAdi = masaAdi;
-	}
+        super();
+        this.masaAdi = masaAdi;
+    }
 
+    //!!! detaylı ücret hesaplama işlemi yapılacak
+    public float kullanimTutariHesapla(){
+        long gecendk =  gecenDakikaHesapla();
+        if(gecendk<15){
+            return 0.5f;
+        }
+        return (gecendk/15)*0.5f;
+    }
+    
+    public float adisyonTutariHesapla(){
+        float tutar = 0;
+        for(int i=0;i<siparisler.size();i++){
+            tutar += siparisler.get(i).getMiktar() * siparisler.get(i).getUrun().getBirimFiyat();
+        }
+        return tutar;
+    }
+    
+    public void masaKapat(){
+        setAcilisSaati(null);
+        setMusteri(null);
+        setSiparisler(null);
+        setSureSiniri(0);
+    }
+    
+    public void masaAktar(Bilgisayar hedefPc){
+        hedefPc.setAcilisSaati(this.getAcilisSaati());
+        hedefPc.setMusteri(this.getMusteri());
+        hedefPc.setSiparisler(this.getSiparisler());
+        hedefPc.setSureSiniri(this.getSureSiniri());
+    }
     
     /* masaAc overloadları başlangıç */
-	public boolean masaAc(){
+    public boolean masaAc(){
         //try { client.masaAc; return true; } catch { return false; }
         acilisSaati = new Date();
+        siparisler = new ArrayList<>();
         return true;
     }
     
-    public boolean masaAc(int sureSiniri){
+    public int gecenOranHesapla(){
+        if(getSureSiniri()!=0){
+            return (int)((gecenDakikaHesapla()*100)/getSureSiniri());
+        }
+        return 0;
+    }
+    public boolean masaAc(int sureSiniri,Musteri musteri){
         masaAc();
         this.sureSiniri = sureSiniri;
-        return true;
-    }
-    
-    public boolean masaAc(Musteri musteri){
-        masaAc();
         this.musteri = musteri;
         return true;
     }
@@ -47,50 +79,51 @@ public class Bilgisayar {
     	return true;
     }
     
-    //geçen süreyi mikrosaniye cinsinden dönderir (1000 micsn = 1 sn)
-    public long gecenSureHesapla(){
-        return new Date().getTime() - acilisSaati.getTime();
+    //geçen süreyi saniye cinsinden dönderir
+    public long gecenDakikaHesapla(){
+        return (new Date().getTime() - acilisSaati.getTime())/60000;
+    }
+    
+   
+    public String getMasaAdi() {
+        return masaAdi;
     }
 
-	public String getMasaAdi() {
-		return masaAdi;
-	}
+    public void setMasaAdi(String masaAdi) {
+        this.masaAdi = masaAdi;
+    }
 
-	public void setMasaAdi(String masaAdi) {
-		this.masaAdi = masaAdi;
-	}
+    public Date getAcilisSaati() {
+        return acilisSaati;
+    }
 
-	public Date getAcilisSaati() {
-		return acilisSaati;
-	}
+    public void setAcilisSaati(Date acilisSaati) {
+        this.acilisSaati = acilisSaati;
+    }
 
-	public void setAcilisSaati(Date acilisSaati) {
-		this.acilisSaati = acilisSaati;
-	}
+    public Musteri getMusteri() {
+        return musteri;
+    }
 
-	public Musteri getMusteri() {
-		return musteri;
-	}
+    public void setMusteri(Musteri musteri) {
+        this.musteri = musteri;
+    }
 
-	public void setMusteri(Musteri musteri) {
-		this.musteri = musteri;
-	}
+    public int getSureSiniri() {
+        return sureSiniri;
+    }
 
-	public int getSureSiniri() {
-		return sureSiniri;
-	}
+    public void setSureSiniri(int sureSiniri) {
+        this.sureSiniri = sureSiniri;
+    }
 
-	public void setSureSiniri(int sureSiniri) {
-		this.sureSiniri = sureSiniri;
-	}
+    public ArrayList<Siparis> getSiparisler() {
+        return siparisler;
+    }
 
-	public ArrayList<Siparis> getSiparisler() {
-		return siparisler;
-	}
+    public void setSiparisler(ArrayList<Siparis> siparisler) {
+        this.siparisler = siparisler;
+    }
 
-	public void setSiparisler(ArrayList<Siparis> siparisler) {
-		this.siparisler = siparisler;
-	}
-    
-    
+
 }

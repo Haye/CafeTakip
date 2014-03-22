@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
@@ -29,18 +26,29 @@
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="lblMasaAdi" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblGecenSure" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblAcilisZamani" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblMusteri" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTarife" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblAdisyonTutari" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblToplamTutar" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblKullanimTutari" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblAdisyonTutari" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMusteri" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblToplamTutar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblGecenSure" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTarife" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAcilisZamani" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblKullanimTutari" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblAdisyonDetayiGoruntule" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -64,23 +72,49 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblMasaAdi" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="lblAcilisZamani" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblGecenSure" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblTarife" min="-2" pref="14" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblMusteri" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblKullanimTutari" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblAdisyonTutari" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAdisyonDetayiGoruntule" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                      <Component id="lblAdisyonDetayiGoruntule" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblAcilisZamani" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblGecenSure" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblTarife" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblMusteri" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblKullanimTutari" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblAdisyonTutari" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblToplamTutar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblToplamTutar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="pnlIslemler" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="15" max="32767" attributes="0"/>
@@ -97,51 +131,6 @@
           <Font name="Tahoma" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masa Ad&#x131;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblAcilisZamani">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="A&#xe7;&#x131;l&#x131;&#x15f; Zaman&#x131; :"/>
-        <Property name="name" type="java.lang.String" value="" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblGecenSure">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ge&#xe7;en S&#xfc;re :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblTarife">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tarife :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblMusteri">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="M&#xfc;&#x15f;teri :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblKullanimTutari">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="11" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Kullan&#x131;m Tutar&#x131; :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblAdisyonTutari">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="11" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Adisyon Tutar&#x131; :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblToplamTutar">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="11" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Toplam Tutar :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAdisyonDetayiGoruntule">
@@ -194,6 +183,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Masa Aktar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMasaAktarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAdisyonEkle">
           <Properties>
@@ -246,6 +238,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Tamamen &#xd6;dendi"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMasaKapatActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnKismenOdendi">
           <Properties>
@@ -254,5 +249,88 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Toplam Tutar :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adisyon Tutar&#x131; :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMusteri">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kay&#x131;tl&#x131; De&#x11f;il"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ge&#xe7;en S&#xfc;re :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblKullanimTutari">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Kullan&#x131;m Tutar&#x131; :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAdisyonTutari">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Adisyon Tutar&#x131; :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblToplamTutar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="33" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Toplam Tutar :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kullan&#x131;m Tutar&#x131; :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblGecenSure">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ge&#xe7;en S&#xfc;re :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M&#xfc;&#x15f;teri :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAcilisZamani">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="A&#xe7;&#x131;l&#x131;&#x15f; Zaman&#x131; :"/>
+        <Property name="name" type="java.lang.String" value="" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tarife :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTarife">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Normal"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="A&#xe7;&#x131;l&#x131;&#x15f; Zaman&#x131; :"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
