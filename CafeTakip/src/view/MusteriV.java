@@ -769,6 +769,7 @@ public class MusteriV extends javax.swing.JPanel {
         btnEkle.setEnabled(true);
         btnGuncelle.setEnabled(true);
         
+        lstKullaniciListesi.setEnabled(false);
         temizle();
     }//GEN-LAST:event_btnYeniMousePressed
 
@@ -858,6 +859,8 @@ public class MusteriV extends javax.swing.JPanel {
         
         btnEkle.setEnabled(false);
         btnGuncelle.setEnabled(false);
+        
+        lstKullaniciListesi.setEnabled(true);
     }
     
     private void temizle(){
