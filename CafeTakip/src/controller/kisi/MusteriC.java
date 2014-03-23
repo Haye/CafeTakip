@@ -37,6 +37,12 @@ public class MusteriC implements KisiI, MusteriI{
         if(kullaniciAdi == null)
             return false;
         
+        if(kullaniciAdi.equals("")){
+            JOptionPane.showMessageDialog(null, "Kullanici adı boş olamaz!", 
+                    "Hata", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
         int sonuc = JOptionPane.showConfirmDialog(null, kullaniciAdi + 
                 " isimli müşteriyi silmek istediğinize emin misiniz?", "Müşteri Sil",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -44,12 +50,6 @@ public class MusteriC implements KisiI, MusteriI{
         
         if(sonuc == JOptionPane.NO_OPTION)
             return false;
-        
-        if(kullaniciAdi.equals("")){
-            JOptionPane.showMessageDialog(null, "Kullanici adı boş olamaz!", 
-                    "Hata", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
         
         try {
             Musteri m = new Musteri();
@@ -75,7 +75,7 @@ public class MusteriC implements KisiI, MusteriI{
                 " isimli müşteri bilgilerini değiştirmek istediğinize emin misiniz?", "Müşteri Güncelle",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         
-        if(sonuc == JOptionPane.YES_OPTION)
+        if(sonuc == JOptionPane.NO_OPTION)
             return false;
         
         if(kullaniciAdi.equals("")){
@@ -87,7 +87,8 @@ public class MusteriC implements KisiI, MusteriI{
         try {
             Musteri m = (Musteri) kisi;
             if (m.hesapBilgiGuncelle(kullaniciAdi, kisi)) {
-                JOptionPane.showMessageDialog(null, "Müşteri bilgileri güncellendi!", "Müşteri Sil", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Müşteri bilgileri güncellendi!", 
+                        "Müşteri Sil", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             
@@ -98,8 +99,6 @@ public class MusteriC implements KisiI, MusteriI{
                         "Hata oluştu kişi bilgileri güncellenemiyor!", "Hata", JOptionPane.ERROR_MESSAGE);
             
         }
-        
-        
         return false;
     }
 
@@ -195,7 +194,6 @@ public class MusteriC implements KisiI, MusteriI{
         }
         
         Musteri m = new Musteri();
-        
         m = m.musteriAra(kullaniciAdi);
         
         if(m == null){
