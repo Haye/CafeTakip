@@ -151,12 +151,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblAcilisSaati">
       <Properties>
-        <Property name="text" type="java.lang.String" value="14:20"/>
+        <Property name="text" type="java.lang.String" value="Kapal&#x131;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblGecenSure">
       <Properties>
-        <Property name="text" type="java.lang.String" value="5 dk"/>
+        <Property name="text" type="java.lang.String" value="Kapal&#x131;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblKalanSure">

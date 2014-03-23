@@ -91,9 +91,9 @@ public class MasaBilgisiV extends javax.swing.JPanel {
 
         lblKullanici.setText("Kayıtlı Değil");
 
-        lblAcilisSaati.setText("14:20");
+        lblAcilisSaati.setText("Kapalı");
 
-        lblGecenSure.setText("5 dk");
+        lblGecenSure.setText("Kapalı");
 
         lblKalanSure.setText("-");
 

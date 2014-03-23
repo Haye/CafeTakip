@@ -46,7 +46,6 @@ public class MasaKapatV extends javax.swing.JFrame {
     private void initComponents() {
 
         lblMasaAdi = new javax.swing.JLabel();
-        lblAdisyonDetayiGoruntule = new javax.swing.JLabel();
         pnlIslemler = new javax.swing.JPanel();
         btnMasaAktar = new javax.swing.JButton();
         btnAdisyonEkle = new javax.swing.JButton();
@@ -72,9 +71,6 @@ public class MasaKapatV extends javax.swing.JFrame {
         lblMasaAdi.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblMasaAdi.setText("Masa Adı");
 
-        lblAdisyonDetayiGoruntule.setForeground(new java.awt.Color(0, 51, 255));
-        lblAdisyonDetayiGoruntule.setText("Adisyon Detayı Görüntüle");
-
         pnlIslemler.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "İşlemler", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         btnMasaAktar.setText("Masa Aktar");
@@ -84,7 +80,12 @@ public class MasaKapatV extends javax.swing.JFrame {
             }
         });
 
-        btnAdisyonEkle.setText("Adisyon Ekle");
+        btnAdisyonEkle.setText("Adisyonlar");
+        btnAdisyonEkle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdisyonEkleActionPerformed(evt);
+            }
+        });
 
         btnIndırımUygula.setText("İndirim uygula");
 
@@ -206,8 +207,7 @@ public class MasaKapatV extends javax.swing.JFrame {
                                 .addComponent(lblTarife)
                                 .addComponent(lblAcilisZamani)
                                 .addComponent(lblKullanimTutari))
-                            .addGap(18, 18, 18)
-                            .addComponent(lblAdisyonDetayiGoruntule))
+                            .addGap(140, 140, 140))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(22, 22, 22)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,39 +222,34 @@ public class MasaKapatV extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblMasaAdi)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(lblAdisyonDetayiGoruntule))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAcilisZamani)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblGecenSure)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTarife, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMusteri)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblKullanimTutari)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAdisyonTutari)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblToplamTutar)
-                            .addComponent(jLabel7))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAcilisZamani)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGecenSure)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTarife, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMusteri)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblKullanimTutari)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAdisyonTutari)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblToplamTutar)
+                    .addComponent(jLabel7))
                 .addGap(30, 30, 30)
                 .addComponent(pnlIslemler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
@@ -282,6 +277,10 @@ public class MasaKapatV extends javax.swing.JFrame {
     private void btnMasaAktarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasaAktarActionPerformed
         mutlakkafe.MutlakKafe.mainCont.getCalisanCont().ana.masalarV1.masaAktar();
     }//GEN-LAST:event_btnMasaAktarActionPerformed
+
+    private void btnAdisyonEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdisyonEkleActionPerformed
+        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().adisyonEkleEkraniGoster(lblMasaAdi.getText());
+    }//GEN-LAST:event_btnAdisyonEkleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,7 +331,6 @@ public class MasaKapatV extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblAcilisZamani;
-    private javax.swing.JLabel lblAdisyonDetayiGoruntule;
     private javax.swing.JLabel lblAdisyonTutari;
     private javax.swing.JLabel lblGecenSure;
     private javax.swing.JLabel lblKullanimTutari;

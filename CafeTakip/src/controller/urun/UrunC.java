@@ -165,15 +165,17 @@ public class UrunC implements UrunI{
     }
 
     @Override
-    public void urunSat(int urunID, int miktar) {
+    public boolean urunSat(int urunID, int miktar) {
 
         if(miktar > 0){
-            HbmIslemler hbm = new HbmIslemler();
+            //HbmIslemler hbm = new HbmIslemler();
             
-            Urun urun = (Urun) hbm.bilgiGetir(urunID, Urun.class);
-            
-            if((urun.getStok() - miktar) > 0)
+            //Urun urun = (Urun) hbm.bilgiGetir(urunID, Urun.class);
+            Urun urun = new Urun().urunBul(urunID);
+            if((urun.getStok() - miktar) >= 0){
                 urun.urunSat(urunID, miktar);
+                return true;
+            }
             else
                 JOptionPane.showMessageDialog(null, 
                     "Yeterli miktar bulunmamaktadır.!",
@@ -181,22 +183,24 @@ public class UrunC implements UrunI{
         
         }else
             JOptionPane.showMessageDialog(null, 
-                    "Urun miktarı negatif olamaz!",
+                    "Geçersiz Ürün Miktarı!",
                     "Hata", JOptionPane.ERROR_MESSAGE); 
+        
+        return false;
         
     }
 
     @Override
-    public void urunAl(int urunID, int miktar) {
+    public boolean urunAl(int urunID, int miktar) {
         if(miktar > 0){
             Urun urun = new Urun();
             urun.urunAl(urunID, miktar);
-        
+            return true;
         }else
             JOptionPane.showMessageDialog(null, 
                     "Urun miktarı negatif olamaz!",
                     "Hata", JOptionPane.ERROR_MESSAGE); 
-        
+        return false;
     }
 
     

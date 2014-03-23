@@ -95,7 +95,7 @@ public class Urun implements UrunI{
     }
 
     @Override
-    public void urunSat(int urunID, int miktar) {
+    public boolean urunSat(int urunID, int miktar) {
         /*
         HbmIslemler hbm = new HbmIslemler();
         Urun urun = (Urun) hbm.bilgiGetir(urunID, getClass());
@@ -104,7 +104,9 @@ public class Urun implements UrunI{
         if(urun!=null){
             int yeniStok = urun.getStok() - miktar;
             urun.setStok(yeniStok);
+            return true;
         }
+        return false;
         /*
         hbm.guncelle(urun);
         * */
@@ -112,7 +114,7 @@ public class Urun implements UrunI{
     }
 
     @Override
-    public void urunAl(int urunID, int miktar) {
+    public boolean urunAl(int urunID, int miktar) {
         /*
         HbmIslemler hbm = new HbmIslemler();        
         Urun urun = (Urun) hbm.bilgiGetir(urunID, getClass());
@@ -121,7 +123,9 @@ public class Urun implements UrunI{
         if(urun!=null){
             int yeniMiktar = urun.getStok() + miktar;        
             urun.setStok(yeniMiktar);
+            return true;
         }
+        return false;
         /*
         hbm.guncelle(urun); 
         * */

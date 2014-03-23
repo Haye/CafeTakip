@@ -161,18 +161,20 @@ public class MasalarV extends javax.swing.JPanel {
     }
     
     public void masaAktar(){
-        //!!! masaları dinamik al 
+        //!!! kontrol de olması daha iyi olur .. 
         Object[] possibleValues = mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaIsimleriGetir();
 
         Object AktarilacakMasa = JOptionPane.showInputDialog(null,"Aktarılacak Masayı Seçiniz",
                 "Masa Seç",JOptionPane.QUESTION_MESSAGE,null,possibleValues, possibleValues[0]);
 
-        if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAktar(seciliLabel.getText(),AktarilacakMasa.toString())){
-                JLabel l = masaBul(AktarilacakMasa.toString());
-                //icon değiştir
-                l.setIcon(seciliLabel.getIcon());
-                durumDegis(seciliLabel.getText(), MasalarV.Durum.KAPALI);
-                seciliMasaDegis(masaBul(AktarilacakMasa.toString()));
+        if(AktarilacakMasa!=null){
+            if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAktar(seciliLabel.getText(),AktarilacakMasa.toString())){
+                    JLabel l = masaBul(AktarilacakMasa.toString());
+                    //icon değiştir
+                    l.setIcon(seciliLabel.getIcon());
+                    durumDegis(seciliLabel.getText(), MasalarV.Durum.KAPALI);
+                    seciliMasaDegis(masaBul(AktarilacakMasa.toString()));
+            }
         }
     }
     

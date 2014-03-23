@@ -10,7 +10,6 @@ import model.kisi.Musteri;
 import model.urun.Siparis;
 import model.urun.Urun;
 import view.AdisyonEklePencereV;
-import view.AdisyonEkleV;
 import view.MasaKapatV;
 
 public class BilgisayarC implements BilgisayarI{
@@ -24,7 +23,6 @@ public class BilgisayarC implements BilgisayarI{
         bilgisayarlar = new ArrayList<Bilgisayar>();
         for( int i  = 0 ; i < 5 ; i ++ )
             this.masaEkle("Masa " + (i + 1));
-
     }
 
     @Override 
@@ -162,8 +160,10 @@ public class BilgisayarC implements BilgisayarI{
        
         Bilgisayar b = masaBul(masaAdi);
         if(b!=null){
-            if(b.adisyonEkle(siparis)){
-                return true;
+            if(mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunSat(siparis.getUrun().getUrunID(), miktar)){
+                if(b.adisyonEkle(siparis)){
+                 return true;    
+                }
             }
         }else{
             //masa olmadan adisyon kes (yoldan geçene)
@@ -175,8 +175,10 @@ public class BilgisayarC implements BilgisayarI{
     
      public boolean adisyonSil(String masaAdi,String urunAdi,int miktar){       
         Bilgisayar b = masaBul(masaAdi);
+        
         if(b!=null){
-            b.adisyonSil(new Siparis(new Urun().urunBul(urunAdi), miktar));
+            if(mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunAl(new Urun().urunBul(urunAdi).getUrunID(), miktar))
+                b.adisyonSil(new Siparis(new Urun().urunBul(urunAdi), miktar));
         }
         return false;
     }

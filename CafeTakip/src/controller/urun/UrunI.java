@@ -46,13 +46,13 @@ public interface UrunI{
      * @param urunAdi ürün için ayırt edici olan alan
      * @param miktar Satılan ürün miktarı.
      */
-    public void urunSat(int urunID, int miktar);
+    public boolean urunSat(int urunID, int miktar);
     
     
     /**
      * Alınan ürünün veritabanındaki bilgileri günceller.
      * @param miktar Alınan ürün miktarı.
      */
-    public void urunAl(int urunID, int miktar);
+    public boolean urunAl(int urunID, int miktar);
     
 }
