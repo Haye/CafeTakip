@@ -33,13 +33,18 @@ public class MasaBilgisiV extends javax.swing.JPanel {
             prgGecenSure.setValue(b.gecenOranHesapla());
             lblGecenSure.setText(b.gecenDakikaHesapla()+" dk");
             lblAcilisSaati.setText(b.getAcilisSaati().getHours()+":"+b.getAcilisSaati().getMinutes());
-            lblKullanimUcreti.setText(Float.toString(b.kullanimTutariHesapla())+" TL");     
+            lblKullanimUcreti.setText(Float.toString(b.kullanimTutariHesapla())+" TL");
+            lblAdisyonTutar.setText(Float.toString(b.adisyonTutariHesapla())+" TL");
+            lblToplamTutar.setText((b.adisyonTutariHesapla()+b.kullanimTutariHesapla())+" TL");
         }else{
             lblGecenSure.setText("Kapalı");
             lblKalanSure.setText("-");
             lblAcilisSaati.setText("Kapalı");
-            lblKullanimUcreti.setText("Kapalı"); 
+            lblKullanimUcreti.setText("-"); 
+            lblAdisyonTutar.setText("-");
+            lblToplamTutar.setText("-");
             prgGecenSure.setValue(0);
+           
         }
         lblKullanici.setText("Kayıtlı Değil");
         if(b.getMusteri() != null)
@@ -65,7 +70,11 @@ public class MasaBilgisiV extends javax.swing.JPanel {
         lblAcilisSaati = new javax.swing.JLabel();
         lblGecenSure = new javax.swing.JLabel();
         lblKalanSure = new javax.swing.JLabel();
+        lblAdisyonTutar = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         lblKullanimUcreti = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        lblToplamTutar = new javax.swing.JLabel();
 
         jLabel2.setText("Açılış Saati :");
 
@@ -78,7 +87,7 @@ public class MasaBilgisiV extends javax.swing.JPanel {
 
         jLabel6.setText("Kullanıcı :");
 
-        jLabel4.setText("Kullanım Ücreti :");
+        jLabel4.setText("Adisyon Tutarı :");
 
         lblKullanici.setText("Kayıtlı Değil");
 
@@ -88,7 +97,16 @@ public class MasaBilgisiV extends javax.swing.JPanel {
 
         lblKalanSure.setText("-");
 
-        lblKullanimUcreti.setText("0,5 TL ");
+        lblAdisyonTutar.setText("-");
+
+        jLabel7.setText("Kullanım Ücreti :");
+
+        lblKullanimUcreti.setText("-");
+
+        jLabel8.setText("Toplam Tutar :");
+
+        lblToplamTutar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblToplamTutar.setText("-");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,34 +115,34 @@ public class MasaBilgisiV extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblMasaAdi)
-                                .addGap(0, 155, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(prgGecenSure, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(19, 19, 19)
-                                    .addComponent(jLabel2))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblKullanimUcreti)
                             .addComponent(lblKullanici)
                             .addComponent(lblAcilisSaati)
                             .addComponent(lblGecenSure)
-                            .addComponent(lblKalanSure)
-                            .addComponent(lblKullanimUcreti))
+                            .addComponent(lblKalanSure))
+                        .addContainerGap(84, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAdisyonTutar)
+                            .addComponent(lblToplamTutar))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(prgGecenSure, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMasaAdi))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,11 +167,19 @@ public class MasaBilgisiV extends javax.swing.JPanel {
                     .addComponent(lblKalanSure))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
                     .addComponent(lblKullanimUcreti))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lblAdisyonTutar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(lblToplamTutar))
+                .addGap(18, 18, 18)
                 .addComponent(prgGecenSure, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -164,12 +190,16 @@ public class MasaBilgisiV extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblAcilisSaati;
+    private javax.swing.JLabel lblAdisyonTutar;
     private javax.swing.JLabel lblGecenSure;
     private javax.swing.JLabel lblKalanSure;
     private javax.swing.JLabel lblKullanici;
     private javax.swing.JLabel lblKullanimUcreti;
     public javax.swing.JLabel lblMasaAdi;
+    private javax.swing.JLabel lblToplamTutar;
     private javax.swing.JProgressBar prgGecenSure;
     // End of variables declaration//GEN-END:variables
 }

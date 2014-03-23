@@ -15,7 +15,7 @@ public class Urun implements UrunI{
     private int barkod,stok, urunID;
     private double birimFiyat;
     private String urunAdi;
-    private static ArrayList <Urun> urunler = new ArrayList<>(); 
+    public static ArrayList <Urun> urunler = new ArrayList<>(); 
     
     public Urun(){  
         urunID = urunler.size();
@@ -130,6 +130,14 @@ public class Urun implements UrunI{
     public Urun urunBul(int id){
          for(int i=0;i<urunler.size(); i++){
             if(urunler.get(i).getUrunID() == id)
+                return urunler.get(i);
+        }
+        return null;
+    }
+    
+    public Urun urunBul(String urunAdi){
+         for(int i=0;i<urunler.size(); i++){
+            if(urunler.get(i).getUrunAdi().equals(urunAdi))
                 return urunler.get(i);
         }
         return null;

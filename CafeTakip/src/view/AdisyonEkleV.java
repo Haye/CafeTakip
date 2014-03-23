@@ -4,6 +4,8 @@
  */
 package view;
 
+import static javax.swing.JComponent.TOOL_TIP_TEXT_KEY;
+
 /**
  *
  * @author yetishbey
@@ -16,7 +18,13 @@ public class AdisyonEkleV extends javax.swing.JPanel {
     public AdisyonEkleV() {
         initComponents();
     }
+    
+    public void init(String masaAdi){
+        lblMasaAdi.setText(masaAdi);
+        tblAdisyonlar.setModel(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().siparisListesi(lblMasaAdi.getText()));
+    }
 
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,10 +39,17 @@ public class AdisyonEkleV extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnOnayla = new javax.swing.JButton();
         btnEkle = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        spnAdet = new javax.swing.JSpinner();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAdisyonlar = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
+        lblMasaAdi = new javax.swing.JLabel();
+        btnSil = new javax.swing.JButton();
+
+        addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                formComponentAdded(evt);
+            }
+        });
 
         listUrunler.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -45,9 +60,14 @@ public class AdisyonEkleV extends javax.swing.JPanel {
 
         jLabel1.setText("Mevcut Adisyonlar");
 
-        btnOnayla.setText("Onayla");
+        btnOnayla.setText("Kapat");
 
         btnEkle.setText("Ekle");
+        btnEkle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEkleActionPerformed(evt);
+            }
+        });
 
         tblAdisyonlar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,8 +101,15 @@ public class AdisyonEkleV extends javax.swing.JPanel {
         tblAdisyonlar.getColumnModel().getColumn(1).setResizable(false);
         tblAdisyonlar.getColumnModel().getColumn(2).setResizable(false);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Müşteri Dışı Satış");
+        lblMasaAdi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMasaAdi.setText("Müşteri Dışı Satış");
+
+        btnSil.setText("Sil");
+        btnSil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -96,46 +123,70 @@ public class AdisyonEkleV extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(spnAdet, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEkle))
                             .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnOnayla)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel5))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnSil)
+                                .addGap(10, 10, 10)
+                                .addComponent(btnOnayla))))
+                    .addComponent(lblMasaAdi))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(lblMasaAdi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEkle)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(spnAdet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnOnayla)
-                .addContainerGap())
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSil)
+                            .addComponent(btnOnayla))))
+                .addGap(36, 36, 36))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
+        listUrunler.setModel(mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunAdiList());
+        listUrunler.setSelectedIndex(0);        
+    }//GEN-LAST:event_formComponentAdded
+
+    private void btnEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEkleActionPerformed
+        if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().adisyonEkle(lblMasaAdi.getText(), (String)listUrunler.getSelectedValue(),(int)spnAdet.getValue()))
+            tblAdisyonlar.setModel(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().siparisListesi(lblMasaAdi.getText()));
+        
+    }//GEN-LAST:event_btnEkleActionPerformed
+
+    private void btnSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSilActionPerformed
+        String urunAdi = (String) tblAdisyonlar.getValueAt(tblAdisyonlar.getSelectedRow(), 0);
+        int adet = Integer.parseInt((String)(tblAdisyonlar.getValueAt(tblAdisyonlar.getSelectedRow(), 1)));
+        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().adisyonSil(lblMasaAdi.getText(), urunAdi, adet);
+        tblAdisyonlar.setModel(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().siparisListesi(lblMasaAdi.getText()));
+    }//GEN-LAST:event_btnSilActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEkle;
     private javax.swing.JButton btnOnayla;
+    private javax.swing.JButton btnSil;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JLabel lblMasaAdi;
     private javax.swing.JList listUrunler;
+    private javax.swing.JSpinner spnAdet;
     private javax.swing.JTable tblAdisyonlar;
     // End of variables declaration//GEN-END:variables
 }

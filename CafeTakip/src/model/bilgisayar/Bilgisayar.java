@@ -38,6 +38,24 @@ public class Bilgisayar {
         return tutar;
     }
     
+    public boolean adisyonEkle(Siparis siparis){
+        siparisler.add(siparis);
+        return true;
+    }
+    
+    public boolean adisyonSil(Siparis siparis){
+        for(int i=0;i<siparisler.size();i++){
+            if(siparisler.get(i).getUrun().getUrunAdi().equals(siparis.getUrun().getUrunAdi())){
+                if(siparisler.get(i).getMiktar()==siparis.getMiktar()){
+                    siparisler.remove(i);
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+    
     public void masaKapat(){
         setAcilisSaati(null);
         setMusteri(null);

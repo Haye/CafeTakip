@@ -99,7 +99,7 @@ public class MasalarV extends javax.swing.JPanel {
     }
     
     
-    private void seciliMasaDegis(JLabel yeniLabel){
+    public void seciliMasaDegis(JLabel yeniLabel){
         //Eski seçili bilgisayarı varsayılan haline getir
         if(seciliLabel!=null){
             seciliLabel.setForeground(Color.black);
@@ -204,6 +204,7 @@ public class MasalarV extends javax.swing.JPanel {
                     masaAktar();
                     break;
                 case "Adisyon Ekle":
+                    mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().adisyonEkleEkraniGoster(seciliLabel.getText());
                     break;
             
             }

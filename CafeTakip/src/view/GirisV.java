@@ -24,7 +24,6 @@ public class GirisV extends javax.swing.JFrame {
         btnVazgec = new javax.swing.JButton();
         txtSifre = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
@@ -45,6 +44,11 @@ public class GirisV extends javax.swing.JFrame {
         btnVazgec.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnVazgecMousePressed(evt);
+            }
+        });
+        btnVazgec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVazgecActionPerformed(evt);
             }
         });
 
@@ -107,6 +111,10 @@ public class GirisV extends javax.swing.JFrame {
         txtKullaniciAdi.setText("");
         txtSifre.setText("");
     }//GEN-LAST:event_btnVazgecMousePressed
+
+    private void btnVazgecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVazgecActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVazgecActionPerformed
 
     /**
      * @param args the command line arguments

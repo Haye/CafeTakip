@@ -17,7 +17,6 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
     private int indrim;
     private String ucretSecenek;
     private String odemeSecenek;
-    private String resimURL;
     private Timestamp bitisTarihi;
 
     public static ArrayList<Musteri> musteriList  = new ArrayList<>();
@@ -31,14 +30,13 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
             String bitisTarihi, int kisiId, String ad, String soyad, 
             String telefon, String kulAdi, String sifre, int tip) {
         
-        super(kisiId, ad, soyad, telefon, kulAdi , sifre, tip);
+        super(kisiId, ad, soyad, telefon, kulAdi , sifre, tip, resimURL);
         this.kredi = kredi;
         this.harcanan = harcanan;
         this.borc = borc;
         this.indrim = indrim;
         this.ucretSecenek = ucretSecenek;
         this.odemeSecenek = odemeSecenek;
-        this.resimURL = resimURL;
         
         this.bitisTarihi = Timestamp.valueOf(bitisTarihi +  " 11:59:59.0" );
         
@@ -47,10 +45,19 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
 
     public void kisiEkle(Musteri m){
         super.kisiEkle(new Kisi(-1, m.getAd(), m.getSoyad(), m.getTelefon(), 
-                m.getKulAdi(), m.getSifre(), m.getTip()));
+                m.getKulAdi(), m.getSifre(), m.getTip(), m.getResimURL()));
         
         musteriList.add(m);
     }
+    
+    public boolean hesapBilgiGuncelle(String kulAdi, Musteri m ){
+        super.hesapBilgiGuncelle(kulAdi, m);
+        
+        
+        
+        return true;
+    }
+    
 
     public int getKredi() {
         return kredi;
@@ -98,14 +105,6 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
 
     public void setOdemeSecenek(String odemeSecenek) {
         this.odemeSecenek = odemeSecenek;
-    }
-
-    public String getResimURL() {
-        return resimURL;
-    }
-
-    public void setResimURL(String resimURL) {
-        this.resimURL = resimURL;
     }
 
     public Timestamp getBitisTarihi() {

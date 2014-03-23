@@ -632,6 +632,9 @@ public class MusteriV extends javax.swing.JPanel {
 
     private void btnEkleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEkleMousePressed
 
+        if(!btnEkle.isEnabled())
+            return;
+        
         HashMap<String, String> values = new HashMap<>();
         
         values.put("ad", txtAd.getText().trim());
@@ -701,6 +704,9 @@ public class MusteriV extends javax.swing.JPanel {
 
     private void btnGuncelleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuncelleMousePressed
         
+        if(!btnGuncelle.isEnabled())
+            return;
+        
         HashMap<String, String> values = new HashMap<>();
         
         values.put("ad", txtAd.getText().trim());
@@ -743,8 +749,7 @@ public class MusteriV extends javax.swing.JPanel {
         
         if(m != null){
             boolean sonuc = mutlakkafe.MutlakKafe.mainCont.getMusteriCont().hesapBilgiGuncelle(m.getKulAdi(),m);
-
-
+            
             if(sonuc)
                 kilitle();
             temizle();
@@ -774,6 +779,7 @@ public class MusteriV extends javax.swing.JPanel {
         btnSurekEkleCikar.setEnabled(true);
         
         btnEkle.setEnabled(true);
+        
         btnGuncelle.setEnabled(true);
         
         temizle();

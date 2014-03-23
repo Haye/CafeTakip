@@ -17,6 +17,7 @@ public  class Kisi implements KisiI{
     private String telefon;
     private String kulAdi;
     private String sifre;
+    private String resimURL;
     private Timestamp kayitTarihi;
     private int tip;
     
@@ -26,7 +27,7 @@ public  class Kisi implements KisiI{
     }
 
     public Kisi(int kisiId, String ad, String soyad, String telefon, 
-            String kulAdi , String sifre, int tip) {
+            String kulAdi , String sifre, int tip, String resimURL) {
         this.kisiId = kisiId;
         this.ad = ad;
         this.soyad = soyad;
@@ -163,6 +164,15 @@ public  class Kisi implements KisiI{
 
     public void setSifre(String sifre) {
         this.sifre = sifre;
+    }
+    
+    
+    public String getResimURL() {
+        return resimURL;
+    }
+
+    public void setResimURL(String resimURL) {
+        this.resimURL = resimURL;
     }
 
     @Override

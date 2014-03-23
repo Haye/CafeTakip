@@ -3,12 +3,15 @@ package controller.urun;
 
 import model.urun.Urun;
 import hibernate.HbmIslemler;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import java.util.List;
+import javax.swing.DefaultListModel;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.kisi.Musteri;
 
 import org.hibernate.HibernateException;
 
@@ -95,6 +98,16 @@ public class UrunC implements UrunI{
 }
     	
     	return dtm;
+    }
+    
+    public DefaultListModel urunAdiList(){
+        DefaultListModel model = new DefaultListModel();
+        ArrayList<Urun> list = Urun.urunler;
+        for(Urun u : list){
+            model.addElement(u.getUrunAdi());
+        }
+        return model;
+        
     }
     
 
