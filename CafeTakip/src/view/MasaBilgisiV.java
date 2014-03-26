@@ -32,7 +32,7 @@ public class MasaBilgisiV extends javax.swing.JPanel {
             }
             prgGecenSure.setValue(b.gecenOranHesapla());
             lblGecenSure.setText(b.gecenDakikaHesapla()+" dk");
-            lblAcilisSaati.setText(b.getAcilisSaati().getHours()+":"+b.getAcilisSaati().getMinutes());
+            lblAcilisSaati.setText(b.acilisZamaniString());
             lblKullanimUcreti.setText(Float.toString(b.kullanimTutariHesapla())+" TL");
             lblAdisyonTutar.setText(Float.toString(b.adisyonTutariHesapla())+" TL");
             lblToplamTutar.setText((b.adisyonTutariHesapla()+b.kullanimTutariHesapla())+" TL");

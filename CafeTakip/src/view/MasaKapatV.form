@@ -182,6 +182,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x130;ndirim uygula"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInd&#x131;r&#x131;mUygulaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

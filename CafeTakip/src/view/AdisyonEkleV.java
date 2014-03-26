@@ -171,10 +171,12 @@ public class AdisyonEkleV extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEkleActionPerformed
 
     private void btnSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSilActionPerformed
-        String urunAdi = (String) tblAdisyonlar.getValueAt(tblAdisyonlar.getSelectedRow(), 0);
-        int adet = Integer.parseInt((String)(tblAdisyonlar.getValueAt(tblAdisyonlar.getSelectedRow(), 1)));
-        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().adisyonSil(lblMasaAdi.getText(), urunAdi, adet);
-        tblAdisyonlar.setModel(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().siparisListesi(lblMasaAdi.getText()));
+        if(tblAdisyonlar.getSelectedRow()>-1){
+            String urunAdi = (String) tblAdisyonlar.getValueAt(tblAdisyonlar.getSelectedRow(), 0);
+            int adet = Integer.parseInt((String)(tblAdisyonlar.getValueAt(tblAdisyonlar.getSelectedRow(), 1)));
+            mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().adisyonSil(lblMasaAdi.getText(), urunAdi, adet);
+            tblAdisyonlar.setModel(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().siparisListesi(lblMasaAdi.getText()));
+        }
     }//GEN-LAST:event_btnSilActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
