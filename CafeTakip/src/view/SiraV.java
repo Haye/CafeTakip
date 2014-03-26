@@ -277,7 +277,7 @@ public class SiraV extends javax.swing.JPanel {
     	mutlakkafe.MutlakKafe.mainCont.getSiraCont().ekle(values);
     	
     	tblSira.setModel(mutlakkafe.MutlakKafe.mainCont.getSiraCont().listModel());
-        
+        txtToplamKisi.setText(tblSira.getModel().getRowCount() + "");
         temizle();
     }//GEN-LAST:event_btnEkleMousePressed
 
@@ -286,7 +286,9 @@ public class SiraV extends javax.swing.JPanel {
     	
     	
     	mutlakkafe.MutlakKafe.mainCont.getSiraCont().sil(siraID);
-
+        
+        tblSira.setModel(mutlakkafe.MutlakKafe.mainCont.getSiraCont().listModel());
+        txtToplamKisi.setText(tblSira.getModel().getRowCount() + "");
     }//GEN-LAST:event_btnSilMousePressed
 
     private void btnVazgecMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVazgecMousePressed

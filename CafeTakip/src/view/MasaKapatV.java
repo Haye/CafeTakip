@@ -88,6 +88,11 @@ public class MasaKapatV extends javax.swing.JFrame {
         });
 
         btnIndırımUygula.setText("İndirim uygula");
+        btnIndırımUygula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIndırımUygulaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlIslemlerLayout = new javax.swing.GroupLayout(pnlIslemler);
         pnlIslemler.setLayout(pnlIslemlerLayout);
@@ -281,6 +286,10 @@ public class MasaKapatV extends javax.swing.JFrame {
     private void btnAdisyonEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdisyonEkleActionPerformed
         mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().adisyonEkleEkraniGoster(lblMasaAdi.getText());
     }//GEN-LAST:event_btnAdisyonEkleActionPerformed
+
+    private void btnIndırımUygulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIndırımUygulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIndırımUygulaActionPerformed
 
     /**
      * @param args the command line arguments

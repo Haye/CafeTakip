@@ -39,18 +39,35 @@ public class BilgisayarC implements BilgisayarI{
         return true;
     }
 
-    public boolean masaAktar(String kaynakAdi, String hedefAdi){
+    
+   
+    
+    public String masaAktar(String kaynakAdi){
         Bilgisayar kaynakPc = masaBul(kaynakAdi);
-        Bilgisayar hedefPc = masaBul(hedefAdi);
         
-        if(hedefPc.getAcilisSaati()==null){
-            kaynakPc.masaAktar(hedefPc);
-            kaynakPc.masaKapat();
-            return true;
+        if(kaynakPc.getAcilisSaati()!=null){
+            Object[] possibleValues = mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().kapaliMasaIsimleriGetir();
+
+            Object AktarilacakMasa = JOptionPane.showInputDialog(null,"Aktarılacak Masayı Seçiniz",
+                    "Masa Seç",JOptionPane.QUESTION_MESSAGE,null,possibleValues, possibleValues[0]);
+
+            if(AktarilacakMasa!=null){
+
+                Bilgisayar hedefPc = masaBul(AktarilacakMasa.toString());    
+
+                if(hedefPc.getAcilisSaati()==null){
+                    kaynakPc.masaAktar(hedefPc);
+                    kaynakPc.masaKapat();
+                    return AktarilacakMasa.toString();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Hedef Masa Dolu", "HATA", JOptionPane.ERROR_MESSAGE);  
+                    return "";
+                }
+            }
         }else{
-            JOptionPane.showMessageDialog(null, "Hedef Masa Dolu", "HATA", JOptionPane.ERROR_MESSAGE);  
-            return false;
+             JOptionPane.showMessageDialog(null, "Masa Zaten Kapalı", "HATA", JOptionPane.ERROR_MESSAGE);  
         }
+        return "";
     }
     
     public DefaultTableModel siparisListesi(String masaAdi){
@@ -127,6 +144,21 @@ public class BilgisayarC implements BilgisayarI{
             s[i] = bilgisayarlar.get(i).getMasaAdi();
         }
         return s;
+    }
+    
+    public String[] kapaliMasaIsimleriGetir(){
+        ArrayList<String> s = new ArrayList<>();
+        for(int i=0;i<bilgisayarlar.size();i++){
+            if(bilgisayarlar.get(i).getAcilisSaati()==null){
+                s.add(bilgisayarlar.get(i).getMasaAdi());
+            }
+        }
+        
+        String [] ss = new String[s.size()];
+        for(int i=0;i<s.size();i++){
+            ss[i] = s.get(i);
+        }
+        return ss;
     }
   
     @Override

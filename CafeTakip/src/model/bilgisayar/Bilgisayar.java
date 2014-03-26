@@ -78,6 +78,17 @@ public class Bilgisayar {
         return true;
     }
     
+    public String acilisZamaniString(){
+        return ikiHaneliYazdir(getAcilisSaati().getHours())+":"+ikiHaneliYazdir(getAcilisSaati().getMinutes());
+    }
+    
+    private String ikiHaneliYazdir(int sayi){
+        if(Math.abs(sayi)<10)
+            return "0"+sayi;
+        return Integer.toString(sayi);
+        
+    }
+    
     public int gecenOranHesapla(){
         if(getSureSiniri()!=0){
             return (int)((gecenDakikaHesapla()*100)/getSureSiniri());
