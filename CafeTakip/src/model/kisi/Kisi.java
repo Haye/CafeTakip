@@ -48,7 +48,8 @@ public  class Kisi implements KisiI{
         int dk = new Date().getMinutes();
         int sn = new Date().getSeconds();
         
-        
+        System.out.println("Saat : " +
+                (yil + "-" + ay + "-" + gun + " " + saat + ":" + dk + ":" + sn + ".0"));
         return Timestamp.valueOf
                 (yil + "-" + ay + "-" + gun + " " + saat + ":" + dk + ":" + sn + ".0");
     }

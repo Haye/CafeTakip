@@ -33,6 +33,11 @@ public class AracCubuguV extends javax.swing.JPanel {
 
         btnKasiyer.setText("Kasiyer");
         btnKasiyer.setPreferredSize(new java.awt.Dimension(100, 100));
+        btnKasiyer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnKasiyerMousePressed(evt);
+            }
+        });
 
         btnKafeterya.setText("Kafeterya");
         btnKafeterya.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -96,6 +101,13 @@ public class AracCubuguV extends javax.swing.JPanel {
         MusteriPencereV musteri = new MusteriPencereV();
         musteri.show();
     }//GEN-LAST:event_btnMusteriMousePressed
+
+    private void btnKasiyerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKasiyerMousePressed
+
+        KasiyerPencereV kasiyer = new KasiyerPencereV();
+        kasiyer.show();
+        
+    }//GEN-LAST:event_btnKasiyerMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBilet;

@@ -594,19 +594,19 @@ public class KasiyerV extends javax.swing.JPanel {
         
     }//GEN-LAST:event_lstKasiyerListesiValueChanged
 
-    private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
-
-        lstKasiyerListesi.setModel(mutlakkafe.MutlakKafe.mainCont
-                .getCalisanCont().kullaniciAdiList());
-        
-        lblToplamKayit.setText("Toplam Kayıt : " + lstKasiyerListesi.getModel().getSize());
-    }//GEN-LAST:event_formComponentAdded
-
     private void btnAraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAraMousePressed
         String kulAdi = txtKullaniciAdiAra.getText().trim();
         lstKasiyerListesi.setSelectedValue(kulAdi, true);
         
     }//GEN-LAST:event_btnAraMousePressed
+
+    private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
+        lstKasiyerListesi.setModel(mutlakkafe.MutlakKafe.mainCont
+                .getCalisanCont().kullaniciAdiList());
+        
+        lblToplamKayit.setText("Toplam Kayıt : " + lstKasiyerListesi.getModel().getSize());
+        
+    }//GEN-LAST:event_formComponentAdded
 
     private void temizle(){
         txtAd.setText("");
