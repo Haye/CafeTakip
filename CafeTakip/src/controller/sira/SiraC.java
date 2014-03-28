@@ -9,11 +9,13 @@ import model.sira.Sira;
 
 public class SiraC implements SiraI{
 
-    public void ekle(Map<String, String> maps){
+    public boolean ekle(Map<String, String> maps){
         try {
             String ad = maps.get("ad");
             String soyad = maps.get("soyad");
-            int telefon = Integer.parseInt(maps.get("telefon"));
+            int telefon = 0;
+            if(!maps.get("telefon").equals(""))
+                telefon = Integer.parseInt(maps.get("telefon"));
             int siraNo = Integer.parseInt(maps.get("siraNo"));
             int masaNo = Integer.parseInt(maps.get("masaNo"));
             String baslangicZamani = maps.get("baslangicSaat") + ":" + maps.get("baslangicDk");
@@ -21,33 +23,39 @@ public class SiraC implements SiraI{
 
             Sira siraBilgisi = new Sira(telefon, ad, soyad, 
                             siraNo, masaNo, baslangicZamani, bitisZamani);
-            ekle(siraBilgisi);
+            if(ekle(siraBilgisi)){
+                return true;
+            }
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Lütfen gerekli alanları düzgün bir şekilde doldurunuz", 
                             "Hata", JOptionPane.ERROR_MESSAGE);
         }
+        return false;
     }
 
 
     @Override
-    public void ekle(Sira sira) {
+    public boolean ekle(Sira sira) {
 
         if(sira.getAd().equals("") || sira.getSoyad().equals("") 
                 || sira.getBaslangicSaat().equals("") || sira.getBitisSaat().equals("")){
     
             JOptionPane.showMessageDialog(null, "Lütfen gerekli alanları doldurunuz", 
                             "Hata", JOptionPane.ERROR_MESSAGE);
-            return ;
+            return false;
         }
         try {
-            sira.ekle(sira);
+            if(sira.ekle(sira)){
             JOptionPane.showMessageDialog(null, "Sıra bilgileri başarı ile eklendi!",
                             "Sıra Eklendi", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
         } catch (HibernateException e) {
             JOptionPane.showMessageDialog(null, "Sıra bilgileri ekleme sırasında bir hata oluştu",
                             "Hata", JOptionPane.ERROR_MESSAGE);
         }
+        return false;
     }
 
     @Override

@@ -21,7 +21,7 @@ public class BilgisayarC implements BilgisayarI{
     public BilgisayarC() {
         super();
         bilgisayarlar = new ArrayList<Bilgisayar>();
-        for( int i  = 0 ; i < 5 ; i ++ )
+        for( int i  = 0 ; i < 15 ; i ++ )
             this.masaEkle("Masa " + (i + 1));
     }
 

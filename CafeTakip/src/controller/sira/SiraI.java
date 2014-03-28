@@ -11,7 +11,7 @@ public interface SiraI {
      * @param sira : Sira bilgilerinin tutulduğu nesne
      * 
      */
-	public void ekle(Sira sira);
+	public boolean ekle(Sira sira);
 	
 	
 	/**

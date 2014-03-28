@@ -45,18 +45,18 @@ public class Sira implements SiraI{
 
 
 	@Override
-	public void ekle(Sira sira) {
-		try {
-                    /*
-			HbmIslemler hbm = new HbmIslemler();
-			hbm.ekle(sira);
-                     */
-                    siradakiler.add(sira);
-                    
-		} catch (HibernateException e) {
-			throw e;
-		}
-		
+	public boolean ekle(Sira sira) {
+            try {
+                /*
+                    HbmIslemler hbm = new HbmIslemler();
+                    hbm.ekle(sira);
+                 */
+                siradakiler.add(sira);
+                return true;
+
+            } catch (HibernateException e) {
+                    throw e;
+            }
 	}
 
 
@@ -77,8 +77,13 @@ public class Sira implements SiraI{
                         * */
                     Sira sira = siraBul(siraID);
                     if(sira!=null){
-                        if(siradakiler.remove(sira))
+                        if(siradakiler.remove(sira)){
+                            for(Sira s :siradakiler){
+                                if(s.siraNo>sira.siraNo)
+                                    s.setSiraNo(s.getSiraNo()-1);
+                            }
                             return true;      
+                        }
                     }
                     return false;
 		} catch (HibernateException e) {

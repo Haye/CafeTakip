@@ -13,6 +13,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,8 +48,9 @@ public class MasalarV extends javax.swing.JPanel {
         FlowLayout layout = new FlowLayout(FlowLayout.LEFT, 20, 20);
         //Layoutu hangi nesne için kullanacağımız. Direk eklemek için getContntPane().setLayout(_);
         this.setLayout(layout);
+        
         // FlowLayoutun sola veya sağa göre konumlandırmasını sağlar
-        //this.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+         this.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
          
         
@@ -57,6 +59,7 @@ public class MasalarV extends javax.swing.JPanel {
             masaEkle(masaAdlari[i]);
         }
 
+        
     }
     
     //Program çalışma esnasında kapalı halde yeni bir masa ekler
@@ -89,13 +92,24 @@ public class MasalarV extends javax.swing.JPanel {
         
             labeller.add(jLabel1);
             //Oluşturulan labeli konteynırına ekler
+            
             this.add(jLabel1);
     }
     
  
     
     private void jLabelMouseClicked(java.awt.event.MouseEvent evt) { 
-        seciliMasaDegis((JLabel) evt.getSource());
+         if (evt.getClickCount() == 2) {
+            if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(seciliLabel.getText()).getAcilisSaati()==null){
+                if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null)){
+                    durumDegis(seciliLabel.getText(),MasalarV.Durum.ACIK);
+                }
+            }else{
+                mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaKapatmaEkraniGoster(seciliLabel.getText());
+            }
+          }
+         
+          seciliMasaDegis((JLabel) evt.getSource());
     }
     
     
