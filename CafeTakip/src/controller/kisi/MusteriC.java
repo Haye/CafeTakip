@@ -2,6 +2,7 @@
 package controller.kisi;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -115,7 +116,9 @@ public class MusteriC implements KisiI, MusteriI{
             String sifre2 = values.get("sifre2");
             int kullanilanSure = Integer.parseInt(values.get("kullanilanSure"));
             int kalanSure = Integer.parseInt(values.get("kalanSure"));
-            String bitisTarihi = values.get("bitisTarih");
+            int yil = Integer.parseInt(values.get("bitisTarihYil")) - 1900;
+            int ay = Integer.parseInt(values.get("bitisTarihAy"));
+            int gun = Integer.parseInt(values.get("bitisTarihGun"));
             double borc = Double.parseDouble(values.get("borc"));
             int indirim = Integer.parseInt(values.get("indirim"));
             String ucretSecenek = values.get("ucretSecenek");
@@ -136,7 +139,7 @@ public class MusteriC implements KisiI, MusteriI{
                         "Kalan süre negatif olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
             else
                 return new Musteri(kalanSure, kullanilanSure, borc, indirim, ucretSecenek,
-                        odemeSecenek, resimURL, bitisTarihi, -1, ad, soyad, telefon, kullaniciAdi, sifre1,MUSTERI);
+                        odemeSecenek, resimURL, new Date(yil, ay, gun), -1, ad, soyad, telefon, kullaniciAdi, sifre1,MUSTERI);
             
             
         } catch (NumberFormatException ex) {

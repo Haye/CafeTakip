@@ -33,15 +33,15 @@ public class Calisan extends Kisi implements KisiI, CalisanI{
         
     }
     
-    @Override
-    public boolean hesapBilgiGuncelle(String kulAdi ,Kisi k){
-        super.hesapBilgiGuncelle(kulAdi, k);
+    public boolean hesapBilgiGuncelle(String kulAdi ,Calisan c){
+        super.hesapBilgiGuncelle(kulAdi, c);
         
-        Calisan c = (Calisan) k ;
-        this.adres = c.getAdres();
-        this.maas = c.maas;
-        
-        return true;
+        for(int i = 0 ; i < calisanList.size() ; i ++)
+            if(calisanList.get(i).getKulAdi().equals(kulAdi)){
+                calisanList.set(i, c);
+                return true;
+            }
+        return false;
     }
     
     @Override
@@ -88,7 +88,7 @@ public class Calisan extends Kisi implements KisiI, CalisanI{
     @Override
     public Calisan calisanAra(String kullaniciAdi) {
         
-        for(int i = 0 ; i < this.calisanListesi().size(); i ++)
+        for(int i = 0 ; i < calisanList.size(); i ++)
             if(calisanList.get(i).getKulAdi().equals(kullaniciAdi))
                 return calisanList.get(i);
         

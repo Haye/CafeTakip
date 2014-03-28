@@ -4,6 +4,7 @@ package model.kisi;
 import controller.kisi.KisiI;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -18,7 +19,7 @@ public  class Kisi implements KisiI{
     private String kulAdi;
     private String sifre;
     private String resimURL;
-    private Timestamp kayitTarihi;
+    private Date kayitTarihi;
     private int tip;
     
     
@@ -32,28 +33,13 @@ public  class Kisi implements KisiI{
         this.ad = ad;
         this.soyad = soyad;
         this.telefon = telefon;
-        this.kayitTarihi = suan();
+        this.kayitTarihi = Calendar.getInstance().getTime();
         this.kulAdi = kulAdi;
         this.sifre = sifre;
         this.tip = tip ;
         
     }
 
-    public Timestamp suan(){
-        int yil = new Date().getYear() + 1900;
-        int ay = new Date().getMonth();
-        int gun = new Date().getDay();
-        
-        int saat = new Date().getHours();
-        int dk = new Date().getMinutes();
-        int sn = new Date().getSeconds();
-        
-        System.out.println("Saat : " +
-                (yil + "-" + ay + "-" + gun + " " + saat + ":" + dk + ":" + sn + ".0"));
-        return Timestamp.valueOf
-                (yil + "-" + ay + "-" + gun + " " + saat + ":" + dk + ":" + sn + ".0");
-    }
-    
     
    @Override
     public boolean girisYap(String kullaniciAdi, String sifre) {
@@ -135,11 +121,11 @@ public  class Kisi implements KisiI{
         this.telefon = telefon;
     }
 
-    public Timestamp getKayitTarihi() {
+    public Date getKayitTarihi() {
         return kayitTarihi;
     }
 
-    public void setKayitTarihi(Timestamp kayitTarihi) {
+    public void setKayitTarihi(Date kayitTarihi) {
         this.kayitTarihi = kayitTarihi;
     }
 

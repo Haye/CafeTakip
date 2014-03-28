@@ -2,8 +2,6 @@
 package view;
 
 import java.util.HashMap;
-import java.util.List;
-import javax.swing.JOptionPane;
 import model.urun.Urun;
 
 /**
@@ -192,6 +190,7 @@ public class UrunV extends javax.swing.JFrame {
 
     private void btnEkleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEkleMousePressed
         
+        
         HashMap<String, String> values = new HashMap<>();
         
         values.put("barkod", txtBarkod.getText().trim());
@@ -199,18 +198,23 @@ public class UrunV extends javax.swing.JFrame {
         values.put("birimFiyat", txtBirimFiyati.getText().trim());
         values.put("urunAdi", txtUrunAdi.getText().trim());
         
-        mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunEkle(
-                mutlakkafe.MutlakKafe.mainCont.getUrunCont().getUrun(values));
+        Urun u = mutlakkafe.MutlakKafe.mainCont.getUrunCont().getUrun(values);
         
-        tblUrunList.setModel(mutlakkafe.MutlakKafe
-                .mainCont.getUrunCont().urunListesiModel());
-        
-        temizle();
-        
+        if(u != null){
+            mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunEkle(u);
+
+            tblUrunList.setModel(mutlakkafe.MutlakKafe
+                    .mainCont.getUrunCont().urunListesiModel());
+
+            temizle();
+        }
     }//GEN-LAST:event_btnEkleMousePressed
 
     private void btnSilMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSilMousePressed
 
+        if(tblUrunList.getSelectedRow() < 0)
+            return ;
+        
         int urunID = Integer.parseInt((String) tblUrunList
                 .getValueAt(tblUrunList.getSelectedRow(), 0));
         
@@ -233,6 +237,9 @@ public class UrunV extends javax.swing.JFrame {
 
     private void btnGuncelleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuncelleMousePressed
 
+        if(tblUrunList.getSelectedRow() < 0)
+            return ;
+        
         HashMap<String, String> values = new HashMap<>();
         
         values.put("barkod", txtBarkod.getText().trim());
@@ -243,13 +250,16 @@ public class UrunV extends javax.swing.JFrame {
         int urunID = Integer.parseInt((String) tblUrunList.getValueAt
                                 (tblUrunList.getSelectedRow(), 0));
         
-        mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunGuncelle(urunID,
-                mutlakkafe.MutlakKafe.mainCont.getUrunCont().getUrun(values));
+        Urun u = mutlakkafe.MutlakKafe.mainCont.getUrunCont().getUrun(values);
         
-        tblUrunList.setModel(mutlakkafe.MutlakKafe
-                .mainCont.getUrunCont().urunListesiModel());
+        if(u != null){
+            mutlakkafe.MutlakKafe.mainCont.getUrunCont().urunGuncelle(urunID,u);
         
-        temizle();
+            tblUrunList.setModel(mutlakkafe.MutlakKafe
+                    .mainCont.getUrunCont().urunListesiModel());
+
+            temizle();
+        }
         
     }//GEN-LAST:event_btnGuncelleMousePressed
 
