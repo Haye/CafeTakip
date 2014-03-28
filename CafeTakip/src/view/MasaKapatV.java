@@ -268,17 +268,8 @@ public class MasaKapatV extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMasaKapatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasaKapatActionPerformed
-        if(JOptionPane.showConfirmDialog(this, "Masa Kapatılacak ?")==0){
-            if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaKapat(lblMasaAdi.getText())){
-                mutlakkafe.MutlakKafe.mainCont.getCalisanCont().ana.masalarV1.
-                        durumDegis(lblMasaAdi.getText(), MasalarV.Durum.KAPALI);
-                
-                mutlakkafe.MutlakKafe.mainCont.getCalisanCont().ana.masaBilgisiV1.init(
-                        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(lblMasaAdi.getText()));
-                
-                this.hide();
-            }
-        }
+        if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaKapat(lblMasaAdi.getText()))
+            this.hide();
     }//GEN-LAST:event_btnMasaKapatActionPerformed
 
     private void btnMasaAktarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasaAktarActionPerformed

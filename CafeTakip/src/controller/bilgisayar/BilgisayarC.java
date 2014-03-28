@@ -1,7 +1,11 @@
 package controller.bilgisayar;
 
+import controller.kisi.CalisanC;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,12 +15,38 @@ import model.urun.Siparis;
 import model.urun.Urun;
 import view.AdisyonEklePencereV;
 import view.MasaKapatV;
+import view.MasalarV;
 
 public class BilgisayarC implements BilgisayarI{
 
     private ArrayList <Bilgisayar> bilgisayarlar;
+    
+    private TimerTask task;
+    
+    public void run(){
+        
+        task = new TimerTask() {
+            Date simdi;
+            @Override
+            public void run() {
+                simdi = new Date();
+                CalisanC.ana.saatTarihV1.saat(simdi.getHours(), simdi.getMinutes(), simdi.getSeconds());
+                masaSureKontrol();
+            }
+        };
+       
+        Timer timer = new Timer();
+        timer.schedule(task, 0, 1000);
+    }
 
-
+    private void masaSureKontrol(){
+        for(Bilgisayar b : bilgisayarlar)
+            if(b.getSureSiniri() != 0)
+                if(b.gecenDakikaHesapla() == b.getSureSiniri() ){
+                    masaKapatmaEkraniGoster(b.getMasaAdi());
+                    kapatmayaZorla(b);
+                }
+    }
 
     public BilgisayarC() {
         super();
@@ -119,10 +149,29 @@ public class BilgisayarC implements BilgisayarI{
     
     @Override
     public boolean masaKapat(String masaAdi){
+        
         Bilgisayar b = masaBul(masaAdi);
-        b.masaKapat();
-        return true;
+        int sonuc = JOptionPane.showConfirmDialog(null, "Masa Kapatılacak ?", 
+                "Masa Kapat", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if(sonuc == JOptionPane.YES_OPTION){
+            CalisanC.ana.masalarV1.durumDegis(b.getMasaAdi(), MasalarV.Durum.KAPALI);
+            CalisanC.ana.masaBilgisiV1.init(b);
+            
+            b.masaKapat();
+            return true;
+        }
+        
+        return false;
     }
+    
+    private void kapatmayaZorla(Bilgisayar b){
+            CalisanC.ana.masalarV1.durumDegis(b.getMasaAdi(), MasalarV.Durum.KAPALI);
+            CalisanC.ana.masaBilgisiV1.init(b);
+            int kapanmaSaati = 2;
+            
+    }
+    
     
     @Override
     public void masaKapatmaEkraniGoster(String masaAdi){
