@@ -68,6 +68,8 @@ public class MasaKapatV extends javax.swing.JFrame {
         lblTarife = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        setTitle("Masa Kapat");
+
         lblMasaAdi.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblMasaAdi.setText("Masa Adı");
 

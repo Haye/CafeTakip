@@ -24,6 +24,7 @@ public class GirisV extends javax.swing.JFrame {
         btnVazgec = new javax.swing.JButton();
         txtSifre = new javax.swing.JPasswordField();
 
+        setTitle("Giriş");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 

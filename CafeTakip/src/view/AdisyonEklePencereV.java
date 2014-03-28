@@ -19,7 +19,7 @@ public class AdisyonEklePencereV extends javax.swing.JFrame {
     
     public AdisyonEklePencereV(String masaAdi) {
         initComponents();
-        this.adisyonEkleV1.init(masaAdi);
+        this.adisyonEkleV2.init(masaAdi);
     }
 
     /**
@@ -31,23 +31,19 @@ public class AdisyonEklePencereV extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        adisyonEkleV1 = new view.AdisyonEkleV();
+        adisyonEkleV2 = new view.AdisyonEkleV();
+
+        setTitle("Adisyon Ekle");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adisyonEkleV1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(adisyonEkleV2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adisyonEkleV1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(adisyonEkleV2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -88,6 +84,6 @@ public class AdisyonEklePencereV extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public view.AdisyonEkleV adisyonEkleV1;
+    private view.AdisyonEkleV adisyonEkleV2;
     // End of variables declaration//GEN-END:variables
 }

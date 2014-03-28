@@ -6,6 +6,9 @@
 
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author yetishbey
@@ -121,6 +124,7 @@ public class AnaEkran extends javax.swing.JFrame {
         jMenuItem20.setText("jMenuItem20");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ana Ekran");
 
         masalarV1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -161,6 +165,11 @@ public class AnaEkran extends javax.swing.JFrame {
         menuDosya.setText("Dosya");
 
         menuItemCıkıs.setText("Çıkış");
+        menuItemCıkıs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCıkısActionPerformed(evt);
+            }
+        });
         menuDosya.add(menuItemCıkıs);
 
         jMenuBar1.add(menuDosya);
@@ -357,6 +366,11 @@ public class AnaEkran extends javax.swing.JFrame {
         menuYardim.add(jMenuItem33);
 
         jMenuItem34.setText("Hakkında");
+        jMenuItem34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem34ActionPerformed(evt);
+            }
+        });
         menuYardim.add(jMenuItem34);
 
         jMenuBar1.add(menuYardim);
@@ -389,6 +403,16 @@ public class AnaEkran extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
+    private void menuItemCıkısActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCıkısActionPerformed
+        System.exit(0);
+        
+    }//GEN-LAST:event_menuItemCıkısActionPerformed
+
+    private void jMenuItem34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem34ActionPerformed
+        Hakkinda hak = new Hakkinda();
+        hak.show();
+    }//GEN-LAST:event_jMenuItem34ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -416,7 +440,6 @@ public class AnaEkran extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AnaEkran().setVisible(true);

@@ -28,6 +28,8 @@ public class MusteriPencereV extends javax.swing.JFrame {
 
         musteriV1 = new view.MusteriV();
 
+        setTitle("Müşteri");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
