@@ -489,6 +489,7 @@ public class KasiyerV extends javax.swing.JPanel {
             mutlakkafe.MutlakKafe.mainCont.getCalisanCont().kisiEkle(c);
             kilitle();
             
+            lstKasiyerListesi.setModel(mutlakkafe.MutlakKafe.mainCont.getCalisanCont().kullaniciAdiList());
             lblToplamKayit.setText("Toplam Kayıt : " + lstKasiyerListesi.getModel().getSize());
         }
 
@@ -567,7 +568,7 @@ public class KasiyerV extends javax.swing.JPanel {
         String kulAdi = (String) lstKasiyerListesi.getSelectedValue();
         
         Calisan c = (Calisan) mutlakkafe.MutlakKafe.
-                mainCont.getMusteriCont().bilgileriGetir(kulAdi);
+                mainCont.getCalisanCont().bilgileriGetir(kulAdi);
         
         if( c == null)
             return ;
@@ -580,8 +581,7 @@ public class KasiyerV extends javax.swing.JPanel {
         txtSifreTekrar.setText(c.getSifre());
         txtMaas.setText(c.getMaas() + "");
         txtAdres.setText(c.getAdres());
-        lblKayitTarihi.setText("Kayıt Tarihi :" + c.getKayitTarihi().getDay() + "."
-                + c.getKayitTarihi().getMonth()+ "."+ c.getKayitTarihi().getYear());
+        lblKayitTarihi.setText("Kayıt Tarihi :" + c.getKayitTarihi().toLocaleString());
         
         switch(c.getTip()){
             case Calisan.ADMIN:

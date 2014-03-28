@@ -43,7 +43,11 @@ public class CalisanC implements KisiI, CalisanI{
     
     @Override
     public Kisi bilgileriGetir(String kullaniciAdi) {
-        return null;
+        
+        if(kullaniciAdi == null)
+            return null;
+        
+        return calisanAra(kullaniciAdi);
     }
 
     @Override
@@ -102,7 +106,7 @@ public class CalisanC implements KisiI, CalisanI{
             Calisan c = (Calisan) kisi;
             if (c.hesapBilgiGuncelle(kullaniciAdi, c)) {
                 JOptionPane.showMessageDialog(null, "Çalışan bilgileri güncellendi!", 
-                        ".Çalışan Sil", JOptionPane.INFORMATION_MESSAGE);
+                        "Çalışan Guncelle", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             
@@ -122,7 +126,7 @@ public class CalisanC implements KisiI, CalisanI{
         try{
             Calisan c = (Calisan) k;
             
-            c.kisiEkle(k);
+            c.kisiEkle(c);
             
             JOptionPane.showMessageDialog(null, "Kasiyer bilgileri eklendi", 
                     "Kasiyer Ekle", JOptionPane.INFORMATION_MESSAGE);
@@ -175,7 +179,7 @@ public class CalisanC implements KisiI, CalisanI{
         
         DefaultListModel model = new DefaultListModel();
         
-        ArrayList<Calisan> list = calisanListesi();
+        ArrayList<Calisan> list = Calisan.calisanList;
         
         for(Calisan c : list){
             model.addElement(c.getKulAdi());
@@ -193,7 +197,20 @@ public class CalisanC implements KisiI, CalisanI{
 
     @Override
     public Calisan calisanAra(String kullaniciAdi) {
-        return null;
+        if(kullaniciAdi.equals("")){
+            JOptionPane.showMessageDialog(null, "Kullanici adı boş olamaz!", 
+                    "Hata", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+        
+        Calisan c = new Calisan();
+        c = c.calisanAra(kullaniciAdi);
+        
+        if(c == null){
+            JOptionPane.showMessageDialog(null, "Kayıtlı çalışan bulunamadı!", "Hata", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+        return c;
     }
     
     

@@ -648,11 +648,9 @@ public class MusteriV extends javax.swing.JPanel {
         values.put("kalanSure", txtKalanSure.getText().trim());
         values.put("borc", txtBorc.getText().trim());
         values.put("indirim", txtIndirim.getText().trim());
-        
-        String bitisTarih = comboYil.getSelectedItem() + "-"
-                + comboAy.getSelectedIndex() + 1 + "-" 
-                + comboGun.getSelectedItem().toString();
-        values.put("bitisTarih", bitisTarih);
+        values.put("bitisTarihYil", comboYil.getSelectedItem().toString());
+        values.put("bitisTarihAy", (comboAy.getSelectedIndex()) +"");
+        values.put("bitisTarihGun", (comboGun.getSelectedItem().toString()));
         
         String ucretSecenek;
         
@@ -720,11 +718,9 @@ public class MusteriV extends javax.swing.JPanel {
         values.put("kalanSure", txtKalanSure.getText().trim());
         values.put("borc", txtBorc.getText().trim());
         values.put("indirim", txtIndirim.getText().trim());
-        
-        String bitisTarih = comboYil.getSelectedItem() + "-"
-                + comboAy.getSelectedIndex() + 1 + "-" 
-                + comboGun.getSelectedItem().toString();
-        values.put("bitisTarih", bitisTarih);
+        values.put("bitisTarihYil", comboYil.getSelectedItem().toString());
+        values.put("bitisTarihAy", (comboAy.getSelectedIndex()) +"");
+        values.put("bitisTarihGun", (comboGun.getSelectedItem().toString()));
         
         String ucretSecenek;
         
@@ -818,10 +814,10 @@ public class MusteriV extends javax.swing.JPanel {
         txtIndirim.setText(m.getIndrim() + "");
         txtBorc.setText(m.getBorc() + "");
         comboGun.setSelectedIndex(m.getBitisTarihi().getDay());
-        comboAy.setSelectedIndex(m.getBitisTarihi().getMonth() + 1 );
+        comboAy.setSelectedIndex(m.getBitisTarihi().getMonth());
+        
         comboYil.setSelectedIndex(m.getBitisTarihi().getYear() - 114);
-        lblKayitTarihi.setText("Kayıt Tarihi :" + m.getKayitTarihi().getDay() + "."
-                + m.getKayitTarihi().getMonth()+ "."+ m.getKayitTarihi().getYear());
+        lblKayitTarihi.setText("Kayıt Tarihi :" + m.getKayitTarihi().toLocaleString());
         
         switch(m.getOdemeSecenek()){
             case MusteriC.ODEME_ONCEDEN:

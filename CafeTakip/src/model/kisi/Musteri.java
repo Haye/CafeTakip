@@ -2,8 +2,8 @@ package model.kisi;
 
 import controller.kisi.KisiI;
 import controller.kisi.MusteriI;
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -17,7 +17,7 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
     private int indrim;
     private String ucretSecenek;
     private String odemeSecenek;
-    private Timestamp bitisTarihi;
+    private Date bitisTarihi;
 
     public static ArrayList<Musteri> musteriList  = new ArrayList<>();
     
@@ -27,7 +27,7 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
     
     public Musteri(int kredi, int harcanan, double borc, 
             int indrim, String ucretSecenek, String odemeSecenek, String resimURL, 
-            String bitisTarihi, int kisiId, String ad, String soyad, 
+            Date bitisTarihi, int kisiId, String ad, String soyad, 
             String telefon, String kulAdi, String sifre, int tip) {
         
         super(kisiId, ad, soyad, telefon, kulAdi , sifre, tip, resimURL);
@@ -38,7 +38,9 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
         this.ucretSecenek = ucretSecenek;
         this.odemeSecenek = odemeSecenek;
         
-        this.bitisTarihi = Timestamp.valueOf(bitisTarihi +  " 11:59:59.0" );
+        System.out.println("BitisTarih " + bitisTarihi.toLocaleString());
+        
+        this.bitisTarihi = bitisTarihi;
         
         
     }
@@ -53,9 +55,12 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
     public boolean hesapBilgiGuncelle(String kulAdi, Musteri m ){
         super.hesapBilgiGuncelle(kulAdi, m);
         
-        
-        
-        return true;
+        for(int i = 0 ; i < musteriList.size() ; i ++)
+            if(musteriList.get(i).getKulAdi().equals(kulAdi)){
+                musteriList.set(i, m);
+                return true;
+            }
+        return false;
     }
     
 
@@ -107,12 +112,12 @@ public class Musteri extends Kisi implements KisiI, MusteriI{
         this.odemeSecenek = odemeSecenek;
     }
 
-    public Timestamp getBitisTarihi() {
+    public Date getBitisTarihi() {
         return bitisTarihi;
     }
 
-    public void setBitisTarihi(String bitisTarihi) {
-        this.bitisTarihi = Timestamp.valueOf(bitisTarihi + " 11:59:59.0");
+    public void setBitisTarihi(int yil, int ay, int gun) {
+        this.bitisTarihi = new Date(yil, ay, gun);
     }
 
     @Override
