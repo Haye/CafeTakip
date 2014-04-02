@@ -23,10 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import model.bilgisayar.Bilgisayar;
-import static view.MasalarV.Durum.ACIK;
-import static view.MasalarV.Durum.KAPALI;
-import static view.MasalarV.Durum.SURELI;
-
+import static model.bilgisayar.Bilgisayar.Durum.BEKLEMEDE;
 /**
  *
  * @author yetishbey
@@ -88,7 +85,6 @@ public class MasalarV extends javax.swing.JPanel {
             
             //Label popup ekleme 
             jLabel1.setComponentPopupMenu(getPopUpMenu(jLabel1.getText()));
-                 
         
             labeller.add(jLabel1);
             //Oluşturulan labeli konteynırına ekler
@@ -102,7 +98,7 @@ public class MasalarV extends javax.swing.JPanel {
          if (evt.getClickCount() == 2) {
             if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(seciliLabel.getText()).getAcilisSaati()==null){
                 if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null)){
-                    durumDegis(seciliLabel.getText(),MasalarV.Durum.ACIK);
+                    durumDegis(seciliLabel.getText(),Bilgisayar.Durum.SINIRSIZ_ACIK);
                 }
             }else{
                 mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaKapatmaEkraniGoster(seciliLabel.getText());
@@ -154,21 +150,34 @@ public class MasalarV extends javax.swing.JPanel {
     
     
     //Duruma göre masaya ait iconu günceller
-    public enum Durum {ACIK, KAPALI, SURELI};
-    public void durumDegis(String masaAdi, MasalarV.Durum durum){
+    
+    public void durumDegis(String masaAdi, Bilgisayar.Durum durum){
+
         JLabel masaLabel = masaBul(masaAdi);
         if(masaLabel != null) {
             switch(durum) {
-                case ACIK:
+                case SINIRSIZ_ACIK:
                     masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/acik.png"))); 
                 break;
 
-                case KAPALI:
-                     masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/kapali.png")));      
+                case KILITLI:
+                     masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/kilitli.png")));      
                 break;
 
-                case SURELI:
+                case SURELI_ACIK:
                      masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/sureli.png")));
+                break;
+                    
+                case KAPALI:
+                     masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/kapali.png")));
+                break;
+                    
+                case BEKLEMEDE:
+                    masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/beklemede.png")));    
+                break;
+                    
+                case SURESI_BITMIS_BEKLEMEDE:
+                    masaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/suresi_bitmis_beklemede.png")));    
                 break;
             }
         }
@@ -180,7 +189,7 @@ public class MasalarV extends javax.swing.JPanel {
         if(!aktarilanMasa.equals("")){
             JLabel l = masaBul(aktarilanMasa);
             l.setIcon(seciliLabel.getIcon());
-            durumDegis(seciliLabel.getText(), MasalarV.Durum.KAPALI);
+            durumDegis(seciliLabel.getText(), Bilgisayar.Durum.KILITLI);
             seciliMasaDegis(masaBul(aktarilanMasa));
         }
     }
@@ -196,14 +205,14 @@ public class MasalarV extends javax.swing.JPanel {
             switch(event.getActionCommand()){
                 case "Masa Aç":
                     if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null)){
-                        durumDegis(seciliLabel.getText(),MasalarV.Durum.ACIK);
+                        durumDegis(seciliLabel.getText(),Bilgisayar.Durum.SINIRSIZ_ACIK);
                     }
                     break;
                 
                 // !!!Önce süre siniri gir isteği sonra masa açik hatasi veriyor.. 
                 case "Süreli Aç":
                     if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),true,null)){
-                        durumDegis(seciliLabel.getText(),MasalarV.Durum.SURELI);
+                        durumDegis(seciliLabel.getText(),Bilgisayar.Durum.SURELI_ACIK);
                     }
                     break;
                     

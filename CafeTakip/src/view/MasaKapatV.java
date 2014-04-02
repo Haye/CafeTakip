@@ -26,7 +26,7 @@ public class MasaKapatV extends javax.swing.JFrame {
         initComponents();
         lblMasaAdi.setText(b.getMasaAdi());
         lblAcilisZamani.setText(b.getAcilisSaati().toLocaleString());
-        lblGecenSure.setText(Long.toString(b.gecenDakikaHesapla())+" dk");
+        lblGecenSure.setText(b.gecenDakikaHesapla()+" dk");
         if(b.getMusteri()!=null)
             lblMusteri.setText(b.getMusteri().getAd());
         lblTarife.setText("Normal");
@@ -34,6 +34,11 @@ public class MasaKapatV extends javax.swing.JFrame {
         lblAdisyonTutari.setText(Float.toString(b.adisyonTutariHesapla())+" TL");
         lblToplamTutar.setText(Float.toString(b.kullanimTutariHesapla() + b.adisyonTutariHesapla())+" TL");
        
+        if(b.getDurum() == Bilgisayar.Durum.SURELI_ACIK ||b.getDurum() == Bilgisayar.Durum.SURESI_BITMIS_BEKLEMEDE){
+            pnlSureUzat.setVisible(true);
+        }else{
+            pnlSureUzat.setVisible(false);
+        }
     }
 
     /**
@@ -67,6 +72,12 @@ public class MasaKapatV extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblTarife = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        pnlSureUzat = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setTitle("Masa Kapat");
 
@@ -185,44 +196,117 @@ public class MasaKapatV extends javax.swing.JFrame {
 
         jLabel1.setText("Açılış Zamanı :");
 
+        pnlSureUzat.setBorder(javax.swing.BorderFactory.createTitledBorder("Süre Uzat"));
+        pnlSureUzat.setToolTipText("");
+
+        jButton1.setText("15 dk");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("30 dk");
+        jButton2.setToolTipText("");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("45 dk");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("60 dk");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("__ dk");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlSureUzatLayout = new javax.swing.GroupLayout(pnlSureUzat);
+        pnlSureUzat.setLayout(pnlSureUzatLayout);
+        pnlSureUzatLayout.setHorizontalGroup(
+            pnlSureUzatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSureUzatLayout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addGap(0, 0, 0))
+        );
+        pnlSureUzatLayout.setVerticalGroup(
+            pnlSureUzatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSureUzatLayout.createSequentialGroup()
+                .addGroup(pnlSureUzatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(pnlMasaKapat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblMasaAdi))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblAdisyonTutari)
-                                .addComponent(lblMusteri)
-                                .addComponent(lblToplamTutar)
-                                .addComponent(lblGecenSure)
-                                .addComponent(lblTarife)
-                                .addComponent(lblAcilisZamani)
-                                .addComponent(lblKullanimTutari))
-                            .addGap(140, 140, 140))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlSureUzat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 11, Short.MAX_VALUE)
                                 .addComponent(pnlIslemler, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(pnlMasaKapat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(35, 35, 35))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(14, 14, 14))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAdisyonTutari)
+                                    .addComponent(lblMusteri)
+                                    .addComponent(lblToplamTutar)
+                                    .addComponent(lblGecenSure)
+                                    .addComponent(lblTarife)
+                                    .addComponent(lblAcilisZamani)
+                                    .addComponent(lblKullanimTutari)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(lblMasaAdi)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,9 +343,11 @@ public class MasaKapatV extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(30, 30, 30)
                 .addComponent(pnlIslemler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlMasaKapat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlSureUzat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -283,6 +369,26 @@ public class MasaKapatV extends javax.swing.JFrame {
     private void btnIndırımUygulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIndırımUygulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIndırımUygulaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().sureUzat(lblMasaAdi.getText(), 15);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().sureUzat(lblMasaAdi.getText(), 30);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().sureUzat(lblMasaAdi.getText(), 45);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().sureUzat(lblMasaAdi.getText(), 60);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().sureUzat(lblMasaAdi.getText(), 0);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,6 +431,11 @@ public class MasaKapatV extends javax.swing.JFrame {
     private javax.swing.JButton btnKismenOdendi;
     private javax.swing.JButton btnMasaAktar;
     private javax.swing.JButton btnMasaKapat;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -342,5 +453,6 @@ public class MasaKapatV extends javax.swing.JFrame {
     private javax.swing.JLabel lblToplamTutar;
     private javax.swing.JPanel pnlIslemler;
     private javax.swing.JPanel pnlMasaKapat;
+    private javax.swing.JPanel pnlSureUzat;
     // End of variables declaration//GEN-END:variables
 }

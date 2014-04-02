@@ -15,7 +15,6 @@ import model.urun.Siparis;
 import model.urun.Urun;
 import view.AdisyonEklePencereV;
 import view.MasaKapatV;
-import view.MasalarV;
 
 public class BilgisayarC implements BilgisayarI{
 
@@ -31,7 +30,9 @@ public class BilgisayarC implements BilgisayarI{
             public void run() {
                 simdi = new Date();
                 CalisanC.ana.saatTarihV1.saat(simdi.getHours(), simdi.getMinutes(), simdi.getSeconds());
-                masaSureKontrol();
+                
+                if(simdi.getSeconds() == 0)
+                    masaSureKontrol();
             }
         };
        
@@ -40,12 +41,16 @@ public class BilgisayarC implements BilgisayarI{
     }
 
     private void masaSureKontrol(){
-        for(Bilgisayar b : bilgisayarlar)
-            if(b.getSureSiniri() != 0)
-                if(b.gecenDakikaHesapla() == b.getSureSiniri() ){
-                    masaKapatmaEkraniGoster(b.getMasaAdi());
-                    kapatmayaZorla(b);
+        System.out.println("111111");
+        for(Bilgisayar b : bilgisayarlar){
+            if(b.getDurum() == Bilgisayar.Durum.SURELI_ACIK || b.getDurum() == Bilgisayar.Durum.SINIRSIZ_ACIK){
+                if(b.gecenSureyiArtir()){  
+                    suresiBitmisDurumaAl(b);
                 }
+            }else if(b.getDurum() == Bilgisayar.Durum.BEKLEMEDE || b.getDurum() == Bilgisayar.Durum.SURESI_BITMIS_BEKLEMEDE){
+                b.gecenBeklemeSuresiniArtir();
+            }
+        }
     }
 
     public BilgisayarC() {
@@ -155,7 +160,7 @@ public class BilgisayarC implements BilgisayarI{
                 "Masa Kapat", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         
         if(sonuc == JOptionPane.YES_OPTION){
-            CalisanC.ana.masalarV1.durumDegis(b.getMasaAdi(), MasalarV.Durum.KAPALI);
+            CalisanC.ana.masalarV1.durumDegis(b.getMasaAdi(), Bilgisayar.Durum.KILITLI);
             CalisanC.ana.masaBilgisiV1.init(b);
             
             b.masaKapat();
@@ -165,12 +170,12 @@ public class BilgisayarC implements BilgisayarI{
         return false;
     }
     
-    private void kapatmayaZorla(Bilgisayar b){
-            CalisanC.ana.masalarV1.durumDegis(b.getMasaAdi(), MasalarV.Durum.KAPALI);
-            CalisanC.ana.masaBilgisiV1.init(b);
-            int kapanmaSaati = 2;
-            
+    private void suresiBitmisDurumaAl(Bilgisayar b){
+            b.setDurum(Bilgisayar.Durum.SURESI_BITMIS_BEKLEMEDE);
+            CalisanC.ana.masalarV1.durumDegis(b.getMasaAdi(), Bilgisayar.Durum.SURESI_BITMIS_BEKLEMEDE);
     }
+    
+    
     
     
     @Override
@@ -182,6 +187,40 @@ public class BilgisayarC implements BilgisayarI{
                 masaKapamaEkrani.show();
             }else{
                JOptionPane.showMessageDialog(null, "Masa Zaten Kapalı", "HATA", JOptionPane.ERROR_MESSAGE);                 
+            }
+        }
+    }
+    
+    
+    public void sureUzat(String masaAdi, int sure){
+        Bilgisayar b = masaBul(masaAdi);
+
+    	if(b != null){
+            if(sure==0){
+                sure = Integer.parseInt(JOptionPane.showInputDialog(null,
+                        "Süre Sınırlamasını giriniz", "Süreli Masa Aç",
+                        JOptionPane.QUESTION_MESSAGE));
+            }
+            
+            int sonuc = JOptionPane.NO_OPTION;
+            if(b.getDurum() == Bilgisayar.Durum.SURESI_BITMIS_BEKLEMEDE){
+                sonuc = JOptionPane.showConfirmDialog(null, b.getBeklemeSuresi()+" dk Bekleme Süresi Eklensin mi ?", 
+                    "Bekleme Süresi Ekle?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            }
+            
+            try{
+                
+                if(b.sureUzat(sure,sonuc == JOptionPane.YES_OPTION)){
+                    if(sonuc == JOptionPane.YES_OPTION){
+                        JOptionPane.showMessageDialog(null, sure + "dk eklendi", "HATA", JOptionPane.ERROR_MESSAGE); 
+                        CalisanC.ana.masalarV1.durumDegis(masaAdi, Bilgisayar.Durum.SURELI_ACIK);
+                    }else
+                        JOptionPane.showMessageDialog(null, sure + " dk eklendi", "Süre Ekleme Başarılı", JOptionPane.ERROR_MESSAGE); 
+
+                }
+               
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Hatalı Süre değeri", "HATA", JOptionPane.ERROR_MESSAGE);   
             }
         }
     }
