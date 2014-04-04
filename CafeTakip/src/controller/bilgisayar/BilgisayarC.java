@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -51,18 +52,26 @@ public class BilgisayarC implements BilgisayarI{
                 b.gecenBeklemeSuresiniArtir();
             }
         }
+        
+        if(CalisanC.ana.masalarV1.seciliLabel!=null){
+            //dakika geçince seçili masa bilgilerin güncellenmesi için
+            CalisanC.ana.masalarV1.seciliMasaDegis(CalisanC.ana.masalarV1.seciliLabel);
+        }
     }
 
     public BilgisayarC() {
         super();
         bilgisayarlar = new ArrayList<Bilgisayar>();
-        for( int i  = 0 ; i < 15 ; i ++ )
-            this.masaEkle("Masa " + (i + 1));
+        masaEkle("MustafaS", Bilgisayar.Durum.KAPALI);
+        masaEkle("Masa 2", Bilgisayar.Durum.KILITLI);
+        masaEkle("Masa 3",Bilgisayar.Durum.KAPALI);
     }
 
-    @Override 
-    public boolean masaEkle(String masaAdi){
-        bilgisayarlar.add(new Bilgisayar(masaAdi));
+    public boolean masaEkle(String masaAdi, Bilgisayar.Durum durum){
+        Bilgisayar b = new Bilgisayar(masaAdi);
+        b.setDurum(durum);
+        bilgisayarlar.add(b);
+        
         //başarılı ise (bilgisayar sayısı 1 arttıysa kontrolü)
         return true;
     }
@@ -74,7 +83,11 @@ public class BilgisayarC implements BilgisayarI{
         return true;
     }
 
-    
+    public void durumDegis(String masaAdi, Bilgisayar.Durum durum){
+        Bilgisayar b = masaBul(masaAdi);
+        b.setDurum(durum);
+        CalisanC.ana.masalarV1.durumDegis(masaAdi, durum);
+    }
    
     
     public String masaAktar(String kaynakAdi){
@@ -128,29 +141,43 @@ public class BilgisayarC implements BilgisayarI{
     	return dtm;
     }
 	
+    
+    public void masaAc(String masaAdi, int sureSiniri, Musteri musteri){
+        Bilgisayar b = masaBul(masaAdi);
+        if(b!=null){
+            if(sureSiniri==-1){
+                b.masaAc();
+                durumDegis(masaAdi,Bilgisayar.Durum.SINIRSIZ_ACIK);
+            }else{
+                b.masaAc(sureSiniri, musteri);
+                durumDegis(masaAdi,Bilgisayar.Durum.SURELI_ACIK);
+            }
+        }
+        
+    }
+    
+    
     @Override
     public boolean masaAc(String masaAdi, boolean sinirliMi, Musteri musteri){
     	Bilgisayar b = masaBul(masaAdi);
     	if(b != null){
             if(b.getAcilisSaati() != null){
                 JOptionPane.showMessageDialog(null, "Masa Açık", "HATA", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }else if(!sinirliMi && b.masaAc()){
-                return true;
+            }else if(!sinirliMi){
+                masaAc(masaAdi, -1, musteri);
             }else{
                 try{
                     int sureSiniri = Integer.parseInt(JOptionPane.showInputDialog(null,
                         "Süre Sınırlamasını giriniz", "Süreli Masa Aç",
                         JOptionPane.QUESTION_MESSAGE));
-                    b.masaAc(sureSiniri, musteri);
-                    return true;
+                    masaAc(masaAdi, sureSiniri, musteri);
                 }catch (Exception e){}
             }
     	}
-        JOptionPane.showMessageDialog(null, "Masa Açılamadı", "HATA", JOptionPane.ERROR_MESSAGE);                
-
-    	return false;
+        
+        return true;
     }
+    
     
     @Override
     public boolean masaKapat(String masaAdi){
@@ -160,7 +187,7 @@ public class BilgisayarC implements BilgisayarI{
                 "Masa Kapat", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         
         if(sonuc == JOptionPane.YES_OPTION){
-            CalisanC.ana.masalarV1.durumDegis(b.getMasaAdi(), Bilgisayar.Durum.KILITLI);
+            durumDegis(b.getMasaAdi(), Bilgisayar.Durum.KILITLI);
             CalisanC.ana.masaBilgisiV1.init(b);
             
             b.masaKapat();
@@ -172,7 +199,7 @@ public class BilgisayarC implements BilgisayarI{
     
     private void suresiBitmisDurumaAl(Bilgisayar b){
             b.setDurum(Bilgisayar.Durum.SURESI_BITMIS_BEKLEMEDE);
-            CalisanC.ana.masalarV1.durumDegis(b.getMasaAdi(), Bilgisayar.Durum.SURESI_BITMIS_BEKLEMEDE);
+            durumDegis(b.getMasaAdi(), Bilgisayar.Durum.SURESI_BITMIS_BEKLEMEDE);
     }
     
     
@@ -197,9 +224,17 @@ public class BilgisayarC implements BilgisayarI{
 
     	if(b != null){
             if(sure==0){
-                sure = Integer.parseInt(JOptionPane.showInputDialog(null,
-                        "Süre Sınırlamasını giriniz", "Süreli Masa Aç",
-                        JOptionPane.QUESTION_MESSAGE));
+                try{
+                    sure = Integer.parseInt(JOptionPane.showInputDialog(null,
+                            "Süre Sınırlamasını giriniz", "Süreli Masa Aç",
+                            JOptionPane.QUESTION_MESSAGE));
+                    if(sure < 0 ){
+                        JOptionPane.showMessageDialog(null,"Süre negatif olamaz", "HATA", JOptionPane.ERROR_MESSAGE); 
+                        return;
+                    }
+                }catch(Exception e) {
+                    return;
+                }
             }
             
             int sonuc = JOptionPane.NO_OPTION;
@@ -213,10 +248,11 @@ public class BilgisayarC implements BilgisayarI{
                 if(b.sureUzat(sure,sonuc == JOptionPane.YES_OPTION)){
                     if(sonuc == JOptionPane.YES_OPTION){
                         JOptionPane.showMessageDialog(null, sure + "dk eklendi", "HATA", JOptionPane.ERROR_MESSAGE); 
-                        CalisanC.ana.masalarV1.durumDegis(masaAdi, Bilgisayar.Durum.SURELI_ACIK);
+                        durumDegis(masaAdi, Bilgisayar.Durum.SURELI_ACIK);
                     }else
                         JOptionPane.showMessageDialog(null, sure + " dk eklendi", "Süre Ekleme Başarılı", JOptionPane.ERROR_MESSAGE); 
 
+                    CalisanC.ana.masalarV1.seciliMasaDegis(CalisanC.ana.masalarV1.seciliLabel);
                 }
                
             }catch(Exception e){

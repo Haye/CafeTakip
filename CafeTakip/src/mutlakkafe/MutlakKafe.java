@@ -8,7 +8,7 @@ public class MutlakKafe {
 
 	public static MainC mainCont;
 		 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         mainCont = new MainC();
 
         GirisV g = new GirisV();

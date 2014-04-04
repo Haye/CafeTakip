@@ -1,5 +1,6 @@
 package model.bilgisayar;
 
+import controller.haberlesme.ClientSoketDinleyiciC;
 import model.kisi.Musteri;
 import model.urun.*;
 
@@ -21,6 +22,7 @@ public class Bilgisayar {
     private int sureSiniri, gecenSure, beklemeSuresi;
     private Durum durum;
     private ArrayList <Siparis> siparisler;
+    public ClientSoketDinleyiciC client;
  
    
     public Bilgisayar(String masaAdi) {

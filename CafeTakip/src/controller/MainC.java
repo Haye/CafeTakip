@@ -1,6 +1,7 @@
 package controller;
 
 import controller.bilgisayar.BilgisayarC;
+import controller.haberlesme.HaberlesmeC;
 import controller.kisi.CalisanC;
 import controller.kisi.MusteriC;
 import controller.sira.SiraC;
@@ -13,14 +14,18 @@ public class MainC {
     private UrunC urunCont;
     private SiraC siraCont;
     private BilgisayarC bilgisayarC;
+    private HaberlesmeC SoketKontrol;
 
 
-    public MainC(){        
+    public MainC() throws Throwable{        
         calisanCont = new CalisanC();
         urunCont = new UrunC();
         siraCont = new SiraC();
         bilgisayarC = new BilgisayarC();
         musteriCont = new MusteriC();
+        
+        SoketKontrol  = new HaberlesmeC();
+        SoketKontrol.start();
     }
     
     

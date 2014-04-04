@@ -5,12 +5,7 @@ import model.kisi.Musteri;
 
 public interface BilgisayarI {
 	
-	/**
-     * Gelen masa adına ait masa oluşturur.
-     * @param masaAdi: Yeni oluşturulacak masa adı
-     * @return Masa başarılı bir şekilde oluşturulursa true
-     */
-    boolean masaEkle(String masaAdi); 
+
     
     /**
      * Gelen isme ait masayı bulur ve siler

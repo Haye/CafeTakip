@@ -65,7 +65,6 @@ public class MasalarV extends javax.swing.JPanel {
             JLabel jLabel1 = new JLabel();
         
             jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resimler/kapali.png"))); 
             jLabel1.setText(masaAdi);
             jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
             jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -88,6 +87,7 @@ public class MasalarV extends javax.swing.JPanel {
         
             labeller.add(jLabel1);
             //Oluşturulan labeli konteynırına ekler
+            durumDegis(masaAdi, mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(masaAdi).getDurum());
             
             this.add(jLabel1);
     }
@@ -95,17 +95,14 @@ public class MasalarV extends javax.swing.JPanel {
  
     
     private void jLabelMouseClicked(java.awt.event.MouseEvent evt) { 
-         if (evt.getClickCount() == 2) {
-            if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(seciliLabel.getText()).getAcilisSaati()==null){
-                if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null)){
-                    durumDegis(seciliLabel.getText(),Bilgisayar.Durum.SINIRSIZ_ACIK);
-                }
-            }else{
-                mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaKapatmaEkraniGoster(seciliLabel.getText());
-            }
-          }
-         
-          seciliMasaDegis((JLabel) evt.getSource());
+        if (evt.getClickCount() == 2) {
+           if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(seciliLabel.getText()).getAcilisSaati()==null){
+               mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null);
+           }else{
+               mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaKapatmaEkraniGoster(seciliLabel.getText());
+           }
+         }
+        seciliMasaDegis((JLabel) evt.getSource());
     }
     
     
@@ -204,15 +201,13 @@ public class MasalarV extends javax.swing.JPanel {
             System.out.println(seciliLabel.getText()+ "["+ event.getActionCommand() + "] tıklandı");
             switch(event.getActionCommand()){
                 case "Masa Aç":
-                    if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null)){
-                        durumDegis(seciliLabel.getText(),Bilgisayar.Durum.SINIRSIZ_ACIK);
-                    }
+                    mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null);
                     break;
                 
                 // !!!Önce süre siniri gir isteği sonra masa açik hatasi veriyor.. 
                 case "Süreli Aç":
                     if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),true,null)){
-                        durumDegis(seciliLabel.getText(),Bilgisayar.Durum.SURELI_ACIK);
+                        //durumDegis(seciliLabel.getText(),Bilgisayar.Durum.SURELI_ACIK);
                     }
                     break;
                     
