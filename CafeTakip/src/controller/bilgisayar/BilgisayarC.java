@@ -1,6 +1,8 @@
 package controller.bilgisayar;
 
+import controller.haberlesme.ClientSoketDinleyiciC;
 import controller.kisi.CalisanC;
+import static controller.kisi.CalisanC.ana;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +42,10 @@ public class BilgisayarC implements BilgisayarI{
         Timer timer = new Timer();
         timer.schedule(task, 0, 1000);
     }
+    
+    public void masalarViewGuncelle(){
+        CalisanC.ana.masalarV1.init(masaIsimleriGetir());    
+    }
 
     private void masaSureKontrol(){
         System.out.println("111111");
@@ -62,24 +68,41 @@ public class BilgisayarC implements BilgisayarI{
     public BilgisayarC() {
         super();
         bilgisayarlar = new ArrayList<Bilgisayar>();
-        masaEkle("MustafaS", Bilgisayar.Durum.KAPALI);
-        masaEkle("Masa 2", Bilgisayar.Durum.KILITLI);
-        masaEkle("Masa 3",Bilgisayar.Durum.KAPALI);
     }
 
-    public boolean masaEkle(String masaAdi, Bilgisayar.Durum durum){
-        Bilgisayar b = new Bilgisayar(masaAdi);
-        b.setDurum(durum);
-        bilgisayarlar.add(b);
+    public boolean masaEkle(String masaAdi, Bilgisayar.Durum durum, ClientSoketDinleyiciC client){
+        Bilgisayar b= masaBul(masaAdi);
+        if(b==null){
+            b = new Bilgisayar(masaAdi);
+            bilgisayarlar.add(b);
+            CalisanC.ana.masalarV1.masaEkle(masaAdi);
+        }
         
+        b.setDurum(durum);
+        b.client = client;
+     
+                
         //başarılı ise (bilgisayar sayısı 1 arttıysa kontrolü)
         return true;
     }
 
+    ///incele
     @Override
     public boolean masaSil(String masaAdi){
-        bilgisayarlar.remove(masaBul(masaAdi));
+        Bilgisayar b = masaBul(masaAdi);
+        b.masaKapat();
+        bilgisayarlar.remove(b);
+        //masalarViewGuncelle();
         //başarılı ise (bilgisayar sayısı 1 azaldıysa kontrolü)
+        return true;
+    }
+    
+    
+    public boolean masaGucKapat(String masaAdi){
+        Bilgisayar b = masaBul(masaAdi);
+        b.masaKapat();
+        durumDegis(masaAdi, Bilgisayar.Durum.KAPALI);
+
         return true;
     }
 
@@ -142,7 +165,7 @@ public class BilgisayarC implements BilgisayarI{
     }
 	
     
-    public void masaAc(String masaAdi, int sureSiniri, Musteri musteri){
+    public void masaAc(String masaAdi, int sureSiniri, Musteri musteri) throws Throwable{
         Bilgisayar b = masaBul(masaAdi);
         if(b!=null){
             if(sureSiniri==-1){
@@ -152,13 +175,18 @@ public class BilgisayarC implements BilgisayarI{
                 b.masaAc(sureSiniri, musteri);
                 durumDegis(masaAdi,Bilgisayar.Durum.SURELI_ACIK);
             }
+            String musteriAdi = "";
+            if(musteri!=null)
+                musteriAdi = musteri.getAd();
+            
+            //!!! bunu modele al
+            b.client.masaAcKomutuGonder(masaAdi,sureSiniri,musteriAdi, ClientSoketDinleyiciC.ONAY);
         }
-        
     }
     
     
     @Override
-    public boolean masaAc(String masaAdi, boolean sinirliMi, Musteri musteri){
+    public boolean masaAc(String masaAdi, boolean sinirliMi, Musteri musteri) throws Throwable{
     	Bilgisayar b = masaBul(masaAdi);
     	if(b != null){
             if(b.getAcilisSaati() != null){

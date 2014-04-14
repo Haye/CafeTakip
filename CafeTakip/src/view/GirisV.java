@@ -1,6 +1,9 @@
 
 package view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author MustafaS
@@ -101,9 +104,12 @@ public class GirisV extends javax.swing.JFrame {
     private void btnGirisYapMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGirisYapMousePressed
         String kulAdi = txtKullaniciAdi.getText().trim();
         String sifre = txtSifre.getText().trim();
-        
-        if(mutlakkafe.MutlakKafe.mainCont.getCalisanCont().girisYap(kulAdi, sifre)){
-            this.hide();
+        try {
+            if(mutlakkafe.MutlakKafe.mainCont.getCalisanCont().girisYap(kulAdi, sifre)){
+                this.hide();
+            }
+        } catch (Throwable ex) {
+            Logger.getLogger(GirisV.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnGirisYapMousePressed

@@ -6,6 +6,7 @@ import controller.kisi.CalisanC;
 import controller.kisi.MusteriC;
 import controller.sira.SiraC;
 import controller.urun.UrunC;
+import java.io.IOException;
 
 public class MainC {
     
@@ -19,11 +20,14 @@ public class MainC {
 
     public MainC() throws Throwable{        
         calisanCont = new CalisanC();
+    }
+    
+    public void girisBasarili() throws Throwable{
         urunCont = new UrunC();
         siraCont = new SiraC();
         bilgisayarC = new BilgisayarC();
         musteriCont = new MusteriC();
-        
+
         SoketKontrol  = new HaberlesmeC();
         SoketKontrol.start();
     }

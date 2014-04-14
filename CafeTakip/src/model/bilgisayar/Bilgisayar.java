@@ -132,8 +132,7 @@ public class Bilgisayar {
         this.sureSiniri = sureSiniri;
         this.musteri = musteri;
         this.durum = Durum.SURELI_ACIK;
-        
-           
+    
         return true;
     }
     /* masaAc overloadları bitiş */

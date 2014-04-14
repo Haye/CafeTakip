@@ -26,6 +26,12 @@ public class ClientSoketDinleyiciC extends Thread{
     public static final String MT_GUC_ACIK = "GucAcik";
     public static final String MT_GUC_KAPALI = "GucKapali";
     
+    public static final String ISLEM = "Islem";
+    public static final String BILGISAYARI_KAPAT = "Kapat";
+    public static final String BILGISAYARI_YENIDEN_BASLAT = "YenidenBaslat";
+    public static final String BILGISAYARI_KILITLI = "Kilitli";
+    
+    
     public static final String CEVAP = "Cevap";
     public static final String ONAY = "Onay";
     public static final String RED = "Red";
@@ -41,6 +47,7 @@ public class ClientSoketDinleyiciC extends Thread{
     public static final String GIRIS_SIFRE = "Sifre";
     
     public static final String MASA_AC_SURE = "Sure";
+    public static final String MASA_SAATLIK_UCRET = "MasaSaatlikUcret";
     
     public static final int PORT = 1515;
 
@@ -60,10 +67,12 @@ public class ClientSoketDinleyiciC extends Thread{
             mesajBekle();            
         } catch (Exception ex) {
             Logger.getLogger(ClientSoketDinleyiciC.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Throwable ex) {
+            Logger.getLogger(ClientSoketDinleyiciC.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
     
-    public void mesajBekle() throws Exception{
+    public void mesajBekle() throws Exception, Throwable{
         
         while(true){
             byte[] array = new byte[1024];
@@ -78,7 +87,7 @@ public class ClientSoketDinleyiciC extends Thread{
         soket.getOutputStream().write(mesaj.getBytes());
     }
             
-    void mesajGeldi(String mesaj) throws  Exception{
+    void mesajGeldi(String mesaj) throws  Exception, Throwable{
         
         System.out.println(mesaj);
         
@@ -99,7 +108,7 @@ public class ClientSoketDinleyiciC extends Thread{
                 break;
                 
             case MT_MASA_AC:
-                masaAc(json);
+                masaAcMaSorgusu(json);
                 break;
                 
             case MT_SIPARIS:
@@ -116,7 +125,7 @@ public class ClientSoketDinleyiciC extends Thread{
         
     }
     
-    public void masaAc(JSONObject json) throws Exception{
+    public void masaAcMaSorgusu(JSONObject json) throws Exception, Throwable{
         
         int sure = Integer.parseInt(json.get(MASA_AC_SURE).toString());
         String masaAdi = json.get(MASA_ID).toString();
@@ -135,37 +144,46 @@ public class ClientSoketDinleyiciC extends Thread{
         
         if(sonuc == JOptionPane.YES_OPTION){
             mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(masaAdi, sure, null);
-            masaAcmaCevabiGonder(true,Integer.toString(sure));
         }else{
-            masaAcmaCevabiGonder(false,Integer.toString(sure));
+            masaAcKomutuGonder(masaAdi,sure,musteriAdi,RED);
         }
     }
     
-    public void masaAcmaCevabiGonder(boolean onay,String sure) throws Exception{
-        
-        JSONObject json = new  JSONObject();
+    public void masaAcKomutuGonder(String masaAdi,int sure, String musteriAdi,String Onay) throws Throwable{
+        //{"MasaAdi":"MustafaS","MesajTipi":"MasaAc","Sifre":"","Sure":30,"KullaniciAdi":""}
+        JSONObject json = new JSONObject();
+        json.put(MASA_ID, masaAdi);
         json.put(MESAJ_TIPI, MT_MASA_AC);
-        json.put(MASA_AC_SURE, sure);
-        
-        if(onay)
-            json.put(CEVAP, ONAY);
-        else
-            json.put(CEVAP, RED);
+        json.put(GIRIS_SIFRE, "");
+        json.put(GIRIS_KULLANICI_ADI, musteriAdi);
+        json.put(MASA_AC_SURE,sure);
+        json.put(CEVAP, Onay);
+        json.put(MASA_SAATLIK_UCRET,"2");
         
         mesajGonder(json.toString());
     }
+    
+    public void masaKapatKomutuGonder(String masaAdi) throws Throwable{
+         JSONObject json = new JSONObject();
+         json.put(MASA_ID, masaAdi);
+         json.put(MESAJ_TIPI, MT_MASA_KAPAT);
+         json.put(ISLEM, BILGISAYARI_KILITLI);    
+         
+         mesajGonder(json.toString());
+    }
+    
     
     
     public void gucAc(JSONObject json) throws Exception{
         
         String masaAdi = json.get(MASA_ID).toString();
-        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().durumDegis(masaAdi, Bilgisayar.Durum.KILITLI);
+        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaEkle(masaAdi, Bilgisayar.Durum.KILITLI,this);
     }
     
      public void gucKapat(JSONObject json) throws Exception{
          
         String masaAdi = json.get(MASA_ID).toString();
-        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().durumDegis(masaAdi, Bilgisayar.Durum.KAPALI);
+        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaGucKapat(masaAdi);
         this.stop();
     }
     

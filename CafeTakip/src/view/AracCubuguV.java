@@ -2,13 +2,14 @@
 package view;
 
 import javax.swing.JOptionPane;
+import model.bilgisayar.Bilgisayar;
 
 /**
  *
  * @author MustafaS
  */
 public class AracCubuguV extends javax.swing.JPanel {
-
+    static int masaid=1;
     public AracCubuguV() {
         initComponents();
     }
@@ -49,6 +50,11 @@ public class AracCubuguV extends javax.swing.JPanel {
 
         btnBilet.setText("Bilet");
         btnBilet.setPreferredSize(new java.awt.Dimension(100, 100));
+        btnBilet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBiletActionPerformed(evt);
+            }
+        });
 
         btnMusteri.setText("Musteri");
         btnMusteri.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -108,6 +114,9 @@ public class AracCubuguV extends javax.swing.JPanel {
         kasiyer.show();
         
     }//GEN-LAST:event_btnKasiyerMousePressed
+
+    private void btnBiletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBiletActionPerformed
+    }//GEN-LAST:event_btnBiletActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBilet;

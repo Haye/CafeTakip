@@ -19,7 +19,7 @@ public interface KisiI {
      * @param sifre : Şifre
      * @return Kullanı adı ve şifre doğru ise true, değilse false
      */
-    public boolean girisYap(String kullaniciAdi, String sifre);
+    public boolean girisYap(String kullaniciAdi, String sifre) throws Throwable;
     
     
     /**

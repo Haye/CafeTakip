@@ -18,6 +18,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -40,7 +42,9 @@ public class MasalarV extends javax.swing.JPanel {
 
     
     //Açılıştaki masaların labellerini oluşturarak ekler
-    public void init(String [] masaAdlari){        
+    public void init(String [] masaAdlari){   
+        this.removeAll();
+
         //FlowLayout için padding değerleri ( _ , Pad1, Pad2)
         FlowLayout layout = new FlowLayout(FlowLayout.LEFT, 20, 20);
         //Layoutu hangi nesne için kullanacağımız. Direk eklemek için getContntPane().setLayout(_);
@@ -50,7 +54,6 @@ public class MasalarV extends javax.swing.JPanel {
          this.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
          
-        
         //Masaların eklenmesi
         for(int i=0; i<masaAdlari.length; i++){
             masaEkle(masaAdlari[i]);
@@ -62,6 +65,15 @@ public class MasalarV extends javax.swing.JPanel {
     //Program çalışma esnasında kapalı halde yeni bir masa ekler
     public void masaEkle(String masaAdi){
             
+            FlowLayout layout = new FlowLayout(FlowLayout.LEFT, 20, 20);
+            //Layoutu hangi nesne için kullanacağımız. Direk eklemek için getContntPane().setLayout(_);
+            this.setLayout(layout);
+
+            // FlowLayoutun sola veya sağa göre konumlandırmasını sağlar
+             this.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+
+
+         
             JLabel jLabel1 = new JLabel();
         
             jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -77,7 +89,11 @@ public class MasalarV extends javax.swing.JPanel {
             //Mouse listener ekle, tıklandığında jLabelMouseClicked çalışması için
             jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mousePressed(java.awt.event.MouseEvent evt) {
-                    jLabelMouseClicked(evt);
+                    try {
+                        jLabelMouseClicked(evt);
+                    } catch (Throwable ex) {
+                        Logger.getLogger(MasalarV.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
              });
             
@@ -89,12 +105,13 @@ public class MasalarV extends javax.swing.JPanel {
             //Oluşturulan labeli konteynırına ekler
             durumDegis(masaAdi, mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(masaAdi).getDurum());
             
-            this.add(jLabel1);
+            this.add(labeller.get(labeller.size()-1));
     }
+    
     
  
     
-    private void jLabelMouseClicked(java.awt.event.MouseEvent evt) { 
+    private void jLabelMouseClicked(java.awt.event.MouseEvent evt) throws Throwable { 
         if (evt.getClickCount() == 2) {
            if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaBul(seciliLabel.getText()).getAcilisSaati()==null){
                mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null);
@@ -197,17 +214,25 @@ public class MasalarV extends javax.swing.JPanel {
     //Popup listener
     ActionListener menuListener = new ActionListener() {
         @Override
-        public void actionPerformed(ActionEvent event) {
+        public void actionPerformed(ActionEvent event){
             System.out.println(seciliLabel.getText()+ "["+ event.getActionCommand() + "] tıklandı");
             switch(event.getActionCommand()){
                 case "Masa Aç":
-                    mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null);
+                    try {
+                        mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),false,null);
+                    } catch (Throwable ex) {
+                        Logger.getLogger(MasalarV.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
                 
                 // !!!Önce süre siniri gir isteği sonra masa açik hatasi veriyor.. 
                 case "Süreli Aç":
-                    if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),true,null)){
-                        //durumDegis(seciliLabel.getText(),Bilgisayar.Durum.SURELI_ACIK);
+                    try {
+                        if(mutlakkafe.MutlakKafe.mainCont.getBilgisayarC().masaAc(seciliLabel.getText(),true,null)){
+                            //durumDegis(seciliLabel.getText(),Bilgisayar.Durum.SURELI_ACIK);
+                        }
+                    } catch (Throwable ex) {
+                        Logger.getLogger(MasalarV.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     break;
                     

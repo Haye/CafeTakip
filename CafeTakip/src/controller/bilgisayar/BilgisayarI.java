@@ -20,7 +20,7 @@ public interface BilgisayarI {
      * @param masaAdi: Kayıtlı masa adı
      * @return Masa açılma işlemi başarılı ise true döner.
      */
-    public boolean masaAc(String masaAdi, boolean sinirliMi, Musteri musteri);
+    public boolean masaAc(String masaAdi, boolean sinirliMi, Musteri musteri) throws  Throwable;
     
    
     /**

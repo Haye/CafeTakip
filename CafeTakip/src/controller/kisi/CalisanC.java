@@ -22,13 +22,14 @@ public class CalisanC implements KisiI, CalisanI{
     
     @SuppressWarnings("deprecation")
     @Override
-    public boolean girisYap(String kullaniciAdi, String sifre) {
+    public boolean girisYap(String kullaniciAdi, String sifre) throws Throwable {
          if (!kullaniciAdi.isEmpty() && !sifre.isEmpty()) {
              kullanici = new Calisan();
              if (kullanici.girisYap(kullaniciAdi, sifre)) {
                  kullanici.bilgileriGetir(kullaniciAdi);
                  ana = new AnaEkran();
                  ana.show();
+                 mutlakkafe.MutlakKafe.mainCont.girisBasarili();
                  return true;
              }
               JOptionPane.showMessageDialog(null, "Yanlıs kullanıcı adı sifre",
