@@ -3,6 +3,7 @@ package view;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -13,6 +14,18 @@ public class GirisV extends javax.swing.JFrame {
    
     public GirisV() {
         initComponents();
+        
+        try {
+            javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GirisV.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(GirisV.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(GirisV.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(GirisV.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     
@@ -27,7 +40,8 @@ public class GirisV extends javax.swing.JFrame {
         btnVazgec = new javax.swing.JButton();
         txtSifre = new javax.swing.JPasswordField();
 
-        setTitle("Giriş");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Mutlak Kafe Giriş Ekranı");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
@@ -150,6 +164,7 @@ public class GirisV extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

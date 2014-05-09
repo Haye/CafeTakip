@@ -23,6 +23,8 @@ public class AracCubuguV extends javax.swing.JPanel {
         btnKafeterya = new javax.swing.JButton();
         btnBilet = new javax.swing.JButton();
         btnMusteri = new javax.swing.JButton();
+        btnMusteri1 = new javax.swing.JButton();
+        btnMusteri2 = new javax.swing.JButton();
 
         btnSecenek.setText("Seçenekler");
         btnSecenek.setPreferredSize(new java.awt.Dimension(60, 60));
@@ -48,7 +50,7 @@ public class AracCubuguV extends javax.swing.JPanel {
             }
         });
 
-        btnBilet.setText("Bilet");
+        btnBilet.setText("İstatistikler");
         btnBilet.setPreferredSize(new java.awt.Dimension(100, 100));
         btnBilet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +63,23 @@ public class AracCubuguV extends javax.swing.JPanel {
         btnMusteri.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnMusteriMousePressed(evt);
+            }
+        });
+
+        btnMusteri1.setText("Bekleyen Sipariş");
+        btnMusteri1.setPreferredSize(new java.awt.Dimension(100, 100));
+        btnMusteri1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnMusteri1MousePressed(evt);
+            }
+        });
+
+        btnMusteri2.setText("Sıraki Müşteriler");
+        btnMusteri2.setActionCommand("");
+        btnMusteri2.setPreferredSize(new java.awt.Dimension(100, 100));
+        btnMusteri2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnMusteri2MousePressed(evt);
             }
         });
 
@@ -77,15 +96,22 @@ public class AracCubuguV extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBilet, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMusteri, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnMusteri, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMusteri1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMusteri2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnSecenek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnKasiyer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnKafeterya, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnBilet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnMusteri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnMusteri1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(btnMusteri, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(btnBilet, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(btnSecenek, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+            .addComponent(btnKasiyer, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(btnKafeterya, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(btnMusteri2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -118,11 +144,21 @@ public class AracCubuguV extends javax.swing.JPanel {
     private void btnBiletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBiletActionPerformed
     }//GEN-LAST:event_btnBiletActionPerformed
 
+    private void btnMusteri1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMusteri1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMusteri1MousePressed
+
+    private void btnMusteri2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMusteri2MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMusteri2MousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBilet;
     private javax.swing.JButton btnKafeterya;
     private javax.swing.JButton btnKasiyer;
     private javax.swing.JButton btnMusteri;
+    private javax.swing.JButton btnMusteri1;
+    private javax.swing.JButton btnMusteri2;
     private javax.swing.JButton btnSecenek;
     // End of variables declaration//GEN-END:variables
 }
